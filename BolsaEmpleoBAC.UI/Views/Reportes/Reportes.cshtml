@@ -1,0 +1,234 @@
+﻿
+@{
+    ViewBag.Title = "Reportes";
+}
+
+<div ng-controller="ReportesController" ng-init="SeguridadJS();getPaises();getIdiomas();DiscapacidadGet();getEstados();Cargar();LoadGrid();">
+    <h1 class="subtitle-18 mb-5"><span class="mdi mdi-chart-pie mdi-24px mr-2"></span>Reportes</h1>
+    <div class="Panel">
+        <div id="taps" class="row">
+            <div class="col-4 col-lg-2" ng-class="step1Class" ng-click="changestep1();">
+                Aplicantes
+            </div>
+            <div class="col-4 col-lg-2" ng-class="step2Class" ng-click="changestep2();">
+                Puestos
+            </div>
+        </div>
+        <div id="ReportesPostulante" ng-show="show1">
+            <div class="my-5">
+                <div id="taps" class="row justify-content-center">
+                    <div class="col-5 col-lg-3 col-xl-2 " ng-class="step3Class" ng-click="changestep3();">
+                        <span class="mdi mdi-chart-bar"></span>
+                        Estadísticas
+                    </div>
+                    <div class="col-5 col-lg-3 col-xl-2 " ng-class="step4Class" ng-click="changestep4();">
+                        <span class="mdi mdi-account-tie"></span>
+                        Individuos
+                    </div>
+                </div>
+            </div>
+            <div class="my-3">
+                <a class="link" data-toggle="collapse" data-target="#filtroAvanzado" aria-expanded="false" aria-controls="filtroAvanzado"><span class="mdi mdi-tune mdi-24px"></span>Filtrar</a>
+            </div>
+            <div id="filtroAvanzado" class="Panel collapse">
+                <p class="subtitle-16">Filtrar por:</p>
+                <div>
+                    <a data-toggle="collapse" data-target="#filtroAvanzado122" aria-expanded="false" aria-controls="filtroAvanzado122"> <div class="SubrayadoFiltroAvanzado LetrasContenido textoNegrita">Fecha de registro </div></a>
+                    <div class="collapse" id="filtroAvanzado122">
+                        <div class="row">
+                            <div class="col-sm-4">
+                                <select id="selPeriodo" ng-model="model.Periodo" ng-change="DefinirFecha()">
+                                    <option value="">Periodo</option>
+                                    <option value="1">Ultimo mes</option>
+                                    <option value="2">Mes anterior</option>
+                                    <option value="3">Definir fechas</option>
+                                </select>
+                            </div>
+                            <div id="divFechaInicial" class="col-sm-4 hidden">
+                                <input type="date" id="dtInicio" ng-model="model.FechaInicio" />
+                            </div>
+                            <div id="divFechaFinal" class="col-sm-4 hidden">
+                                <input type="date" id="dtFinal" ng-model="model.FechaFinal" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <a data-toggle="collapse" data-target="#filtroAvanzado2" aria-expanded="false" aria-controls="filtroAvanzado2"> <div class="SubrayadoFiltroAvanzado LetrasContenido textoNegrita">Aplicantes por país </div></a>
+                    <div class="collapse" id="filtroAvanzado2">
+                        <div id="chkPais" ng-repeat="pais in Paises">
+                            <label class="container">
+                                {{pais.Descripcion}}
+                                <input type="checkbox" name="pais" value="{{pais.IdPais}}" id="{{pais.IdPais}}">
+                                <span class="checkmark"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <a data-toggle="collapse" data-target="#filtroAvanzado3" aria-expanded="false" aria-controls="filtroAvanzado3"> <div class="SubrayadoFiltroAvanzado LetrasContenido textoNegrita">Estado de aplicante </div></a>
+                    <div class="collapse" id="filtroAvanzado3">
+                        <div id="chkEstado" ng-repeat="estado in Estados">
+                            <label class="container">
+                                {{estado.EstadoPerfil1}}
+                                <input type="checkbox" name="estado" value="{{estado.IdEstadoPerfil}}" id="{{estado.IdEstadoPerfil}}">
+                                <span class="checkmark"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <a data-toggle="collapse" data-target="#filtroAvanzado4" aria-expanded="false" aria-controls="filtroAvanzado4"> <div class="SubrayadoFiltroAvanzado LetrasContenido textoNegrita">Dominio del idioma </div></a>
+                    <div class="collapse" id="filtroAvanzado4">
+                        <div id="chkIdioma" ng-repeat="idioma in Idiomas">
+                            <label class="container">
+                                {{idioma.Descripcion}}
+                                <input type="checkbox" name="idioma" value="{{idioma.IdIdioma}}" id="{{idioma.IdIdioma}}">
+                                <span class="checkmark"></span>
+                            </label>
+                        </div>
+                        <select id="selNivel" ng-model="model.porcentaje">
+                            <option value="">Nivel</option>
+                            <option value="0">Bajo</option>
+                            <option value="50">Intermedio</option>
+                            <option value="100">Alto</option>
+                        </select>
+                    </div>
+                </div>
+                <div>
+                    <a data-toggle="collapse" data-target="#filtroAvanzado5" aria-expanded="false" aria-controls="filtroAvanzado5"> <div class="SubrayadoFiltroAvanzado LetrasContenido textoNegrita">Discapacidad </div></a>
+                    <div class="collapse" id="filtroAvanzado5">
+                        <div id="chkDiscapacidades" ng-repeat="discapacidad in Discapacidades">
+                            <label class="container">
+                                {{discapacidad.Descripcion}}
+                                <input type="checkbox" name="discapacidad" value="{{discapacidad.IdDescapacidad}}" id="{{discapacidad.IdDescapacidad}}">
+                                <span class="checkmark"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <a data-toggle="collapse" data-target="#filtroAvanzado6" aria-expanded="false" aria-controls="filtroAvanzado6"> <div class="SubrayadoFiltroAvanzado LetrasContenido textoNegrita">Sexo </div></a>
+                    <div class="collapse" id="filtroAvanzado6">
+                        <select id="selGenero" ng-model="model.Genero">
+                            <option selected disabled value="">Genero</option>
+                            <option selected value="0">Mujer</option>
+                            <option selected value="1">Hombre</option>
+                        </select>
+                    </div>
+                </div>
+                <div>
+                    <a data-toggle="collapse" data-target="#filtroAvanzado7" aria-expanded="false" aria-controls="filtroAvanzado7"> <div class="SubrayadoFiltroAvanzado LetrasContenido textoNegrita">País de residencia </div></a>
+                    <div class="collapse" id="filtroAvanzado7">
+                        <select id="selResidencia" ng-model="model.PaisRecidencia">
+                            <option disabled selected value="">Residencia</option>
+                            <option ng-repeat="pais in Paises" value="{{pais.IdPais}}" ng-value="{{pais.IdPais}}">{{pais.Descripcion}}</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="mt-4 d-md-flex justify-content-center">
+                    <button id="btnFiltrarAplicante" data-toggle="collapse" data-target="#filtroAvanzado" aria-expanded="false" aria-controls="filtroAvanzado" class="btn mb-3 m-md-3" ng-click="AplicarFiltroAplicantes()" type="button">Aplicar Filtros</button>
+                    <button id="btnQuitarFiltrarAplicantes" data-toggle="collapse" data-target="#filtroAvanzado" aria-expanded="false" aria-controls="filtroAvanzado" class="btn btn-gray m-md-3" ng-click="DehacerFiltroAplicante()" type="button">Deshacer filtros</button>
+                </div>
+            </div>
+            <div id="ReportesEstadisticos" ng-show="show3">
+                <div class="row">
+                    <div class="col-lg-6 Division">
+                        <h3 class="subtitle-16">Personas Interesadas en trabajar en cada país</h3>
+                        <p class="subtitle-14 text-gray">Total aplicantes <span id="totalGrafico1Aplicante"></span></p>
+                        <div class="clearfix">
+                            <a id="png_Grafico1Aplicante" download="GraficoPersonasInteresadasEnTrabajarCnCadaPaís.png"></a>
+                        </div>
+                        <div id="Grafico1Aplicante" class="chart"></div>
+                    </div>
+                    <div class="col-lg-6">
+                        <h3 class="subtitle-16">Cantidad de aplicaciones por carrera de interés</h3>
+                        <p class="subtitle-14 text-gray">Total aplicantes <span id="totalGrafico2Aplicante"></span></p>
+                        <div class="clearfix">
+                            <a id="png_Grafico2Aplicante" download="CantidadDeAplicacionesPorCarreraDeInteres.png"></a>
+                        </div>
+                        <div id="Grafico2Aplicante" class="chart"></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6 Division">
+                        <h3 class="subtitle-16">Estado de los aplicantes</h3>
+                        <p class="subtitle-14 text-gray">Total aplicantes <span id="totalGrafico3Aplicante"></span></p>
+                        <div class="clearfix">
+                            <a id="png_Grafico3Aplicante" download="EstadoDeLosAplicantes.png"></a>
+                        </div>
+                        <div id="Grafico3Aplicante" class="chart"></div>
+                    </div>
+                    <div class="col-lg-6">
+                        <h3 class="subtitle-16">Género de los aplicantes</h3>
+                        <p class="subtitle-14 text-gray">Total aplicantes <span id="totalGrafico4Aplicante"></span></p>
+                        <div class="clearfix">
+                            <a id="png_Grafico4Aplicante" download="GeneroDeLosAplicaciones.png"></a>
+                        </div>
+                        <div id="Grafico4Aplicante" class="chart"></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-6 Division">
+                        <h3 class="subtitle-16">Discapacidad de los aplicantes</h3>
+                        <p class="subtitle-14 text-gray">Total aplicantes <span id="totalGrafico5Aplicante"></span></p>
+                        <div class="clearfix">
+                            <a id="png_Grafico5Aplicante" download="DiscapacidadDeLosAplicantes.png"></a>
+                        </div>
+                        <div id="Grafico5Aplicante" class="chart"></div>
+                    </div>
+                    <div class="col-lg-6">
+                        <h3 class="subtitle-16">Dominio de idiomas</h3>
+                        <p class="subtitle-14 text-gray">Total aplicantes <span id="totalGrafico6Aplicante"></span></p>
+                        <div class="clearfix">
+                            <a id="png_Grafico6Aplicante" download="DominioDeIdiomas.png"></a>
+                        </div>
+                        <div id="Grafico6Aplicante" class="chart"></div>
+                    </div>
+                </div>
+            </div>
+            <div id="ReportesIndividuos" ng-show="show4">
+                <div id="Lista"></div>
+            </div>
+        </div>
+        <div id="ReportesPuesto" ng-show="show2">
+            <div class="row">
+                <div class="col-lg-4">
+                    <select id="selPais" ng-model="model.pais" ng-change="getAdministradores()">
+                        <option selected disabled value="">País</option>
+                        <option ng-repeat="pais in Paises" value="{{pais.IdPais}}" ng-value="{{pais.IdPais}}">{{pais.Descripcion}}</option>
+                    </select>
+                    <select id="selAdministradores" ng-model="model.Administrador">
+                        <option selected disabled value="">Administrador</option>
+                        <option ng-repeat="admin in Administradores" value="{{admin.IdUsuario}}" ng-value="{{admin.IdUsuario}}">{{admin.NombreCompleto}}</option>
+                    </select>
+                    <button id="btnFiltrarPuesto" type="button" class="btn btn-full" ng-click="AplicarFiltrosPuesto();">Aplicar Filtros</button>
+                    <button id="btnQuitarFiltrarPuesto" type="button" class="btn btn-full btn-gray my-3 order-md-1" ng-click="DeshacerFiltrosPuesto();">Deshacer Filtros</button>
+                </div>
+            </div>
+            <div id="GraficoPuestoContenedor" class="row Panel hidden">
+                <div class="col-lg-6 Division">
+                    <h3 class="subtitle-16">Postulantes por puesto</h3>
+                    <p class="subtitle-14 text-gray">Total aplicantes <span id="totalGrafico1Puesto"></span></p>
+                    <div class="clearfix">
+                        <a id="png_Grafico1Puesto" download="PostulantesPorPuesto.png"></a>
+                    </div>
+                    <div id="Grafico1Puesto" class="chart"></div>
+                </div>
+                <div class="col-lg-6">
+                    <h3 class="subtitle-16">Estado de los puestos<h3>
+                    <p class="subtitle-14 text-gray">Total puestos <span id="totalGrafico2Puesto"></span></p>
+                    <div class="clearfix">
+                        <a id="png_Grafico2Puesto" download="EstadoDeLosPuestos.png"></a>
+                    </div>
+                    <div id="Grafico2Puesto" class="chart"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+
+}

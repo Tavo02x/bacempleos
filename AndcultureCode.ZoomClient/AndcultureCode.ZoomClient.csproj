@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="12.0">
+  <!--Project was exported from assembly: C:\Users\gustavo.solano\Downloads\AndcultureCode.ZoomClient.dll-->
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{EDC6C410-89FF-4D10-8616-50A928537C92}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AssemblyName>AndcultureCode.ZoomClient</AssemblyName>
+    <ApplicationVersion>1.0.17.0</ApplicationVersion>
+    <RootNamespace>AndcultureCode.ZoomClient</RootNamespace>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>2.0</OldToolsVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="jose-jwt">
+      <HintPath>bin\jose-jwt.dll</HintPath>
+    </Reference>
+    <Reference Include="netstandard" />
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="RestSharp, Version=106.6.9.0, Culture=neutral, PublicKeyToken=598062e77f915f75, processorArchitecture=MSIL">
+      <HintPath>..\packages\RestSharp.106.6.9\lib\net452\RestSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Web" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ZoomClient.cs" />
+    <Compile Include="ZoomGroupsClient.cs" />
+    <Compile Include="ZoomMeetingsClient.cs" />
+    <Compile Include="ZoomReportsClient.cs" />
+    <Compile Include="ZoomUsersClient.cs" />
+    <Compile Include="ZoomWebhookClient.cs" />
+    <Compile Include="Models\BaseList.cs" />
+    <Compile Include="Models\BaseObject.cs" />
+    <Compile Include="Models\BaseTokenList.cs" />
+    <Compile Include="Models\ZoomClientOptions.cs" />
+    <Compile Include="Models\Webhooks\CreateWebhook.cs" />
+    <Compile Include="Models\Webhooks\ListWebhooks.cs" />
+    <Compile Include="Models\Webhooks\UpdateWebhook.cs" />
+    <Compile Include="Models\Webhooks\Webhook.cs" />
+    <Compile Include="Models\Webhooks\WebhookEvents.cs" />
+    <Compile Include="Models\Users\CheckUserEmail.cs" />
+    <Compile Include="Models\Users\CreateUser.cs" />
+    <Compile Include="Models\Users\CreateUserAction.cs" />
+    <Compile Include="Models\Users\DeleteUserAction.cs" />
+    <Compile Include="Models\Users\ListUsers.cs" />
+    <Compile Include="Models\Users\LoginTypes.cs" />
+    <Compile Include="Models\Users\UpdateUser.cs" />
+    <Compile Include="Models\Users\UpdateUserEmail.cs" />
+    <Compile Include="Models\Users\User.cs" />
+    <Compile Include="Models\Users\UserStatuses.cs" />
+    <Compile Include="Models\Users\UserTypes.cs" />
+    <Compile Include="Models\Reports\MeetingParticipant.cs" />
+    <Compile Include="Models\Reports\MeetingParticipantsReport.cs" />
+    <Compile Include="Models\Meetings\CreateMeeting.cs" />
+    <Compile Include="Models\Meetings\CreateMeetingRegistrant.cs" />
+    <Compile Include="Models\Meetings\ListMeetingRegistrants.cs" />
+    <Compile Include="Models\Meetings\ListMeetings.cs" />
+    <Compile Include="Models\Meetings\Meeting.cs" />
+    <Compile Include="Models\Meetings\MeetingApprovalTypes.cs" />
+    <Compile Include="Models\Meetings\MeetingAudioOptions.cs" />
+    <Compile Include="Models\Meetings\MeetingAutoRecordingOptions.cs" />
+    <Compile Include="Models\Meetings\MeetingListTypes.cs" />
+    <Compile Include="Models\Meetings\MeetingRecurrence.cs" />
+    <Compile Include="Models\Meetings\MeetingRecurrenceTypes.cs" />
+    <Compile Include="Models\Meetings\MeetingRecurrenceWeekDays.cs" />
+    <Compile Include="Models\Meetings\MeetingRecurrenceWeeks.cs" />
+    <Compile Include="Models\Meetings\MeetingRegistrant.cs" />
+    <Compile Include="Models\Meetings\MeetingRegistrantCustomQuestion.cs" />
+    <Compile Include="Models\Meetings\MeetingRegistrantStatuses.cs" />
+    <Compile Include="Models\Meetings\MeetingRegistrationTypes.cs" />
+    <Compile Include="Models\Meetings\MeetingSettings.cs" />
+    <Compile Include="Models\Meetings\MeetingTypes.cs" />
+    <Compile Include="Models\Meetings\UpdateMeetingRegistrant.cs" />
+    <Compile Include="Models\Meetings\UpdateMeetingRegistrantStatuses.cs" />
+    <Compile Include="Models\Groups\CreateGroup.cs" />
+    <Compile Include="Models\Groups\CreateMember.cs" />
+    <Compile Include="Models\Groups\Group.cs" />
+    <Compile Include="Models\Groups\ListGroups.cs" />
+    <Compile Include="Models\Groups\ListMembers.cs" />
+    <Compile Include="Models\Groups\Member.cs" />
+    <Compile Include="Models\Groups\UpdateGroup.cs" />
+    <Compile Include="Models\Account\Account.cs" />
+    <Compile Include="Models\Account\AccountOptions.cs" />
+    <Compile Include="Models\Account\PaymentModes.cs" />
+    <Compile Include="Interfaces\ICreatable.cs" />
+    <Compile Include="Interfaces\IZoomClient.cs" />
+    <Compile Include="Interfaces\IZoomGroupsClient.cs" />
+    <Compile Include="Interfaces\IZoomMeetingsClient.cs" />
+    <Compile Include="Interfaces\IZoomReportsClient.cs" />
+    <Compile Include="Interfaces\IZoomUsersClient.cs" />
+    <Compile Include="Interfaces\IZoomWebhookClient.cs" />
+    <Compile Include="Extensions\WebClientExtensions.cs" />
+    <Compile Include="RestSharp\Serializers\NewtonsoftJsonSerializer.cs" />
+    <Compile Include="AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+</Project>

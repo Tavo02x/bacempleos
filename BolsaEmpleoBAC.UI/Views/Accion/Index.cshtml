@@ -1,0 +1,106 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<div ng-controller="AccionController" ng-init="VerificarSession();SeguridadJS();LoadGrid();GetTipo();GetAccion();">
+    <div class="d-md-flex justify-content-between align-items-center mb-5">
+        <h1 class="subtitle-18"><span class="mdi mdi-settings mdi-24px"></span>Mantenimiento de Acciones <span id="totalGrid"></span></h1>
+        <button type="button" class="btn" data-toggle="modal" data-target="#popupArea">Nueva Acción</button>
+    </div>
+    <div class="Panel">
+        <div class="row">
+            <div class="col-lg-12">
+                <div id="table"></div>
+            </div>
+        </div>
+    </div>
+    <div id="popupArea" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="col-lg-1">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <label class="LetrasSubTitulo">Mantenimiento</label>
+                        </div>
+                    </div>
+                    <input id="txtId" type="hidden" ng-model="model.AccionId" />
+                    <div class="row">
+                        <div class="col-lg-6 col-sm-12">
+                            <input id="txtNombre" type="text" placeholder="Nombre" class="LetrasContenido" ng-model="model.Nombre" />
+                        </div>
+                        <div class="col-lg-6 col-sm-12">
+                            <label class="container">
+                                Desactivar
+                                <input type="checkbox" ng-model="model.Borrado">
+                                <span class="checkmark"></span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12 col-sm-12">
+                            <textarea id="txtDescripcion" type="text" placeholder="Descripción" class="LetrasContenido" ng-model="model.Descripcion" rows="3"></textarea>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6 col-sm-12">
+                            <input id="txtReferenciaHTML" type="text" placeholder="Referencia HTML" class="LetrasContenido" ng-model="model.ReferenciaHTML" />
+                        </div>
+                        <div class="col-lg-6 col-sm-12">
+                            <input id="txtReferenciaJs" type="text" placeholder="Referencia JS" class="LetrasContenido" ng-model="model.ReferenciaJS" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6 col-sm-12">
+                            <input id="txtReferenciaWebAPI" type="text" placeholder="Referencia Web API" class="LetrasContenido" ng-model="ReferenciasWebAPI" />
+                        </div>
+                        <div class="col-lg-6 col-sm-12">
+                            <input id="txtReferenciaAux" type="text" placeholder="Referencia Aux" class="LetrasContenido" ng-model="ReferenciasAux" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6 col-sm-12">
+                            <input id="txtIcono" type="text" placeholder="Icono" class="LetrasContenido" ng-model="model.Icono" />
+                        </div>
+                        <div class="col-lg-6 col-sm-12">
+                            <input id="txtURL" type="text" placeholder="URL" class="LetrasContenido" ng-model="model.URL" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6 col-sm-12">
+                            <select id="selTipo" ng-model="model.TipoAccionId">
+                                <option selected disabled value="">Tipo de acción</option>
+                                <option ng-repeat="accion in tipos" value="{{accion.TipoAccionId}}" ng-value="{{accion.TipoAccionId}}">{{accion.Descripcion}}</option>
+                            </select>
+                        </div>
+                        <div class="col-lg-6 col-sm-12">
+                            <select id="selAccion" ng-model="model.ParentId">
+                                <option selected disabled value="">Acción padre</option>
+                                <option ng-repeat="accion in acciones" value="{{accion.AccionId}}" ng-value="{{accion.AccionId}}">{{accion.Nombre}}</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="row">
+                        <div class="col-lg-12 col-sm-12">
+                            @*<div class="botonera">*@
+                            <input id="btnCancelar" type="button" value="Cancelar" class="btnSecundario" data-dismiss="modal" ng-click="Cancelar()" />
+                            <input id="btnGuardar" type="button" value="guardar" class="btnPrincipal" ng-click="Guardar()" />
+                            @*</div>*@
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+
+}

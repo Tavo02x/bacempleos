@@ -1,0 +1,20 @@
+﻿
+@{
+}
+<div ng-controller="RealizarPregrabadaController" ng-init="SeguridadJS();GuardarEntrevista();">
+    <h1 class="subtitle-18 mb-4"><span class="mdi mdi-monitor-dashboard mdi-24px mr-2"></span> Entrevista pregrabada finalizada</h1>
+    <div class="Panel">
+        <div id="formGrabado"></div>
+            <div class="text-center">
+                <img src="~/Content/Images/IconoActualizacionPerfil.png" alt="Puesto" class="img-fluid mb-4" />
+                <p class="text-12 mb-4">{{Nombre}}, muchas gracias por realizar tu entrevista pre grabada para el puesto de {{Puesto}}</p>
+                <p class="text-12 mb-4">Un encargado del proceso de selección revisará tus respuestas para continuar el proceso de selección. Para finalizar, envía tu entrevista:</p>
+                <button id="FinalizarEntrevista" type="button" ng-click="FinalizarEntrevista();" class="btn mx-auto">Finalizar Entrevista</button>
+
+            </div>
+    </div>
+</div>
+
+@section scripts{
+
+}

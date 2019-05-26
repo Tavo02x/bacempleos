@@ -1,0 +1,109 @@
+﻿
+@{
+    ViewBag.Title = "DetalleFeriaVirtual";
+}
+
+<div ng-controller="DetalleFeriaVirtualController" ng-init="SeguridadJS();GetDetalleFeriaVirtual();LoadGridAgendadas();LoadGridSolicitadas();LoadGridRealizadas();LoadGridPuestos();GetEntrevistadores();AplicarSeguridadHTML();">
+    <a id="VolverPuesto" ng-click="Volver()" class="btn-back mb-3"><span class="mdi mdi-chevron-left mdi-24px"></span>Volver</a>
+
+    <div class="Panel">
+        <h1 class="subtitle-18 mb-5"><span class="mdi mdi-cellphone mdi-24px"></span> {{NombreFeria}}</h1>
+        <div class="row mb-3">
+            <div class="col-lg-5">
+                <p class="text-12"><span class="mdi mdi-map-marker mdi-24px text-red"></span> Países: <span id="txtPaises">{{Paises}}</span></p>
+            </div>
+            <div class="col-lg-5">
+                <p class="text-12"><span class="mdi mdi-calendar-month mdi-24px mr-2 text-red"></span>Fecha: Del {{FechaInicial}} al {{FechaFinal}}</p>
+            </div>
+        </div>
+        
+        <div id="taps" class="row mt-3">
+            <div class="col-6 col-sm-3 tapSelect" ng-class="step1Class" ng-click="ChangeStepOne()">Puestos </div>
+            <div class="col-6 col-sm-3 taps" ng-class="step2Class" ng-click="ChangeStepTwo()">Entrevistas </div>
+        </div>
+        <div id="tagPuestos" ng-show="StepOne">
+            <div class="row">
+                @*<div class="col-lg-4 panel2">
+                        <div class="control">
+                            <input id="textNombre" type="text" placeholder="Nombre" ng-model="model.nombre">
+                        </div>
+                        <div class="imagen">
+                            <img id="btnBuscar" src="~/Content/Images/Lupa.png" />
+                        </div>
+                    </div>*@
+                <div class="col-lg-8">
+
+                </div>
+            </div>
+            <div class="row Panel">
+                <div class="col-lg-12">
+                    <div id="divPuestos">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="tagEntrevistas" ng-show="StepTwo">
+            <div class="row my-3">
+                <div class="col-4 text-center">
+                    <span class="mdi mdi-calendar-month mdi-36px text-red"></span>
+                    <p id="cantidadSolicitadas" class="subtitle-26 mb-2">{{AgendadasCant}}</p>
+                    <p class="text-20 text-gray">Agendadas</p>
+                </div>
+                <div class="col-4 text-center border-right border-left">
+                    <span class="mdi mdi-bell-circle mdi-36px text-red"></span>
+                    <p id="cantidadSolicitadas" class="subtitle-26 mb-2">{{SolicitadasCant}}</p>
+                    <p class="text-20 text-gray">Solicitadas</p>
+                </div>
+                <div class="col-4 text-center">
+                    <span class="mdi mdi-calendar-check mdi-36px text-red"></span>
+                    <p id="cantidadSolicitadas" class="subtitle-26 mb-2">{{RealizadasCant}}</p>
+                    <p class="text-20 text-gray">Realizadas</p>
+                </div>
+            </div>
+            <div class="row my-3">
+                <!-- <div id="IdListaEntrevistadores" class="col-lg-4 panel2">
+                    <select id="Area" ng-model="IdEntrevistador" ng-change="LoadGridAgendadas();LoadGridSolicitadas();LoadGridRechazadas();LoadGridRealizadas();GetDetalleFeriaVirtual();">
+                        <option ng-repeat="entrevistador in Entrevistadores" value="{{entrevistador.IdUsuario}}" ng-value="{{entrevistador.IdUsuario}}">{{entrevistador.NombreCompleto}}</option>
+                    </select>
+                </div> -->
+                <div class="col-lg-6 col-xl-4">
+                    <div class="d-flex bg-white">
+                        <input id="textNombreE" type="text" placeholder="Búsqueda por nombre" ng-model="Nombre">
+                        <button type="button" ng-click="FilterAll()"><span class="mdi mdi-magnify mdi-24px"></span></button>
+                    </div>
+                </div>
+            </div>
+            <div class="shadow-sm p-3 mb-3">
+                <h2 class="subtitle-18">Agendadas</h2>
+                <div id="divAgendadas">
+
+                </div>
+            </div>
+            <div class="shadow-sm p-3 mb-3">
+                <h2 class="subtitle-18">Solicitadas</h2>
+                <div id="divSolicitadas">
+
+                </div>
+            </div>
+            @*
+            <div class="shadow-sm p-3 mb-3">
+                <h2 class="subtitle-18">Rechazadas</h2>
+                <div id="divRechazadas">
+
+                </div>
+            </div>
+                *@
+            <div class="shadow-sm p-3 mb-3">
+                <h2 class="subtitle-18">Realizadas</h2>
+                <div id="divRealizadas">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+
+}

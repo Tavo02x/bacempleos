@@ -1,0 +1,52 @@
+﻿
+@{
+}
+
+<div ng-controller="EntrevistaEnVivoFeriaController" ng-init="SeguridadJS();GetDetalleFeriaVirtual();">
+    <div class="row">
+        <div class="col-lg-12">
+            <a id="VolverPuesto" ng-click="Retonar()">
+                <img src="~/Content/Images/flechaVolver.png" class="SubComponenteImagen" />
+                <label class="SubComponente punteroSelector">Volver</label>
+            </a>
+        </div>
+    </div>
+    <div>
+        <img src="~/Content/Images/IconoPuestoNegro.png" alt="Puesto" class="icono-2 SitioIcono" />
+        <span class="LetrasTitulo textoNegrita">¿Qué deseas hacer con esta entrevista?</span>
+    </div>
+    <div>
+        <div class="row Panel">
+            <div class="col-lg-4 Division">
+                <h3 class="LetrasSubTitulo">Fechas Disponibles</h3>
+                <div class="datepicker">
+                    <input id="txtfechaEntrevista" min="{{FechaMin}}" max="{{FechaMax}}" readonly type="text" uib-datepicker-popup="{{format}}" ng-model="Date" is-open="datepicker.opened" datepicker-options="dateOptions" ng-required="true"  show-button-bar="false"/>
+                    <button type="button" class="datepicker__btn" ng-click="openDatepicker()"><span class="mdi mdi-calendar"></span></button>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <h3 class="LetrasSubTitulo">Horas diponibles</h3>
+                <select id="selHoraDisponible" ng-model="Hour">
+                    <option selected disabled value="">Hora disponible</option>
+                    <option selected ng-repeat="hora in Horas" value="{{hora}}">{{hora}}</option>
+                </select>
+            </div>
+            <div class="col-lg-4">
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="botonera mt-3 mt-lg-0">
+                <input id="btnCancelar" ng-click="Retonar()" class="btnSecundario" type="button" value="Cancelar" />
+                <input id="btnCrear" ng-click="ReagendarEntrevista()" class="btnPrincipal" type="button" value="Reagendar Entrevista" />
+                <input id="btnCrear" ng-click="ReasignarEntrevista()" class="btnPrincipal" type="button" value="Reasignar Entrevista" />
+                <input id="btnCrear" ng-click="AceptarEntrevista()" class="btnPrincipal" type="button" value="Aceptar Entrevista" />
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+
+}

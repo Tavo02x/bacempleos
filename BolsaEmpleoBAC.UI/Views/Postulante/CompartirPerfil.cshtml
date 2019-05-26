@@ -1,0 +1,269 @@
+﻿
+@{
+    ViewBag.Title = "Compartir Perfil";
+    //Layout = "~/Views/Shared/_LayoutExterna.cshtml";
+}
+
+<div ng-controller="CompartirPerfilController" ng-init="SeguridadJS();getInfo();AplicarSeguridadHTML();">
+    <div class="row">
+        <div class="col-lg-6 col-sm-12">
+            <img src="~/Content/Images/IconoPostulanteNegro.png" alt="Puesto" class="icono-2 SitioIcono" />
+            <span class="LetrasTitulo textoNegrita">Mi Perfil</span>
+        </div>
+    </div>
+    <div class="Panel">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="row">
+                    <div class="col-md-4">
+                        <img id="FotoPerfil" src="~/Content/Images/FondoPersona.png" class="FotoCircular" />
+                    </div>
+                    <div class="col-md-8">
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <label class="LetrasTituloPrincipal">{{obj.NombreCompleto}}</label><br />
+                                <label class="LetrasSubTitulo ColorLetraGris">{{obj.Email}}</label><br />
+                                <label id="txtEstadoPerfil" class="LetrasSubTitulo ReglasAplicadas">{{obj.EstadoPerfil}}</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <a id="btnFavorito" class="ReglasAplicadas"><img id="imgFavorito" src="~/Content/Images/IconoNoFavorito.png" class="icono-3" /></a>
+                                <span id="txtMarcarFavorito"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div id="taps" class="row tapDistansce">
+            <div id="StepOne" class="col-sm-2 tapSelect" ng-click="ChangeStepOne()">Datos </div>
+            <div id="StepTwo" class="col-sm-2 taps" ng-click="ChangeStepTwo()">Experiencia </div>
+            <div id="StepThree" class="col-sm-2 taps" ng-click="ChangeStepThree()">Intereses</div>
+        </div>
+        <div id="paso1" class="row" ng-show="StepOne">
+            <div class="col-lg-4 Division">
+                <h4 class="LetrasContenido textoNegrita">Información de contacto</h4>
+                <label class="LetrasContenido textoNegrita">Correo:</label><br />
+                <div class="col-lg-8"> <label class="LetrasContenido">{{obj.Email}}</label><br /></div>
+                <label class="LetrasContenido textoNegrita">Teléfono:</label><br />
+                <div class="col-lg-8"> <label class="LetrasContenido">{{obj.Telefono}}</label><br /></div>
+                <label class="LetrasContenido textoNegrita">Residencia:</label><br />
+                <div class="col-lg-8">
+                    <label class="LetrasContenido">{{obj.PaisRecidencia}}</label><br />
+                    <label class="LetrasContenido">{{obj.Zona1}}</label><br />
+                    <label class="LetrasContenido">{{obj.Zona2}}</label><br />
+                    <label class="LetrasContenido">{{obj.Zona3}}</label><br />
+                </div>
+            </div>
+            <div class="col-lg-4 Division">
+                <h4 class="LetrasContenido textoNegrita">Información personal</h4>
+                <label class="LetrasContenido textoNegrita">Identificación:</label><br />
+                <div class="col-lg-8"> <label class="LetrasContenido">{{obj.Identificacion}}</label><br /></div>
+                <label class="LetrasContenido textoNegrita">Género:</label>
+                <div class="col-lg-8"> <label class="LetrasContenido">{{obj.Genero}}</label><br /></div>
+                <label class="LetrasContenido textoNegrita">Estado Civil:</label><br />
+                <div class="col-lg-8"> <label class="LetrasContenido">{{obj.EstadoCivil}}</label><br /></div>
+                <label class="LetrasContenido textoNegrita">Fecha nacimiento:</label><br />
+                <div class="col-lg-8"> <label class="LetrasContenido">{{obj.FechaNacimiento}}</label><br /></div>
+                <label class="LetrasContenido textoNegrita">Edad:</label><br />
+                <div class="col-lg-8"> <label class="LetrasContenido">{{obj.Edad}}</label><br /></div>
+                <label class="LetrasContenido textoNegrita">Nacionalidad:</label><br />
+                <div class="col-lg-8"> <label class="LetrasContenido">{{obj.Nacionalidad}}</label><br /></div>
+            </div>
+            <div class="col-lg-4">
+                <h4 class="LetrasContenido textoNegrita">Información adicional</h4>
+                <label class="LetrasContenido textoNegrita">Vehículo:</label>
+                <label class="LetrasContenido">{{obj.Vehiculo}}</label><br />
+                <label class="LetrasContenido textoNegrita">Licencia:</label><br />
+                <label class="LetrasContenido">{{obj.IdTipoLicencia}}</label><br />
+                <label class="LetrasContenido textoNegrita">Discapacidad:</label><br />
+                <div id="divDiscapacidad" ng-repeat="discapacidad in obj.Discapacidades" class="col-lg-8">
+                    <label class="LetrasContenido">{{discapacidad.Descripcion}}</label><br />
+                </div>
+            </div>
+        </div>
+        <div id="paso2" class="row" ng-show="StepTwo">
+            <div class="col-lg-4 Division">
+                <h1 class="LetrasContenido textoNegrita">Educación</h1>
+                <label class="LetrasContenido textoNegrita">Máximo grado académico</label>
+                <div class="col-lg-8">
+                    <label class="LetrasContenido">{{obj.GradoAcademico}}</label>
+                </div>
+                <label class="LetrasContenido textoNegrita">Títulos y certificaciones</label>
+                <div class="col-lg-8">
+                    <label class="LetrasContenido" ng-repeat="grado in obj.TitulosCertificaciones">{{grado.GradoAcademico}}</label>
+                </div>
+            </div>
+            <div class="col-lg-4 Division">
+                <h1 class="LetrasContenido textoNegrita">Laboral</h1>
+                <label class="LetrasContenido textoNegrita">Experiencia Laboral</label>
+                <div ng-repeat="exp in obj.ExperienciaLaboral" class="col-lg-8">
+                    <label class="LetrasContenido">Puesto: {{exp.Puesto}}</label><br />
+                    <label class="LetrasContenido">Empresa: {{exp.Empresa}}</label><br />
+                    <label class="LetrasContenido">Descripción del puesto: {{exp.DescripcionPuesto}}</label><br />
+                </div>
+                <label class="LetrasContenido textoNegrita">He trabajado en el BAC</label><br />
+                <label class="LetrasContenido">{{obj.TrabajoBAC}}</label><br />
+                <label class="LetrasContenido textoNegrita">Habilidades Blandas</label><br />
+                <div ng-repeat="hab in obj.Habilidades" class="col-lg-8">
+                    <label class="LetrasContenido">{{hab.Descripcion}}</label><br />
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <h1 class="LetrasContenido textoNegrita">Referencias</h1>
+                <label class="LetrasContenido textoNegrita">Sitios Referencia</label>
+                <div ng-repeat="url in obj.Referencias" class="col-lg-8">
+                    <label class="LetrasContenido">{{url.UrlReferencia}}</label><br />
+                </div>
+            </div>
+        </div>
+        <div id="paso3" class="row" ng-show="StepThree">
+            <div class="col-lg-4 Division">
+                <label class="LetrasContenido textoNegrita">Idiomas:</label>
+                <div ng-repeat="idioma in obj.Idiomas" class="col-lg-8">
+                    <img src="~/Content/Images/IconoIdiomaRojo.png" class="icono-2" />
+                    <label class="LetrasContenido">{{idioma.Descripcion}},{{idioma.Nivel}}</label><br />
+                </div>
+            </div>
+            <div class="col-lg-4 Division">
+                <label class="LetrasContenido textoNegrita">Quisiera trabajar en:</label>
+                <div ng-repeat="area in obj.Areas" class="col-lg-8">
+                    <label class="LetrasContenido">{{area.Area}}</label><br />
+                </div>
+                <label class="LetrasContenido textoNegrita">Quisiera trabajar en:</label>
+                <div ng-repeat="pais in obj.Paises" class="col-lg-8">
+                    <label class="LetrasContenido">{{pais.Descripcion}}</label><br />
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <label class="LetrasContenido textoNegrita">Curriculum:</label><br />
+                <div class="col-lg-8"> <a class="LetrasContenido ColorLetraAzul" href="{{obj.CurriculumURL}}" target="_blank">Ver curriculum</a></div>
+            </div>
+        </div>
+
+    </div>
+    <div ng-show="ShowEnVivo" class="Panel">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="saltoSeccionBajo-1">
+                    <img src="~/Content/Images/IconoCalendario.png" class="icono-1" /><span class="LetrasContenido DetalleLabel"></span> <span class="LetrasContenido DetalleValue">{{TipoEntrevista}}</span>
+                </div>
+                <div class="saltoSeccionBajo-1">
+                    <img src="~/Content/Images/IconoTiempo.png" class="icono-1" /><span class="LetrasContenido DetalleLabel">Fecha:</span> <span class="LetrasContenido DetalleValue">{{Fecha}}</span>
+                </div>
+                <div class="saltoSeccionBajo-1">
+                    <img src="~/Content/Images/IconoTiempo.png" class="icono-1" /><span class="LetrasContenido DetalleLabel">Estado:</span> <span class="LetrasContenido DetalleValue">{{Estado}}</span>
+                </div>
+                <div class="saltoSeccionBajo-1">
+                    <img src="~/Content/Images/IconoTiempo.png" class="icono-1" /><span class="LetrasContenido DetalleLabel">Creada por:</span> <span class="LetrasContenido DetalleValue">{{Creador}}</span>
+                </div>
+                <div class="saltoSeccionBajo-1">
+                    <img src="~/Content/Images/IconoTiempo.png" class="icono-1" /><span class="LetrasContenido DetalleLabel">Ver entrevista:</span> <span class="LetrasContenido DetalleValue"><a target="_blank" href="{{Url}}">Entrevista</a></span>
+                </div>
+                <div class="saltoSeccionBajo-1">
+                    <span class="LetrasContenido DetalleLabel">Calificación:</span>  <jk-rating-stars class="my-custom-stars" rating="CalificacionGeneral" read-only="true"></jk-rating-stars>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div ng-show="ShowPregrabada" class="Panel">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="saltoSeccionBajo-1">
+                    <img src="~/Content/Images/IconoCalendario.png" class="icono-1" /><span class="LetrasContenido DetalleLabel">  Fecha:</span> <span class="LetrasContenido DetalleValue">{{Fecha}}</span>
+                </div>
+                <div class="saltoSeccionBajo-1">
+                    <img src="~/Content/Images/IconoTiempo.png" class="icono-1" /><span class="LetrasContenido DetalleLabel">  Creada por:</span> <span class="LetrasContenido DetalleValue">{{Creador}}</span>
+                </div>
+                <div class="saltoSeccionBajo-6">
+                    <img src="~/Content/Images/IconoTiempo.png" class="icono-1" /><span class="LetrasContenido DetalleLabel">  Puesto:</span> <span class="LetrasContenido DetalleValue">{{Puesto}}</span>
+                </div>
+            </div>
+        </div>
+        <div ng-repeat="pregunta in Preguntas">
+            <div class="row">
+                <div class="col-lg-2"></div>
+                <div class="col-lg-8">
+                    <h2 class="LetrasTituloPrincipal">{{pregunta.Pregunta}}</h2>
+                </div>
+                <div class="col-lg-2"></div>
+            </div>
+            <div class="Panel">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div id="formGrabado"></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-2"></div>
+                    <div class="col-lg-8">
+                        <div id="divRecord">
+                            <ziggeoplayer ziggeo-video="{{pregunta.Video}}"
+                                          ziggeo-theme="modern">
+                            </ziggeoplayer>
+                        </div>
+                    </div>
+                    <div class="col-lg-2"></div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="row">
+                            <div class="col-sm-6"></div>
+                            <div class="col-sm-2">
+                                <span class="LetrasContenido textoNegrita">Calificación:</span>
+                            </div>
+                            <div class="col-sm-2">
+                                <jk-rating-stars class="my-custom-stars" rating="pregunta.Calificacion" read-only="true"></jk-rating-stars>
+                            </div>
+                            <div class="col-sm-2"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="ContenedorComentarios" class="Panel">
+        <div class="row">
+            <div class="col-lg-12">
+                <img src="~/Content/Images/IconoComentario.png" class="icono-2 SitioIcono" />
+                <span class="LetrasTitulo textoNegrita">Comentarios</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div ng-repeat="c in Comentarios">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <span class="LetrasSubTitulo textoNegrita">{{c.NombreUsurio}}</span><br />
+                            <span class="LetrasContenido ColorLetraGris">{{c.Fecha}}</span><br />
+                            <span class="LetrasContenido">{{c.Mensaje}}</span>
+                            <div class="SubrayadoDivTotal saltoSeccion saltoSeccionBajo-4"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="ContenedorAgregarComentarios" class="Panel">
+        <div class="row">
+            <div class="col-lg-12">
+                <span class="LetrasTitulo textoNegrita">Agregar comentarios</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-9">
+                <input id="comentario" placeholder="Deja un comentario sobre el aplicante" type="text" ng-model="Comentario.Descripcion" />
+            </div>
+            <div class="col-lg-3">
+                <input id="btnAgregarComentario" class="btnPrincipal" type="button" value="Agregar comentario" ng-click="Guardar()" />
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+
+}

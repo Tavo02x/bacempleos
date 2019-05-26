@@ -1,0 +1,58 @@
+﻿@{
+    ViewBag.Title = "Usuarios";
+}
+
+<div ng-controller="UsuariosController" ng-init="SeguridadJS();getPaises();getRoles();getInfo();">
+    <a id="VolverPuesto" ng-click="Volver()" class="btn-back mb-3"><span class="mdi mdi-chevron-left mdi-24px"></span>Volver</a>
+    @*<div>
+            <img src="~/Content/Images/iconousuario.png"  alt="Puesto" class="icono-2 SitioIcono" />
+            <span class="LetrasTitulo textoNegrita">Usuario<span id="totalGrid"></span></span>
+        </div>*@
+    <div class="row Panel">
+        <div class="col-lg-4 Division">
+            <h3 class="subtitle-16 mb-3">Información de usuario</h3>
+            <input id="txtNombre" type="text" ng-model="model.Info.NombreCompleto" placeholder="Nombre" />
+            <span class="validate" ng-show="show1">Por favor, introduce tu nombre completo</span>
+            <input id="txtCorreo" type="email" ng-model="model.Info.Email" placeholder="Correo electrónico" autocomplete="off" ng-change="validateEmail()" />
+            <span class="validate" ng-show="EmailInvalido">Por favor, introduce un correo</span>
+            <span class="validate" ng-show="EmailExiste">Este correo ya se encuentra registrado</span>
+            <input type="password" id="password" placeholder="Contraseña" ng-model="model.Info.Password" autocomplete="off" />
+            <span class="validate" ng-show="show4">Por favor, introduce la contraseña</span>
+            <label class="container">
+                Desactivar
+                <input id="txtBorrado" type="checkbox" ng-value="model.Info.Borrado" ng-model="model.Info.Borrado">
+                <span class="checkmark"></span>
+            </label>
+        </div>
+        <div class="col-lg-4 Division">
+            <h3 class="subtitle-16 mb-3">Roles</h3>
+            <div id="chkPais" ng-repeat="rol in Roles">
+                <label class="container">
+                    {{rol.Descripcion}}
+                    <input type="checkbox" name="rol" value="{{rol.IdRol}}" id="{{rol.IdRol}}">
+                    <span class="checkmark"></span>
+                </label>
+            </div>
+            <span class="validate" ng-show="show2">Por favor, selecciona al menos un rol</span>
+        </div>
+        <div class="col-lg-4">
+            <h3 class="subtitle-16 mb-3">Países</h3>
+            <div id="chkPais" ng-repeat="pais in Paises">
+                <label class="container">
+                    {{pais.Descripcion}}
+                    <input type="checkbox" name="pais" value="{{pais.IdPais}}" id="{{pais.IdPais}}">
+                    <span class="checkmark"></span>
+                </label>
+            </div>
+            <span class="validate" ng-show="show3">Por favor, selecciona al menos un país</span>
+        </div>
+    </div>
+    <div class="btn-wrap my-3">
+        <button id="btnGuardar" ng-click="Guardar()" class="btn order-lg-1" type="button">Guardar</button>
+        <button id="btnCancelar" ng-click="Cancelar()" class="btn btn-gray order-lg-0" type="button">Cancelar</button>
+    </div>
+</div>
+
+@section scripts{
+
+}

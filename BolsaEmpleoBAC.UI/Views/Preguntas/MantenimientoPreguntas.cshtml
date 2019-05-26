@@ -1,0 +1,113 @@
+﻿@{
+    ViewBag.Title = "MantenimientoPreguntas";
+}
+
+<div ng-controller="EntrevistaPregrabadaController" ng-init="SeguridadJS();getPuestos();AreaLaboralGet();">
+    <div ng-show="AgregarPreguntas">
+        <a id="VolverPuesto" ng-click="Return()" class="btn-back mb-3"><span class="mdi mdi-chevron-left mdi-24px"></span>Volver</a>
+        <h1 class="subtitle-18 mt-4 mb-3"><span class="mdi mdi-monitor-dashboard mdi-24px mr-2"></span> Solicitar entrevista pregrabada</h1>
+        <p class="subtitle-14">El candidato debe haber aplicado a un puesto para poder hacer una entrevista pregrabada.</p>
+        <div class="ProgressBar">
+            <div id="PasosPostulante" class="row">
+                <div id="divStepOne" class="col-6 linea Primaria">
+                    <div id="circuloStepOne" class="circulo CirculoPrimario">
+                        <div id="textStepOne" class="texto textoPrimario">1</div>
+                    </div>
+                </div>
+                <div id="divStepTwo" class="col-6 linea Secundario">
+                    <div id="circuloStepTwo" class="circulo CirculoSecundario">
+                        <div id="textStepTwo" class="texto textoSecundario">2</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="Panel">
+            <div id="paso1" ng-show="StepOne">
+                <div class="row">
+                    <div class="col-lg-4 Division">
+                        <p class="subtitle-16">Fecha límite para realizar la entrevista</p>
+                        <div class="datepicker">
+                            <input id="dpFecha" readonly type="text" uib-datepicker-popup="{{format}}" ng-model="Fecha" is-open="datepicker.opened" datepicker-options="dateOptions" ng-required="true"  show-button-bar="false"/>
+                            <button type="button" class="datepicker__btn" ng-click="openDatepicker()"><span class="mdi mdi-calendar"></span></button>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4">
+                        <p class="subtitle-16">Puesto</p>
+                        <select id="txtPuesto" ng-model="IdPuesto">
+                            <option disabled selected value="">Puesto</option>
+                            <option ng-repeat="puesto in Puestos" value="{{puesto.IdPuesto}}" ng-value="{{puesto.IdPuesto}}">{{puesto.Titulo}}</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div id="paso2" ng-show="StepTwo">
+                <p class="subtitle-16 mb-3">Puedes escribir tus preguntas o elegir entre preguntas ya usadas</p>
+                <div id="divPreguntas">
+                    <div id="pnlRepetearPreguntas">
+                        <div class="row">
+                            <div class="col-sm-8 col-lg-10">
+                                <p class="subtitle-16">Pregunta</p>
+                                <input id="txtPregunta" type="text" placeholder="Pregunta" />
+                            </div>
+                            <div class="col-sm-4 col-lg-2">
+                                <p class="subtitle-16">Tiempo límite</p>
+                                <select id="selTiempo">
+                                    <option selected disabled value="">Tiempo</option>
+                                    <option value="30">30 segundos</option>
+                                    <option value="45">45 segundos</option>
+                                    <option value="60">1 minuto</option>
+                                    <option value="120">2 minutos</option>
+                                    <option value="180">3 minutos</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <img id="agregarPreguntas" src="~/Content/Images/IconoAgregar.png" class="AddMultiItems punteroSelector" ng-click="AgregarOtraPregunta()" />
+                    <span ng-click="AgregarOtraPregunta()" class="LetrasContenido punteroSelector">Agregar nueva pregunta</span>
+                    <img ng-click="RemovePregunta()" src="~/Content/Images/Basurero.png" class="imgLetraContenido punteroSelector" />
+                    <span ng-click="RemovePregunta()" class="LetrasContenido punteroSelector">Remover pregunta</span>
+                    <span><a id="btnPreguntaUsada" ng-click="AgregarPreguntadaUsada()" class="LetrasContenido ColorLetraAzul">Elegir pregunta ya usada</a></span>
+                </div>
+            </div>
+        </div>
+        <div class="btn-wrap my-3">
+            <button id="btnContinuar" ng-click="ChangeStep()" class="btn order-lg-1" type="button">Continuar</button>
+            <button id="btnCancelar" ng-click="Return()" class="btn btn-gray order-lg-0" type="button">Cancelar</button>
+        </div>
+    </div>
+    <div ng-show="PreguntasUsadas">
+        <a id="VolverPuesto" ng-click="ReturnAgregarPreguntas()" class="btn-back mb-3"><span class="mdi mdi-chevron-left mdi-24px"></span>Volver</a>
+        <h1 class="subtitle-18 mb-3"><span class="mdi mdi-format-list-bulleted"></span> Archivo de preguntas ya usadas</h1>
+        <p>Busca una pregunta en el archivo o elige una temática para ver las preguntas disponibles</p>
+        <div class="row">
+            <div class="col-lg-4">
+                <div class="bg-white border p-2 mb-3">
+                    <select class="border-0 m-0" id="Area" ng-model="IdArea">
+                        <option disabled selected value="">Elegir temática</option>
+                        <option ng-repeat="area in Areas" value="{{area.IdArea}}" ng-value="{{area.IdArea}}">{{area.Area}}</option>
+                    </select>
+                </div>
+                <div id="busqueda" class="bg-white border p-2 d-flex">
+                    <input class="border-0 m-0" id="textNombre" type="text" placeholder="Buscar pregunta en el archivo" ng-model="PreguntaBuscar">
+                    <button class="px-2" type="button" ng-click="getPreguntas()"><span class="mdi mdi-magnify mdi-24px"></span></button>
+                </div>
+            </div>
+        </div>
+        <div class="Panel" ng-show="PanelPreguntas">
+            <h2 class="subtitle-18 mb-3">Resultados de tu búsqueda (<span id="lblCount">0</span>)</h2>
+            <span class="validate" ng-show="show2">Elige 1 pregunta</span>
+            <div id="divListaPreguntas"></div>
+        </div>
+        <div ng-show="botonesAgregar">
+            <div class="btn-wrap my-3">
+                <button id="btnContinuar" ng-click="AgregarPregunta()" class="btn order-lg-1" type="button">Agregar Pregunta</button>
+                <button id="btnCancelar" ng-click="ReturnAgregarPreguntas()" class="btn btn-gray order-lg-0" type="button">Cancelar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+
+}

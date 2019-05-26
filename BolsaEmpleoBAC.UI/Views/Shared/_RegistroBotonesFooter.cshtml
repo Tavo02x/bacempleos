@@ -1,0 +1,9 @@
+﻿@model int
+
+<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent btn-atras" onclick="fnPasoAnterior(@Model)">
+    Anterior
+</button>
+<button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent btn-continuar" onclick="fnPasoSiguiente(@(Model+1))">
+    Continuar
+</button>
+<div>@(Model - 1) de 28 respondidas</div>

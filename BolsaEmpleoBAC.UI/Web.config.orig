@@ -1,0 +1,118 @@
+﻿<?xml version="1.0"?>
+<!--
+  Para obtener más información sobre cómo configurar la aplicación ASP.NET, visite
+  https://go.microsoft.com/fwlink/?LinkId=301880
+  -->
+<configuration>
+  <configSections>
+    <!-- For more information on Entity Framework configuration, visit http://go.microsoft.com/fwlink/?LinkID=237468 -->
+    <section name="entityFramework" type="System.Data.Entity.Internal.ConfigFile.EntityFrameworkSection, EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" requirePermission="false"/>
+  </configSections>
+  <connectionStrings>
+    <add name="BACEntities" connectionString="metadata=res://*/BACEntities.csdl|res://*/BACEntities.ssdl|res://*/BACEntities.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=ec2-34-219-179-182.us-west-2.compute.amazonaws.com;initial catalog=bac2_db;persist security info=True;user id=bac;password=jr.2003.;Integrated Security=false;multipleactiveresultsets=True;application name=EntityFramework&quot;" providerName="System.Data.EntityClient"/>
+    <!--<add name="BACEntities" connectionString="metadata=res://*/BACEntities.csdl|res://*/BACEntities.ssdl|res://*/BACEntities.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=WEBDEVELOPER\SQLEXPRESS;initial catalog=bac2_db;persist security info=True;user id=sa;password=jr.2003.;Integrated Security=false;multipleactiveresultsets=True;application name=EntityFramework&quot;" providerName="System.Data.EntityClient" />-->
+    <add name="DrupalEntities" connectionString="metadata=res://*/DrupalModel.csdl|res://*/DrupalModel.ssdl|res://*/DrupalModel.msl;provider=MySql.Data.MySqlClient;provider connection string=&quot;server=localhost;user id=tavo_02x;password=abc123;persistsecurityinfo=True;database=bac2_db&quot;" providerName="System.Data.EntityClient"/>
+  </connectionStrings>
+  <appSettings>
+<<<<<<< HEAD
+    <add key="webpages:Version" value="3.0.0.0" />
+    <add key="webpages:Enabled" value="false" />
+    <add key="ClientValidationEnabled" value="true" />
+    <add key="UnobtrusiveJavaScriptEnabled" value="true" />
+    <add key="apiUrl" value="http://localhost:1989/" />
+    <add key="ZIGGEO_API_KEY" value="86eb13361de9f5fd5592166f2d5618ae" />
+        
+    <add key="LinkedInAccessKey" value="788xfq3rqvr339" />
+    <add key="LinkedInSecretKey" value="5tLhC15H0iWKay9P" />
+
+=======
+    <add key="webpages:Version" value="3.0.0.0"/>
+    <add key="webpages:Enabled" value="false"/>
+    <add key="ClientValidationEnabled" value="true"/>
+    <add key="UnobtrusiveJavaScriptEnabled" value="true"/>
+    <add key="apiUrl" value="http://localhost:1989/"/>
+    <add key="JWT_AUDIENCE_TOKEN" value="http://localhost:1989"/>
+    <add key="JWT_ISSUER_TOKEN" value="http://localhost:1989"/>
+    <add key="JWT_EXPIRE_MINUTES" value="30"/>
+    <add key="ZIGGEO_API_KEY" value="86eb13361de9f5fd5592166f2d5618ae"/>
+    <add key="AWSProfileName" value="Profile Name"/>
+    <add key="AWSAccessKey" value="AKIAJ6N6UWOSFRMHXS5A"/>
+    <add key="AWSSecretKey" value="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"/>
+    <add key="AWSBucket" value="bac-rrhh-test"/>
+    <add key="AWSBucketDirectory" value="s3fs-public"/>
+    <add key="LinkedInAccessKey" value="788xfq3rqvr339"/>
+    <add key="LinkedInSecretKey" value="5tLhC15H0iWKay9P"/>
+>>>>>>> ajustes varios front mobile and bacend puestos
+    <add key="MaxSizeDoc" value="6"/>
+    <add key="MaxSizeImagen" value="2"/>
+    <add key="FormatosDoc" value="pdf,doc,docx"/>
+    <add key="FormatosImagen" value="png,jpg"/>
+    <add key="MaxAplicaciones" value="3"/>
+  </appSettings>
+  <system.web>
+<<<<<<< HEAD
+    <compilation debug="true"  targetFramework="4.6.1" />
+    <httpRuntime targetFramework="4.6.1"  maxRequestLength="16777216"   executionTimeout="2097151" />
+=======
+    <compilation debug="true" targetFramework="4.6.1"/>
+    <httpRuntime targetFramework="4.6.1" maxRequestLength="16777216" executionTimeout="2097151"/>
+>>>>>>> ajustes varios front mobile and bacend puestos
+  </system.web>
+  <system.webServer>
+    <httpProtocol>
+      <customHeaders>
+        <add name="Access-Control-Allow-Origin" value="*"/>
+        <add name="Access-Control-Allow-Methods" value="GET,PUT,POST,DELETE,OPTIONS"/>
+        <add name="Access-Control-Allow-Headers" value="Content-Type"/>
+      </customHeaders>
+    </httpProtocol>
+  </system.webServer>
+  <runtime>
+    <assemblyBinding xmlns="urn:schemas-microsoft-com:asm.v1">
+      <dependentAssembly>
+        <assemblyIdentity name="System.Web.Optimization" publicKeyToken="31bf3856ad364e35"/>
+        <bindingRedirect oldVersion="1.0.0.0-1.1.0.0" newVersion="1.1.0.0"/>
+      </dependentAssembly>
+      <dependentAssembly>
+        <assemblyIdentity name="WebGrease" publicKeyToken="31bf3856ad364e35"/>
+        <bindingRedirect oldVersion="0.0.0.0-1.5.2.14234" newVersion="1.5.2.14234"/>
+      </dependentAssembly>
+      <dependentAssembly>
+        <assemblyIdentity name="System.Web.Helpers" publicKeyToken="31bf3856ad364e35"/>
+        <bindingRedirect oldVersion="1.0.0.0-3.0.0.0" newVersion="3.0.0.0"/>
+      </dependentAssembly>
+      <dependentAssembly>
+        <assemblyIdentity name="System.Web.WebPages" publicKeyToken="31bf3856ad364e35"/>
+        <bindingRedirect oldVersion="1.0.0.0-3.0.0.0" newVersion="3.0.0.0"/>
+      </dependentAssembly>
+      <dependentAssembly>
+        <assemblyIdentity name="System.Web.Mvc" publicKeyToken="31bf3856ad364e35"/>
+        <bindingRedirect oldVersion="1.0.0.0-5.2.4.0" newVersion="5.2.4.0"/>
+      </dependentAssembly>
+      <dependentAssembly>
+        <assemblyIdentity name="Newtonsoft.Json" publicKeyToken="30ad4fe6b2a6aeed" culture="neutral"/>
+        <bindingRedirect oldVersion="0.0.0.0-11.0.0.0" newVersion="11.0.0.0"/>
+      </dependentAssembly>
+      <dependentAssembly>
+        <assemblyIdentity name="RestSharp" publicKeyToken="598062e77f915f75" culture="neutral"/>
+        <bindingRedirect oldVersion="0.0.0.0-106.3.1.0" newVersion="106.3.1.0"/>
+      </dependentAssembly>
+    </assemblyBinding>
+  </runtime>
+  <system.codedom>
+    <compilers>
+      <compiler language="c#;cs;csharp" extension=".cs" type="Microsoft.CodeDom.Providers.DotNetCompilerPlatform.CSharpCodeProvider, Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" warningLevel="4" compilerOptions="/langversion:default /nowarn:1659;1699;1701"/>
+      <compiler language="vb;vbs;visualbasic;vbscript" extension=".vb" type="Microsoft.CodeDom.Providers.DotNetCompilerPlatform.VBCodeProvider, Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35" warningLevel="4" compilerOptions="/langversion:default /nowarn:41008 /define:_MYTYPE=\&quot;Web\&quot; /optionInfer+"/>
+    </compilers>
+  </system.codedom>
+  <entityFramework>
+    <defaultConnectionFactory type="System.Data.Entity.Infrastructure.LocalDbConnectionFactory, EntityFramework">
+      <parameters>
+        <parameter value="mssqllocaldb"/>
+      </parameters>
+    </defaultConnectionFactory>
+    <providers>
+      <provider invariantName="System.Data.SqlClient" type="System.Data.Entity.SqlServer.SqlProviderServices, EntityFramework.SqlServer"/>
+    </providers>
+  </entityFramework>
+</configuration>

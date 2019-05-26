@@ -1,0 +1,71 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<div ng-controller="ZonaController" ng-init="SeguridadJS();getPaises();loadGridZona1();">
+    <div class="d-md-flex justify-content-between align-items-center mb-5">
+        <h1 class="subtitle-18"><span class="mdi mdi-settings mdi-24px"></span>Mantenimiento de Zonas Nivel 1 <span id="totalGrid"></span></h1>
+        <button type="button" class="btn" data-toggle="modal" data-target="#popupArea">Nueva Zona</button>
+    </div>
+    <div class="Panel">
+        <div class="row">
+            <div class="col-lg-12">
+                <div id="tablezona1"></div>
+            </div>
+        </div>
+    </div>
+    <div id="popupArea" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="col-lg-1">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <label class="LetrasSubTitulo">Mantenimiento</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <select id="selPais" ng-model="Zona1.IdPais">
+                                <option selected disabled value="">País</option>
+                                <option ng-repeat="pais in Paises" value="{{pais.IdPais}}" ng-value="{{pais.IdPais}}">{{pais.Descripcion}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <input id="idZona2" type="hidden" ng-model="Zona1.IdZona1" />
+                            <input id="nombreZona1" type="text" class="LetrasContenido" placeholder="Nombre" ng-model="Zona1.Descripcion" />
+                        </div>
+                        <div class="col-lg-6">
+                            <label class="container">
+                                Desactivar
+                                <input id="txtBorrado" type="checkbox" ng-value="Zona1.Borrado" ng-model="Zona2.Borrado">
+                                <span class="checkmark"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            @*<div class="botonera">*@
+                            <input id="btnCancelar" type="button" value="Cancelar" class="btnSecundario" data-dismiss="modal" ng-click="Cancelar()" />
+                            <input id="btnGuardar" type="button" value="guardar" class="btnPrincipal" ng-click="Guardar()" />
+                            @*</div>*@
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+
+}

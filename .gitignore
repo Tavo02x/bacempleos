@@ -1,0 +1,33 @@
+﻿################################################################################
+# Este archivo .gitignore ha sido creado automáticamente por Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs/BolsaEmpleoBAC/v15/Server/sqlite3
+bin
+obj
+obj
+bin
+obj
+bin
+obj
+bin
+bin
+obj
+obj
+bin
+.vs/BolsaEmpleoBAC/v15/.suo
+<<<<<<< HEAD
+.vs/config/applicationhost.config
+=======
+.vs/BolsaEmpleoBAC/v15/.suo
+>>>>>>> 085fba91e15664908974991fa6f4df52d5c71168
+.vs/BolsaEmpleoBAC/v15/.suo
+.vs/config/applicationhost.config
+.vs/config/applicationhost.config
+<<<<<<< HEAD
+=======
+.vs/config/applicationhost.config
+>>>>>>> c02f821bfd948d17f9ab351111732fda7d826911
+.vs/BolsaEmpleoBAC/v15/.suo
+BolsaEmpleoBAC.WebAPI/Web.config
+.vs/BolsaEmpleoBAC/v15/.suo

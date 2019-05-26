@@ -1,0 +1,35 @@
+﻿
+@{
+}
+
+<div ng-controller="EntrevistaEnVivoFeriaController" ng-init="SeguridadJS();GetDetalleFeriaVirtual();">
+    <a ng-click="Volver()" class="btn-back mb-3"><span class="mdi mdi-chevron-left mdi-24px"></span>Volver</a>
+    <h1 class="subtitle-18 my-4"><span class="mdi mdi-monitor-dashboard mdi-24px mr-2"></span>Elegir entrevista disponible</h1>
+
+    <div class="row Panel">
+        <div class="col-lg-4 Division">
+            <p class="subtitle-16">Fechas Disponibles</p>
+            <div class="datepicker">
+                <input id="txtfechaEntrevista" min="{{FechaMin}}" max="{{FechaMax}}" readonly type="text" uib-datepicker-popup="{{format}}" ng-model="Date" is-open="datepicker.opened" datepicker-options="dateOptions" ng-required="true"  show-button-bar="false"/>
+                <button type="button" class="datepicker__btn" ng-click="openDatepicker()"><span class="mdi mdi-calendar"></span></button>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <p class="subtitle-16">Horas diponibles</p>
+            <select id="selHoraDisponible" ng-model="Hour">
+                <option selected disabled value="">Hora disponible</option>
+                <option value="{{hora}}" ng-repeat="hora in Horas">{{hora}}</option>
+            </select>
+        </div>
+        <div class="col-lg-4">
+        </div>
+    </div>
+    <div class="btn-wrap my-3">
+        <button id="btnCrear" ng-click="AgendarEntrevista()" class="btn order-lg-1" type="button">Reservar Entrevista</button>
+        <button id="btnCancelar" class="btn btn-gray" type="button" ng-click="Volver()">Cancelar</button>
+    </div>
+</div>
+
+@section scripts{
+
+}

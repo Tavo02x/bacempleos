@@ -1,0 +1,14 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\BolsaEmpleoBAC.BL",
+    "\\BolsaEmpleoBAC.BL\\Integrations",
+    "\\BolsaEmpleoBAC.BL\\Integrations\\LinkedIn",
+    "\\BolsaEmpleoBAC.Entities",
+    "\\BolsaEmpleoBAC.Entities\\obj",
+    "\\BolsaEmpleoBAC.UI\\Content",
+    "\\BolsaEmpleoBAC.UI\\Content\\Images"
+  ],
+  "SelectedNode": "\\BolsaEmpleoBAC.Entities\\Paises_Bac_FeriaEmpleo.cs",
+  "PreviewInSolutionExplorer": false
+}

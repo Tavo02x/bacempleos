@@ -1,0 +1,416 @@
+﻿
+@{
+    ViewBag.Title = "PostulantePuesto";
+}
+
+<div ng-controller="VerPostulantesPuestoController" ng-init="SeguridadJS();LoadGrid();AreaLaboralGet();getPaises();DiscapacidadGet();PretensionSalarialGet();GetTracking();">
+    <a id="VolverPuesto" ng-click="Volver()" class="btn-back mb-3"><span class="mdi mdi-chevron-left mdi-24px"></span>Volver</a>
+    <h1 class="subtitle-18 mb-3"><span class="mdi mdi-briefcase mdi-24px mr-2"></span> Postulantes <span id="totalGrid"></span></h1>
+    <h2 class="text-20 mb-5">{{model.Titulo}}</h2>
+
+    <div class="row">
+        <div id="busqueda" class="col-md-7 col-xl-5">
+            <div class="d-flex">
+                <div class="bg-white px-3 d-flex mr-3 w-100">
+                    <input class="border-0 my-2" id="textNombre" type="text" placeholder="Nombre" ng-model="model.nombre">
+                    <button type="button" ng-click="Filter()"><span class="mdi mdi-magnify mdi-24px"></span></button>
+                </div>
+                <button class="btn-filters collapsed" type="button" data-toggle="collapse" data-target="#filtroAvanzado" aria-expanded="false" aria-controls="filtroAvanzado">
+                    <span class="mdi mdi-tune mdi-24px"></span>
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <div class="Panel collapse" id="filtroAvanzado">
+        <div class="col-lg-12">
+            <p class="subtitle-16">Filtrar por:</p>
+        </div>
+        <div class="col-lg-12">
+            <a data-toggle="collapse" data-target="#filtroAvanzado1" aria-expanded="false" aria-controls="filtroAvanzado1"> <div class="SubrayadoFiltroAvanzado LetrasContenido textoNegrita">Datos personales </div></a>
+            <div class="collapse" id="filtroAvanzado1">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <input type="text" id="txtIdentificacionFiltro" ng-model="Identificacion" placeholder="Identificación" class="LetrasContenido" />
+                    </div>
+                    <div class="col-sm-4">
+                        <select id="selNacionalidad" ng-model="Nacionalidad">
+                            <option selected disabled value="">Seleccione la nacionalidad</option>
+                            <option value="AF">Afghanistan</option>
+                            <option value="AL">Albania</option>
+                            <option value="DZ">Algeria</option>
+                            <option value="AD">Andorra</option>
+                            <option value="AO">Angola</option>
+                            <option value="AI">Anguilla</option>
+                            <option value="AQ">Antarctica</option>
+                            <option value="AG">Antigua and Barbuda</option>
+                            <option value="AR">Argentina</option>
+                            <option value="AM">Armenia</option>
+                            <option value="AW">Aruba</option>
+                            <option value="AU">Australia</option>
+                            <option value="AT">Austria</option>
+                            <option value="AZ">Azerbaijan</option>
+                            <option value="BS">Bahamas</option>
+                            <option value="BH">Bahrain</option>
+                            <option value="BD">Bangladesh</option>
+                            <option value="BB">Barbados</option>
+                            <option value="BY">Belarus</option>
+                            <option value="BE">Belgium</option>
+                            <option value="BZ">Belize</option>
+                            <option value="BJ">Benin</option>
+                            <option value="BM">Bermuda</option>
+                            <option value="BT">Bhutan</option>
+                            <option value="BO">Bolivia</option>
+                            <option value="BA">Bosnia and Herzegovina</option>
+                            <option value="BW">Botswana</option>
+                            <option value="BR">Brazil</option>
+                            <option value="IO">British Indian Ocean</option>
+                            <option value="BN">Brunei</option>
+                            <option value="BG">Bulgaria</option>
+                            <option value="BF">Burkina Faso</option>
+                            <option value="BI">Burundi</option>
+                            <option value="KH">Cambodia</option>
+                            <option value="CM">Cameroon</option>
+                            <option value="CA">Canada</option>
+                            <option value="CV">Cape Verde</option>
+                            <option value="KY">Cayman Islands</option>
+                            <option value="CF">Central African Republic</option>
+                            <option value="TD">Chad</option>
+                            <option value="CL">Chile</option>
+                            <option value="CN">China</option>
+                            <option value="CX">Christmas Island</option>
+                            <option value="CC">Cocos (Keeling) Islands</option>
+                            <option value="CO">Colombia</option>
+                            <option value="KM">Comoros</option>
+                            <option value="CD">Congo, Democratic Republic of the</option>
+                            <option value="CG">Congo, Republic of the</option>
+                            <option value="CK">Cook Islands</option>
+                            <option value="CR">Costa Rica</option>
+                            <option value="HR">Croatia</option>
+                            <option value="CY">Cyprus</option>
+                            <option value="CZ">Czech Republic</option>
+                            <option value="DK">Denmark</option>
+                            <option value="DJ">Djibouti</option>
+                            <option value="DM">Dominica</option>
+                            <option value="DO">Dominican Republic</option>
+                            <option value="TL">East Timor</option>
+                            <option value="EC">Ecuador</option>
+                            <option value="EG">Egypt</option>
+                            <option value="SV">El Salvador</option>
+                            <option value="GQ">Equatorial Guinea</option>
+                            <option value="ER">Eritrea</option>
+                            <option value="EE">Estonia</option>
+                            <option value="ET">Ethiopia</option>
+                            <option value="FK">Falkland Islands (Malvinas)</option>
+                            <option value="FO">Faroe Islands</option>
+                            <option value="FJ">Fiji</option>
+                            <option value="FI">Finland</option>
+                            <option value="FR">France</option>
+                            <option value="GF">French Guiana</option>
+                            <option value="PF">French Polynesia</option>
+                            <option value="GA">Gabon</option>
+                            <option value="GM">Gambia</option>
+                            <option value="GE">Georgia</option>
+                            <option value="DE">Germany</option>
+                            <option value="GH">Ghana</option>
+                            <option value="GI">Gibraltar</option>
+                            <option value="GR">Greece</option>
+                            <option value="GL">Greenland</option>
+                            <option value="GD">Grenada</option>
+                            <option value="GP">Guadeloupe</option>
+                            <option value="GT">Guatemala</option>
+                            <option value="GN">Guinea</option>
+                            <option value="GW">Guinea-Bissau</option>
+                            <option value="GY">Guyana</option>
+                            <option value="HT">Haiti</option>
+                            <option value="HN">Honduras</option>
+                            <option value="HK">Hong Kong</option>
+                            <option value="HU">Hungary</option>
+                            <option value="IS">Iceland</option>
+                            <option value="IN">India</option>
+                            <option value="ID">Indonesia</option>
+                            <option value="IE">Ireland</option>
+                            <option value="IL">Israel</option>
+                            <option value="IT">Italy</option>
+                            <option value="CI">Ivory Coast (Côte d\'Ivoire)</option>
+                            <option value="JM">Jamaica</option>
+                            <option value="JP">Japan</option>
+                            <option value="JO">Jordan</option>
+                            <option value="KZ">Kazakhstan</option>
+                            <option value="KE">Kenya</option>
+                            <option value="KI">Kiribati</option>
+                            <option value="KR">Korea, South</option>
+                            <option value="KW">Kuwait</option>
+                            <option value="KG">Kyrgyzstan</option>
+                            <option value="LA">Laos</option>
+                            <option value="LV">Latvia</option>
+                            <option value="LB">Lebanon</option>
+                            <option value="LS">Lesotho</option>
+                            <option value="LI">Liechtenstein</option>
+                            <option value="LT">Lithuania</option>
+                            <option value="LU">Luxembourg</option>
+                            <option value="MO">Macau</option>
+                            <option value="MK">Macedonia, Republic of</option>
+                            <option value="MG">Madagascar</option>
+                            <option value="MW">Malawi</option>
+                            <option value="MY">Malaysia</option>
+                            <option value="MV">Maldives</option>
+                            <option value="ML">Mali</option>
+                            <option value="MT">Malta</option>
+                            <option value="MH">Marshall Islands</option>
+                            <option value="MQ">Martinique</option>
+                            <option value="MR">Mauritania</option>
+                            <option value="MU">Mauritius</option>
+                            <option value="YT">Mayotte</option>
+                            <option value="MX">Mexico</option>
+                            <option value="FM">Micronesia</option>
+                            <option value="MD">Moldova</option>
+                            <option value="MC">Monaco</option>
+                            <option value="MN">Mongolia</option>
+                            <option value="ME">Montenegro</option>
+                            <option value="MS">Montserrat</option>
+                            <option value="MA">Morocco</option>
+                            <option value="MZ">Mozambique</option>
+                            <option value="NA">Namibia</option>
+                            <option value="NR">Nauru</option>
+                            <option value="NP">Nepal</option>
+                            <option value="NL">Netherlands</option>
+                            <option value="AN">Netherlands Antilles</option>
+                            <option value="NC">New Caledonia</option>
+                            <option value="NZ">New Zealand</option>
+                            <option value="NI">Nicaragua</option>
+                            <option value="NE">Niger</option>
+                            <option value="NG">Nigeria</option>
+                            <option value="NU">Niue</option>
+                            <option value="NF">Norfolk Island</option>
+                            <option value="NO">Norway</option>
+                            <option value="OM">Oman</option>
+                            <option value="PK">Pakistan</option>
+                            <option value="PS">Palestinian Territory</option>
+                            <option value="PA">Panama</option>
+                            <option value="PG">Papua New Guinea</option>
+                            <option value="PY">Paraguay</option>
+                            <option value="PE">Peru</option>
+                            <option value="PH">Philippines</option>
+                            <option value="PN">Pitcairn Island</option>
+                            <option value="PL">Poland</option>
+                            <option value="PT">Portugal</option>
+                            <option value="QA">Qatar</option>
+                            <option value="RE">Réunion</option>
+                            <option value="RO">Romania</option>
+                            <option value="RU">Russia</option>
+                            <option value="RW">Rwanda</option>
+                            <option value="SH">Saint Helena</option>
+                            <option value="KN">Saint Kitts and Nevis</option>
+                            <option value="LC">Saint Lucia</option>
+                            <option value="PM">Saint Pierre and Miquelon</option>
+                            <option value="VC">Saint Vincent and the Grenadines</option>
+                            <option value="WS">Samoa</option>
+                            <option value="SM">San Marino</option>
+                            <option value="ST">São Tome and Principe</option>
+                            <option value="SA">Saudi Arabia</option>
+                            <option value="SN">Senegal</option>
+                            <option value="RS">Serbia</option>
+                            <option value="CS">Serbia and Montenegro</option>
+                            <option value="SC">Seychelles</option>
+                            <option value="SL">Sierra Leon</option>
+                            <option value="SG">Singapore</option>
+                            <option value="SK">Slovakia</option>
+                            <option value="SI">Slovenia</option>
+                            <option value="SB">Solomon Islands</option>
+                            <option value="SO">Somalia</option>
+                            <option value="ZA">South Africa</option>
+                            <option value="GS">South Georgia and the South Sandwich Islands</option>
+                            <option value="ES">Spain</option>
+                            <option value="LK">Sri Lanka</option>
+                            <option value="SR">Suriname</option>
+                            <option value="SJ">Svalbard and Jan Mayen</option>
+                            <option value="SZ">Swaziland</option>
+                            <option value="SE">Sweden</option>
+                            <option value="CH">Switzerland</option>
+                            <option value="TW">Taiwan</option>
+                            <option value="TJ">Tajikistan</option>
+                            <option value="TZ">Tanzania</option>
+                            <option value="TH">Thailand</option>
+                            <option value="TG">Togo</option>
+                            <option value="TK">Tokelau</option>
+                            <option value="TO">Tonga</option>
+                            <option value="TT">Trinidad and Tobago</option>
+                            <option value="TN">Tunisia</option>
+                            <option value="TR">Turkey</option>
+                            <option value="TM">Turkmenistan</option>
+                            <option value="TC">Turks and Caicos Islands</option>
+                            <option value="TV">Tuvalu</option>
+                            <option value="UG">Uganda</option>
+                            <option value="UA">Ukraine</option>
+                            <option value="AE">United Arab Emirates</option>
+                            <option value="GB">United Kingdom</option>
+                            <option value="US">United States</option>
+                            <option value="UM">United States Minor Outlying Islands</option>
+                            <option value="UY">Uruguay</option>
+                            <option value="UZ">Uzbekistan</option>
+                            <option value="VU">Vanuatu</option>
+                            <option value="VA">Vatican City</option>
+                            <option value="VE">Venezuela</option>
+                            <option value="VN">Vietnam</option>
+                            <option value="VG">Virgin Islands, British</option>
+                            <option value="WF">Wallis and Futuna</option>
+                            <option value="EH">Western Sahara</option>
+                            <option value="YE">Yemen</option>
+                            <option value="ZM">Zambia</option>
+                            <option value="ZW">Zimbabwe</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-4">
+                        <select id="selResidencia" ng-model="PaisRecidencia">
+                            <option disabled selected value="">Residencia</option>
+                            <option ng-repeat="pais in Paises" value="{{pais.IdPais}}" ng-value="{{pais.IdPais}}">{{pais.Descripcion}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-4">
+                        <select id="selGenero" ng-model="Genero">
+                            <option selected disabled value="">Genero</option>
+                            <option selected value="false">Mujer</option>
+                            <option selected value="true">Hombre</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-4">
+                        <select id="selEstadoCivil" ng-model="IdEstadoCivil">
+                            <option selected disabled value="">Estado Civil</option>
+                            <option value="1">Soltero</option>
+                            <option value="2">Divorciado</option>
+                            <option value="3">Viudo</option>
+                            <option value="4">Casado</option>
+                            <option value="5">Unión Libre</option>
+                        </select>
+                    </div>
+                    <div class="col-sm-4">
+                        <select id="isVehiculo" ng-model="Vehiculo">
+                            <option selected disabled value="">¿Tiene vehículo?</option>
+                            <option value="true">SI</option>
+                            <option value="false">NO</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-12">
+            <a data-toggle="collapse" data-target="#filtroAvanzado2" aria-expanded="false" aria-controls="filtroAvanzado2"> <div class="SubrayadoFiltroAvanzado LetrasContenido textoNegrita">Carrera </div></a>
+            <div class="collapse" id="filtroAvanzado2">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div id="chkAreas" ng-repeat="area in Areas">
+                            <label class="container">
+                                {{area.Area}}
+                                <input type="checkbox" name="areas" value="{{area.IdArea}}" id="{{area.IdArea}}">
+                                <span class="checkmark"></span>
+                            </label>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <select id="selMaximoGradoAcademico" ng-model="GradoAcademico">
+                            <option selected disabled value="">Grado Académico</option>
+                            <option value="1">Educación Básica Primaria</option>
+                            <option value="2">Educación Básica Secundaria</option>
+                            <option value="3">Bachillerato / Educación Media</option>
+                            <option value="4">Educación Técnico/Profesional</option>
+                            <option value="5">Bachillerato Universitario</option>
+                            <option value="6">Licenciatura</option>
+                            <option value="7">Maestría</option>
+                            <option value="8">Doctorado</option>
+                        </select>
+                        <select id="selEstudiaActualmente" ng-model="EstudiaActualmente">
+                            <option selected disabled value="">Estudia actualmente</option>
+                            <option value="true">SI</option>
+                            <option value="false">NO</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-12">
+            <a data-toggle="collapse" data-target="#filtroAvanzado3" aria-expanded="false" aria-controls="filtroAvanzado3"> <div class="SubrayadoFiltroAvanzado LetrasContenido textoNegrita">Discapacidades</div></a>
+            <div class="collapse" id="filtroAvanzado3">
+                <select id="isDiscapacidad" ng-model="IdDiscapacidad">
+                    <option disabled selected value="">Discapacidad</option>
+                    <option ng-repeat="discapacidad in Discapacidades" value="{{discapacidad.IdDescapacidad}}" ng-value="{{discapacidad.IdDescapacidad}}">{{discapacidad.Descripcion}}</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-lg-12">
+            <a data-toggle="collapse" data-target="#filtroAvanzado4" aria-expanded="false" aria-controls="filtroAvanzado4"> <div class="SubrayadoFiltroAvanzado LetrasContenido textoNegrita">Pretension salarial</div></a>
+            <div class="collapse" id="filtroAvanzado4">
+                <div id="rangePretensión">
+                    <label ng-repeat="pretension in Pretensiones" class="container">
+                        {{pretension.Descripcion}}
+                        <input type="radio" name="pretension" value="{{pretension.IdPretension}}" id="{{pretension.IdPretension}}">
+                        <span class="checkmark"></span>
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-12">
+            <a data-toggle="collapse" data-target="#filtroAvanzado5" aria-expanded="false" aria-controls="filtroAvanzado5"> <div class="SubrayadoFiltroAvanzado LetrasContenido textoNegrita">País donde quiere trabajar</div></a>
+            <div class="collapse" id="filtroAvanzado5">
+                <div id="chkPais" ng-repeat="pais in Paises">
+                    <label class="container">
+                        {{pais.Descripcion}}
+                        <input type="checkbox" name="pais" value="{{pais.IdPais}}" id="{{pais.IdPais}}">
+                        <span class="checkmark"></span>
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-12">
+            <a data-toggle="collapse" data-target="#filtroAvanzado6" aria-expanded="false" aria-controls="filtroAvanzado6"><div class="SubrayadoFiltroAvanzado LetrasContenido textoNegrita">Estado</div></a>
+            <div class="collapse" id="filtroAvanzado6">
+
+                <select id="isFavorito" ng-model="Favorito">
+                    <option selected disabled value="">¿Es favorito?</option>
+                    <option value="true">SI</option>
+                    <option selected value="false">NO</option>
+                </select>
+                <select id="selEstadoAplicante" ng-model="EstadoAplicante">
+                    <option selected disabled value="">Estado aplicante</option>
+                    <option value="2">No leido</option>
+                    <option value="1">Leido</option>
+                    <option value="3">Archivado</option>
+                    <option value="4">Pre seleccionado</option>
+                    <option value="5">Contratado</option>
+                </select>
+            </div>
+        </div>
+        <div class="col-lg-12">
+            <a data-toggle="collapse" data-target="#filtroAvanzado7" aria-expanded="false" aria-controls="filtroAvanzado7"><div class="SubrayadoFiltroAvanzado LetrasContenido textoNegrita">Fecha de publicación del puesto</div></a>
+            <div class="collapse" id="filtroAvanzado7">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <select id="selTracking" ng-model="IdPuestosPublicacionTrack">
+                            <option disabled selected value="">Elegir Fecha</option>
+                            <option ng-repeat="track in Tracking" value="{{track.IdPuestosPublicacionTrack}}" ng-value="{{track.IdPuestosPublicacionTrack}}">{{track.FechaTack}}</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="mb-3 col-lg-5 offset-lg-1 col-xl-4 offset-xl-2">
+                <input id="btnFiltroAvanzado" data-toggle="collapse" data-target="#filtroAvanzado" aria-expanded="false" aria-controls="filtroAvanzado" class="btnPrincipal w-100" ng-click="Filter()" type="button" value="Aplicar Filtros" />
+            </div>
+            <div class="col-lg-5 col-xl-4">
+                <input id="btnFiltroAvanzadoCancelar" data-toggle="collapse" data-target="#filtroAvanzado" aria-expanded="false" aria-controls="filtroAvanzado" class="btnSecundario w-100" ng-click="Clear()" type="button" value="Deshacer filtros" />
+            </div>
+        </div>
+    </div>
+    <div class="Panel">
+        <div id="tablaPostulantes">
+
+        </div>
+    </div>
+</div>
+
+@section scripts{
+
+}

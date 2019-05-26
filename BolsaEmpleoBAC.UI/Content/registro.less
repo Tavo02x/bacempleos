@@ -1,0 +1,345 @@
+﻿@import "variables";
+
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%
+}
+
+body {
+    background-color: @GrisBAC7;
+    font-family: @font-family-principal;
+    overflow-x: hidden;
+}
+
+h6, h5, h4, h3, h2, h1 {
+    font-weight: bold;
+}
+
+.bg-red {
+    background-color: @RojoBAC;
+}
+
+.navbar{
+    padding: 1em !important;
+}
+
+.nav-logo{
+    width: 7em;
+}
+
+.div-nombre-progreso {
+    color: @GrisBAC11;
+    font-weight: bold;
+}
+
+.div-linea-progreso {
+    border-bottom: 4px solid @GrisBAC11;
+    width: 100%;
+    position: relative;
+    top: 15px;
+    z-index: 0;
+}
+
+.div-simbolo-progreso {
+    border: 3px solid @GrisBAC11;
+    background-color: white;
+    color: @GrisBAC11;
+    font-weight: bold;
+    font-size: 0.9rem;
+    text-align: center;
+    border-radius: 100%;
+    width: 18px;
+    height: 18px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+}
+
+.activado {
+
+    .div-linea-progreso {
+        border-bottom-color: @VerdeBAC;
+    }
+
+    .div-simbolo-progreso {
+        border-color: @VerdeBAC;
+        color: @VerdeBAC;
+    }
+}
+
+.div-simbolo-progreso.check {
+    background-color: @VerdeBAC;
+    color: white;
+}
+
+.div-simbolo-progreso.check.info {
+    border:none;
+    display:inline-block;
+}
+
+.header-info-agregada {
+    margin-top: 1em;
+    margin-bottom: 1em;
+    display: none;
+}
+
+.div-informacion-agregada {
+    max-height: 300px;
+    overflow-x: auto;
+
+    section {
+        background: @AzulBAC;
+        color: white;
+        padding: 5px;
+        text-align: left;
+        border-radius: 10px 0 10px 0;
+        margin-bottom: 1em;
+    }
+
+    div {
+        width: 100%
+    }
+
+    button {
+        color: white;
+        padding: 2px;
+        min-width: 20px;
+        float: right;
+    }
+
+    button:hover {
+        background: @RojoBAC;
+    }
+}
+
+#table-progreso {
+    width: 100%;
+    max-width: 450px;
+    margin: 0 auto;
+    padding: 2px;
+
+    tr > td {
+        width: 25%;
+    }
+}
+
+.card-registro {
+    margin: 2.5em auto;
+    padding: 2em;
+    min-height: 38em;
+    max-width: 52em;
+    width: 100%;
+    background-color: white;
+    text-align: center;
+    display: none;
+
+    .mdl-cell {
+        margin: 0 auto;
+    }
+
+    .btn-atras {
+        background-color: @letrasTh !important;
+    }
+
+    .td-contenido {
+        vertical-align: middle;
+        height: 100%;
+    }
+
+    .td-footer button {
+        margin: 1em;
+        max-width: 200px;
+        width: 100%;
+    }
+}
+
+.mdl-textfield{
+    width:100%;
+}
+
+#btn-back {
+    float: left;
+    font-weight: bold;
+    color: @GrisBAC6;
+    text-transform: none;
+
+    span {
+        color: @GrisBAC4;
+        font-size: 2rem;
+        margin-right: 0.2em;
+        vertical-align: middle;
+    }
+}
+
+#btn-continuar, .btn-bg {
+    margin: 2em 0 4em 0;
+    max-width: 21em;
+    width: 100%;
+}
+
+#img-paso0 {
+    margin: 2em 0 0 0;
+    max-width: 211px;
+    width: 100%;
+}
+
+.p-nota {
+    color: @GrisBAC11;
+}
+.clear {
+    clear: both;
+}
+
+.btn-seleccionar-uno {
+    font-weight: bold;
+    border: 2px solid @GrisBAC11;
+    color: @GrisBAC11;
+    max-width: 21em;
+    width: 100%;
+    margin-bottom:1em;
+}
+
+.div-item {
+    border: 2px solid @GrisBAC11;
+    padding:2px;
+    margin: 5px auto !important;
+
+    label {
+        font-weight: bold;
+    }
+
+    button {
+        float: right;
+        min-width: 1em;
+    }
+}
+
+.btn-seleccionar-uno.activo {
+    border: 2px solid @AzulBAC;
+    background-color: @AzulBAC !important;
+    color: white;
+}
+
+.div-estado-civil{
+    float: left;
+    width: 46%;
+    padding: 0 5px 0 5px;
+}
+
+.btn-agregar {
+    font-weight: bold;
+    float: left;
+    text-transform: capitalize;
+
+    img {
+        width: 2em;
+    }
+}
+
+.div-checkboxes {
+    text-align: left;
+}
+
+.div-carga-contenido {
+    display: inline-block;
+}
+
+.div-carga-archivo {
+    border: 2px @GrisBAC11 dashed;
+    color: @GrisBAC11;
+    border-radius: 2em;
+    width: 9em;
+    min-height: 9em;
+    margin: 0 auto;
+    padding: 1.5em;
+    margin-bottom: 1.5em;
+    cursor: pointer;
+}
+
+#img-foto {
+    width: 100%;
+}
+
+.mensaje-error {
+    color: @RojoBAC;
+    text-align: justify;
+}
+
+/* Checkbox */
+.lbl-checkbox {
+    display: block;
+    position: relative;
+    padding-left: 30px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    text-align:left;
+    font-size: 1.2em;
+}
+
+.lbl-checkbox input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    background-color: #eee;
+}
+
+.lbl-checkbox:hover input ~ .checkmark {
+    background-color: #ccc;
+}
+
+.lbl-checkbox input:checked ~ .checkmark {
+    background-color: @AzulBAC;
+}
+
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+.lbl-checkbox input:checked ~ .checkmark:after {
+    display: block;
+}
+
+.lbl-checkbox .checkmark:after {
+    left: 6px;
+    top: 2px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+.modal{
+    text-align:center;
+    div{
+        margin: 0 auto;
+    }
+    h4{
+        color: @RojoBAC;
+        margin:0;
+    }
+}
+
+@import "registro-loader";
+@import "registro-media-queries";
+

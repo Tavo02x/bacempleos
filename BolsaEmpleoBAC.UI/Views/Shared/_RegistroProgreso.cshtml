@@ -1,0 +1,70 @@
+﻿@model int
+
+<table id="table-progreso">
+    <tr>
+        <td class="@(Model >= 1 ? "activado" : "")">
+            <div class="div-nombre-progreso">@(Model == 1 ? "Usuario" : "")&nbsp;</div>
+            <div class="div-linea-progreso"></div>
+            <div class="div-simbolo-progreso @(Model > 1 ? "check": "")">
+                @{
+                    if (Model > 1)
+                    {
+                        <i class="fa fa-check"></i>
+                    }
+                    else
+                    {
+                        <span>1</span>
+                    }
+                }
+            </div>
+        </td>
+        <td class="@(Model >= 2 ? "activado" : "")">
+            <div class="div-nombre-progreso">@(Model == 2 ? "Experiencia" : "")&nbsp;</div>
+            <div class="div-linea-progreso"></div>
+            <div class="div-simbolo-progreso @(Model > 2 ? "check": "")">
+                @{
+                    if (Model > 2)
+                    {
+                        <i class="fa fa-check"></i>
+                    }
+                    else
+                    {
+                        <span>2</span>
+                    }
+                }
+            </div>
+        </td>
+        <td class="@(Model >= 3 ? "activado" : "")">
+            <div class="div-nombre-progreso">@(Model == 3 ? "Intereses" : "")&nbsp;</div>
+            <div class="div-linea-progreso"></div>
+            <div class="div-simbolo-progreso @(Model > 3 ? "check": "")">
+                @{
+                    if (Model > 3)
+                    {
+                        <i class="fa fa-check"></i>
+                    }
+                    else
+                    {
+                        <span>3</span>
+                    }
+                }
+            </div>
+        </td>
+        <td class="@(Model == 4 ? "activado" : "")">
+            <div class="div-nombre-progreso">@(Model == 4 ? "Adicional" : "")&nbsp;</div>
+            <div class="div-linea-progreso"></div>
+            <div class="div-simbolo-progreso @(Model > 4 ? "check": "")">
+                @{
+                    if (Model > 4)
+                    {
+                        <i class="fa fa-check"></i>
+                    }
+                    else
+                    {
+                        <span>4</span>
+                    }
+                }
+            </div>
+        </td>
+    </tr>
+</table>

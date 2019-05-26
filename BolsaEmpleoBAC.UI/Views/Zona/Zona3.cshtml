@@ -1,0 +1,87 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<div ng-controller="Zona3Controller" ng-init="SeguridadJS();getPaises();loadGridZona3();">
+    <div class="d-md-flex justify-content-between align-items-center mb-5">
+        <h1 class="subtitle-18"><span class="mdi mdi-settings mdi-24px"></span>Mantenimiento de Zonas Nivel 3 <span id="totalGrid"></span></h1>
+        <button type="button" class="btn" data-toggle="modal" data-target="#popupArea">Nueva Zona</button>
+    </div>
+    <div class="Panel">
+        <div class="row">
+            <div class="col-lg-12">
+                <div id="tablezona3"></div>
+            </div>
+        </div>
+    </div>
+    <div id="popupArea" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="col-lg-1">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <label class="LetrasSubTitulo">Mantenimiento</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <select id="selPais" ng-model="Zona3.IdPais" ng-change="getZona()">
+                                <option selected disabled value="">País</option>
+                                <option ng-repeat="pais in Paises" value="{{pais.IdPais}}" ng-value="{{pais.IdPais}}">{{pais.Descripcion}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <select id="selZona1" ng-model="Zona3.IdZona1" ng-change="Zona2Get()">
+                                <option selected disabled value="">Zona 1</option>
+                                <option ng-repeat="zona in Zona1" value="{{zona.IdZona1}}" ng-value="{{zona.IdZona1}}">{{zona.Descripcion}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <select id="selZona23" ng-model="Zona3.IdZona2" ng-change="Zona3Get()">
+                                <option selected disabled value="">Zona 2</option>
+                                <option ng-repeat="zona in Zona2" value="{{zona.IdZona2}}" ng-value="{{zona.IdZona2}}">{{zona.Descripcion}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <input id="idZona3" type="hidden" ng-model="Zona3.IdZona3" />
+                            <input id="nombreZona3" type="text" class="LetrasContenido" placeholder="Nombre" ng-model="Zona3.Descripcion" />
+                        </div>
+                        <div class="col-lg-6">
+                            <label class="container">
+                                Desactivar
+                                <input id="txtBorrado" type="checkbox" ng-value="Zona3.Borrado" ng-model="Zona3.Borrado">
+                                <span class="checkmark"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            @*<div class="botonera">*@
+                            <input id="btnCancelar" type="button" value="Cancelar" class="btnSecundario" data-dismiss="modal" ng-click="Cancelar()" />
+                            <input id="btnGuardar" type="button" value="guardar" class="btnPrincipal" ng-click="Guardar()" />
+                            @*</div>*@
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+
+}

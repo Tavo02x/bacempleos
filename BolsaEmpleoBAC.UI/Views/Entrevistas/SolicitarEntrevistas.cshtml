@@ -1,0 +1,53 @@
+﻿
+@{
+}
+
+<div ng-controller="EntrevistaEnVivoController" ng-init="SeguridadJS();">
+    <a ng-click="Volver()" class="btn-back mb-3"><span class="mdi mdi-chevron-left mdi-24px"></span>Volver</a>
+    <h1 class="subtitle-18 mt-4 mb-3"><span class="mdi mdi-monitor-dashboard mdi-24px mr-2"></span> Solicitar entrevista en vivo</h1>
+    <p class="subtitle-14">Indica en qué fecha y hora deseas realizar la entrevista según tu disponibilidad</p>
+
+    <div class="row Panel">
+        <div class="col-lg-4 Division">
+            <p class="subtitle-16">Fechas Disponibles</p>
+            <div class="datepicker">
+                <input id="txtfechaEntrevista" readonly type="text" uib-datepicker-popup="{{format}}" ng-model="Date" is-open="datepicker.opened" datepicker-options="dateOptions" ng-required="true"  show-button-bar="false"/>
+                <button type="button" class="datepicker__btn" ng-click="openDatepicker()"><span class="mdi mdi-calendar"></span></button>
+            </div>
+        </div>
+
+        <div class="col-lg-4">
+            <p class="subtitle-16">Horas diponibles</p>
+            <select id="selHoraDisponible" ng-model="Hour">
+                <option selected disabled value="">Hora disponible</option>
+                <option value="08:00">08:00</option>
+                <option value="08:30">08:30 </option>
+                <option value="09:00">09:00 </option>
+                <option value="09:30">09:30 </option>
+                <option value="10:00">10:00 </option>
+                <option value="10:30">10:30 </option>
+                <option value="11:00">11:00 </option>
+                <option value="11:30">11:30 </option>
+                <option value="12:00">12:00 </option>
+                <option value="12:30">12:30 </option>
+                <option value="13:00">13:00 </option>
+                <option value="13:30">13:30 </option>
+                <option value="14:00">14:00 </option>
+                <option value="14:30">14:30 </option>
+                <option value="15:00">15:00 </option>
+                <option value="15:30">15:30 </option>
+                <option value="16:00">16:00 </option>
+                <option value="16:30">16:30 </option>
+                <option value="17:00">17:00 </option>
+            </select>
+        </div>
+    </div>
+    <div class="btn-wrap my-3">
+        <button id="btnContinuar" ng-click="AgendarEntrevista()" class="btn order-lg-1" type="button">Crear Entrevista</button>
+        <button id="btnCancelar" ng-click="Volver()" class="btn btn-gray order-lg-0" type="button">Cancelar</button>
+    </div>
+</div>
+
+@section scripts{
+
+}

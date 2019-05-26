@@ -1,0 +1,32 @@
+﻿
+@{
+    ViewBag.Title = "DetalleFeriaVirtual";
+}
+
+<div ng-controller="DetalleFeriaVirtualController" ng-init="SeguridadJS();GetDetalleFeriaVirtual();LoadGridPuestosPostulante();">
+    <a id="VolverPuesto" ng-click="Volver()" class="btn-back mb-3"><span class="mdi mdi-chevron-left mdi-24px"></span>Volver</a>
+    <div>
+        <h1 class="LetrasTitulo textoNegrita mb-4"><span class="mdi mdi-cellphone mdi-24px"></span> {{NombreFeria}}</h1>
+        <div class="row mb-3">
+            <div class="col-lg-5">
+                <p class="text-12"><span class="mdi mdi-map-marker mdi-24px text-red"></span> Países: <span id="txtPaises">{{Paises}}</span></p>
+            </div>
+            <div class="col-lg-5">
+                <p class="text-12"><span class="mdi mdi-calendar-month mdi-24px mr-2 text-red"></span>Fecha: Del {{FechaInicial}} al {{FechaFinal}}</p>
+            </div>
+        </div>
+
+        <div id="tagPuestos">
+            <div class="my-3">
+                <h2 class="subtitle-16">Puestos disponibles <span id="totalGrid"></span></h2>
+            </div>
+            <div class="Panel" id="divPuestos">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+
+}

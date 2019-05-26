@@ -1,0 +1,92 @@
+﻿
+@{
+    ViewBag.Title = "BuscarPreguntas";
+}
+
+<div>
+    <div>
+        <img src="~/Content/Images/flechaVolver.png" class="SubComponenteImagen" />
+        <label class="SubComponente punteroSelector">Volver</label>
+    </div>
+    <div>
+        <img src="~/Content/Images/IconoPuestoNegro.png" alt="Puesto" class="icono-2 SitioIcono" />
+        <span class="LetrasTitulo textoNegrita">Archivo de preguntas registradas</span>
+    </div>
+    <div>
+        <h1 class="LetrasTituloPrincipal">Busque una pregunta en el archivo o elija una temática para ver las preguntas disponibles</h1>
+    </div>
+    <div class="row">
+        <div class="col-lg-4 panel2">
+            <div class="control">
+                <input id="textNombre" type="text" placeholder="Nombre" ng-model="model.nombre">
+            </div>
+            <div class="imagen">
+                <img id="btnBuscar" src="~/Content/Images/Lupa.png" />
+            </div>
+        </div>
+        <div class="col-lg-4 panel2">
+            <select id="selCategoria" ng-model="model.pais">
+                <option selected value="-1">Categoria</option>
+            </select>
+        </div>
+        <div class="col-lg-4">
+
+        </div>
+    </div>
+    <div class="Panel">
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="LetrasTitulo">Resultados de tu búsqueda</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <label class="LetrasContenido ColorLetraGris">Elija 1 o varias preguntas al mismo tiempo</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="cuadro cuadroSeparador">
+                    <span class="LetrasContenido textoNegrita"></span>
+                    <span class="LetrasContenido ColorLetraGris">aqui va el texto de la pregunta que sea porque lo soporta</span>
+                </div>
+                <div class="cuadro cuadroSeparador cuadroSeleccionado">
+                    <span>aqui va el texto de la pregunta que sea porque lo soporta</span>
+                </div>
+                <div class="cuadro cuadroSeparador cuadroSeleccionado">
+                    <span>aqui va el texto de la pregunta que sea porque lo soporta</span>
+                </div>
+                <div class="cuadro cuadroSeparador cuadroSeleccionado">
+                    <span>aqui va el texto de la pregunta que sea porque lo soporta</span>
+                </div>
+                <div class="cuadro cuadroSeparador cuadroSeleccionado">
+                    <span>aqui va el texto de la pregunta que sea porque lo soporta</span>
+                </div>
+                <div class="cuadro cuadroSeparador cuadroSeleccionado">
+                    <span>aqui va el texto de la pregunta que sea porque lo soporta</span>
+                </div>
+                <div class="cuadro cuadroSeparador cuadroSeleccionado">
+                    <span>aqui va el texto de la pregunta que sea porque lo soporta</span>
+                </div>
+                <div class="cuadro cuadroSeparador cuadroSeleccionado">
+                    <span>aqui va el texto de la pregunta que sea porque lo soporta</span>
+                </div>
+                <div class="cuadro cuadroSeparador cuadroSeleccionado">
+                    <span>aqui va el texto de la pregunta que sea porque lo soporta</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="botonera mt-3 mt-lg-0">
+                <input id="btnCancelar" type="button" class="btnSecundario" value="Cancelar" />
+                <input id="btnAgregar" type="button" class="btnPrincipal" value="Agregar Pregunta" />
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+
+}

@@ -1,0 +1,68 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+<div ng-controller="LobbyController" ng-init="VerificarSession();LoadGrid();getPaises();GetPuestos();GetAplicantes();GetUsuarios();AdministradoresRegional();AdministradoresPais();">
+    <h1 class="subtitle-18 mb-5"><span class="mdi mdi-cellphone-link mdi-24px"></span> Inicio</h1>
+
+    <div class="row m-0 align-items-center">
+        <div class="col-3 col-md-2 col-lg-1">
+            <p class="text-12 m-0">País:</p>
+        </div>
+        <div class="col-9 col-md-5 col-lg-4 col-xl-3 bg-white">
+            <select id="selPais" ng-model="model.pais" ng-change="reload()" class="border-0 my-2">
+                <option selected disabled value="">País</option>
+                <option ng-repeat="pais in Paises" value="{{pais.IdPais}}" ng-value="{{pais.IdPais}}">{{pais.Descripcion}}</option>
+            </select>
+        </div>
+    </div>
+    <div id="IdResumen" class="row my-4">
+        <div class="col-lg-6">
+            <div class="bg-white py-3 shadow-sm text-center h-100">
+                <p class="subtitle-14">Actividad de puestos</p>
+                <div class="row m-0">
+                    <div class="col-4 mb-3">
+                        <span class="mdi mdi-briefcase mdi-36px text-red"></span>
+                        <h2 id="lblPuestosPublicados" class="subtitle-26">{{puestos}}</h2>
+                        <p class="subtitle-12 text-gray">Puestos Publicados</p>
+                    </div>
+                    <div class="col-4 border-left border-right mb-3">
+                        <span class="mdi mdi-account-box mdi-36px text-red"></span>
+                        <h2 id="lblAplicantes" class="subtitle-26">{{aplicantes}}</h2>
+                        <p class="subtitle-12 text-gray">Aplicantes</p>
+                    </div>
+                    <div class="col-4 mb-3">
+                        <span class="mdi mdi-clipboard-check mdi-36px text-red"></span>
+                        <h2 id="lblPersonasRegistradas" class="subtitle-26">{{usuarios}}</h2>
+                        <p class="subtitle-12 text-gray">Personas Registradas</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="bg-white py-3 shadow-sm text-center h-100">
+                <p class="subtitle-14 mb-5">Actividad de administradores</p>
+                <div class="row m-0">
+                    <div class="col-6 border-right mb-3">
+                        <h2 id="lblAdministradoresRegionales" class="subtitle-26">{{administradoresR}}</h2>
+                        <p class="subtitle-12 text-gray">Administradores Regionales</p>
+                    </div>
+                    <div class="col-6 mb-3">
+                        <h2 id="lblAdministradoresPais" class="subtitle-26">{{administradoresP}}</h2>
+                        <p class="subtitle-12 text-gray">Administradores País</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="Panel">
+        <h2 class="subtitle-16 mb-4">Últimos puestos registrados <span id="totalGrid"></span></h2>
+        <div id="table">
+
+        </div>
+    </div>
+</div>
+
+@section scripts{
+
+}

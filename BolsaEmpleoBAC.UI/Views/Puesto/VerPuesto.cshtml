@@ -1,0 +1,55 @@
+﻿
+@{
+    ViewBag.Title = "VerPuesto";
+}
+
+<div ng-controller="verAplicarPuestosController" ng-init="SeguridadJS();getPuesto();AplicarSeguridadHTML();">
+    <a id="VolverPuesto" ng-click="Volver()" class="btn-back mb-3"><span class="mdi mdi-chevron-left mdi-24px"></span>Volver</a>
+    <div class="float-md-right mt-3 mt-md-0">
+        <button id="btnEditarPuesto" type="button" ng-click="EditarPuesto()" class="btn">Editar</button>
+    </div>
+    <div class="Panel">
+        <div class="row">
+            <div class="col-lg-5 col-xl-4 mb-4 mb-lg-0 px-xl-5 border-lg-right">
+                <h1 id="tituloPuesto" class="subtitle-20 mb-2 text-long">{{model.Titulo}}</h1>
+                <p class="text-14 text-gray mb-3">{{model.Area}}</p>
+                <p class="subtitle-12 mb-3">{{DescripcionPais}}</p>
+                <p class="text-12 mb-2"> <span class="mdi mdi-calendar-month mdi-24px text-red"></span> Fecha de cierre: {{model.FechaCierre}}</p>
+                <p class="text-12 mb-2"><span class="mdi mdi-clock mdi-24px text-red"></span>  Jornada: {{model.Jornada.Descripcion}}    </p>
+                <p ng-repeat="idioma in model.Idiomas" class="text-12 mb-2">
+                    <span class="mdi mdi-web mdi-24px text-red"></span> {{idioma.DEscripcion}}: {{idioma.Porcentaje}}
+                </p>
+                <div class="mt-5">
+                    <button id="btnAplicar" type="button" ng-click="AplicarPuesto()" class="btn btn-full">Aplicar</button>
+                    <button id="btnPostulantes" type="button" ng-click="VerPostulantes()" class="btn btn-full">Ver aplicantes</button>
+                </div>
+            </div>
+            <div class="col-lg-7 col-xl-8 px-xl-5 text-12">
+                <p class="mb-2 subtitle-12">Nivel académico:</p>
+                <p class="mb-4" id="lblNivelAcademico">{{model.NivelAcademico}}</p>
+                <p class="mb-2 subtitle-12">Objetivos del puesto:</p>
+                <div class="mb-4" id="lblExperienciaRequerida" ng-bind-html="model.Descripcion"></div>
+                <p class="mb-2 subtitle-12">Experiencia requerida:</p>
+                <ul class="list-unstyled">
+                    <li ng-repeat="experiencia in model.ExperienciaRequerida">{{experiencia.Descripcion}}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <h2 id="tituloPuesto" class="subtitle-18 mb-4">Puestos Relacionados</h2>
+
+    <div class="row">
+        <div class="col-lg-4 mb-3" ng-repeat="puesto in PuestosRelacionados">
+            <a class="link-box" href="{{baseUrl}}/Puesto/VerPuesto?IdPuesto={{puesto.IdPuesto}}">
+                <h2>{{puesto.Titulo}}</h2>
+                <p> {{puesto.Pais[0].Descripcion}}</p>
+                <p>Cierre: {{puesto.FechaCierre}}</p>
+            </a>
+        </div>
+    </div>
+
+</div>
+
+@section scripts{
+
+}

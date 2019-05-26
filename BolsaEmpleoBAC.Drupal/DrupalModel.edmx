@@ -1,0 +1,153 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="bac2_dbModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.7" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="sessions">
+          <Key>
+            <PropertyRef Name="sid" />
+            <PropertyRef Name="ssid" />
+          </Key>
+          <Property Name="uid" Type="uint" Nullable="false" />
+          <Property Name="sid" Type="varchar" MaxLength="128" Nullable="false" />
+          <Property Name="ssid" Type="varchar" MaxLength="128" Nullable="false" />
+          <Property Name="hostname" Type="varchar" MaxLength="128" Nullable="false" />
+          <Property Name="timestamp" Type="int" Nullable="false" />
+          <Property Name="cache" Type="int" Nullable="false" />
+          <Property Name="session" Type="longblob" />
+        </EntityType>
+        <EntityType Name="users">
+          <Key>
+            <PropertyRef Name="uid" />
+          </Key>
+          <Property Name="uid" Type="uint" Nullable="false" />
+          <Property Name="name" Type="varchar" MaxLength="60" Nullable="false" />
+          <Property Name="pass" Type="varchar" MaxLength="128" Nullable="false" />
+          <Property Name="mail" Type="varchar" MaxLength="254" />
+          <Property Name="theme" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="signature" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="signature_format" Type="varchar" MaxLength="255" />
+          <Property Name="created" Type="int" Nullable="false" />
+          <Property Name="access" Type="int" Nullable="false" />
+          <Property Name="login" Type="int" Nullable="false" />
+          <Property Name="status" Type="tinyint" Nullable="false" />
+          <Property Name="timezone" Type="varchar" MaxLength="32" />
+          <Property Name="language" Type="varchar" MaxLength="12" Nullable="false" />
+          <Property Name="picture" Type="int" Nullable="false" />
+          <Property Name="init" Type="varchar" MaxLength="254" />
+          <Property Name="data" Type="longblob" />
+        </EntityType>
+        <EntityContainer Name="bac2_dbModelStoreContainer">
+          <EntitySet Name="sessions" EntityType="Self.sessions" Schema="bac2_db" store:Type="Tables" />
+          <EntitySet Name="users" EntityType="Self.users" Schema="bac2_db" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="bac2_dbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="sessions">
+          <Key>
+            <PropertyRef Name="sid" />
+            <PropertyRef Name="ssid" />
+          </Key>
+          <Property Name="uid" Type="Int64" Nullable="false" />
+          <Property Name="sid" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ssid" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="hostname" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="timestamp" Type="Int32" Nullable="false" />
+          <Property Name="cache" Type="Int32" Nullable="false" />
+          <Property Name="session" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="users">
+          <Key>
+            <PropertyRef Name="uid" />
+          </Key>
+          <Property Name="uid" Type="Int64" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="pass" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="mail" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
+          <Property Name="theme" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="signature" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="signature_format" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="created" Type="Int32" Nullable="false" />
+          <Property Name="access" Type="Int32" Nullable="false" />
+          <Property Name="login" Type="Int32" Nullable="false" />
+          <Property Name="status" Type="SByte" Nullable="false" />
+          <Property Name="timezone" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="language" Type="String" MaxLength="12" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="picture" Type="Int32" Nullable="false" />
+          <Property Name="init" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
+          <Property Name="data" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityContainer Name="DrupalEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="sessions" EntityType="Self.sessions" />
+          <EntitySet Name="users" EntityType="Self.users" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="bac2_dbModelStoreContainer" CdmEntityContainer="DrupalEntities">
+          <EntitySetMapping Name="sessions">
+            <EntityTypeMapping TypeName="bac2_dbModel.sessions">
+              <MappingFragment StoreEntitySet="sessions">
+                <ScalarProperty Name="uid" ColumnName="uid" />
+                <ScalarProperty Name="sid" ColumnName="sid" />
+                <ScalarProperty Name="ssid" ColumnName="ssid" />
+                <ScalarProperty Name="hostname" ColumnName="hostname" />
+                <ScalarProperty Name="timestamp" ColumnName="timestamp" />
+                <ScalarProperty Name="cache" ColumnName="cache" />
+                <ScalarProperty Name="session" ColumnName="session" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="users">
+            <EntityTypeMapping TypeName="bac2_dbModel.users">
+              <MappingFragment StoreEntitySet="users">
+                <ScalarProperty Name="uid" ColumnName="uid" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="pass" ColumnName="pass" />
+                <ScalarProperty Name="mail" ColumnName="mail" />
+                <ScalarProperty Name="theme" ColumnName="theme" />
+                <ScalarProperty Name="signature" ColumnName="signature" />
+                <ScalarProperty Name="signature_format" ColumnName="signature_format" />
+                <ScalarProperty Name="created" ColumnName="created" />
+                <ScalarProperty Name="access" ColumnName="access" />
+                <ScalarProperty Name="login" ColumnName="login" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="timezone" ColumnName="timezone" />
+                <ScalarProperty Name="language" ColumnName="language" />
+                <ScalarProperty Name="picture" ColumnName="picture" />
+                <ScalarProperty Name="init" ColumnName="init" />
+                <ScalarProperty Name="data" ColumnName="data" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

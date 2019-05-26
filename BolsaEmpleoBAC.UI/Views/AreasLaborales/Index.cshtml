@@ -1,0 +1,65 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<div ng-controller="AreasLaboralesController" ng-init="SeguridadJS();LoadGrid();">
+    <div class="d-md-flex justify-content-between align-items-center mb-5">
+        <h1 class="subtitle-18"><span class="mdi mdi-settings mdi-24px"></span>Mantenimiento de Áreas Laborales <span id="totalGrid"></span></h1>
+        <button type="button" class="btn" data-toggle="modal" data-target="#popupArea">Nueva Área Laboral</button>
+    </div>
+    <div class="Panel">
+        <div class="row">
+            <div class="col-lg-12">
+                <div id="table"></div>
+            </div>
+        </div>
+    </div>
+    <div id="popupArea" class="modal fade position-fixed" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="col-lg-1">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-lg-12 col-sm-12">
+                            <label class="LetrasSubTitulo">Mantenimiento</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12 col-sm-12">
+                            <input id="txtId" type="hidden" class="LetrasContenido" ng-model="model.IdArea" />
+                            <input id="txtNombre" type="text" placeholder="Nombre" class="LetrasContenido" ng-model="model.Area" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12 col-sm-12">
+                            <label class="container">
+                                Desactivar
+                                <input id="txtBorrado" type="checkbox" ng-value="model.Borrado" ng-model="model.Borrado">
+                                <span class="checkmark"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="row">
+                        <div class="col-lg-12 col-sm-12">
+                            @*<div class="botonera">*@
+                            <input id="btnCancelar" type="button" value="Cancelar" class="btnSecundario" data-dismiss="modal" ng-click="Cancelar()" />
+                            <input id="btnGuardar" type="button" value="guardar" class="btnPrincipal" ng-click="Guardar()" />
+                            @*</div>*@
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+
+}

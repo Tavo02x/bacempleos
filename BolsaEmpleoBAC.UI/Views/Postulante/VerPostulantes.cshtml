@@ -1,0 +1,41 @@
+﻿
+@{}
+
+<div ng-controller="VerPostulantesController" ng-init="SeguridadJS();LoadGrid();getPaises();">
+    <h1 class="subtitle-18 mb-5"><span class="mdi mdi-account-box mdi-24px"></span> Postulantes <span id="totalGrid"></span></h1>
+    <h1 id="txtNombrePuesto"></h1>
+    <div class="row">
+        <div class="col-md-7 col-xl-5">
+            <div class="bg-white px-3 mb-3 d-flex">
+                <input class="border-0 my-2" id="textNombre" type="text" placeholder="Búsqueda por palabra clave" ng-model="model.nombre">
+                <button type="button" ng-click="Filter()"><span class="mdi mdi-magnify mdi-24px"></span></button>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-7 col-xl-5">
+            <div class="row m-0 align-items-center">
+                <div class="col-3">
+                    <p class="text-12 m-0">País:</p>
+                </div>
+                <div class="col-9 bg-white">
+                    <select id="selPais" ng-model="model.pais" class="border-0 my-2">
+                        <option disabled selected value="">Selecciona una opción</option>
+                        <option value="" ng-value="">Todos</option>
+                        <option ng-repeat="pais in Paises" value="{{pais.IdPais}}" ng-value="{{pais.IdPais}}">{{pais.Descripcion}}</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="Panel">
+        <div id="tablaPostulantes">
+
+        </div>
+    </div>
+</div>
+
+@section scripts{
+
+}

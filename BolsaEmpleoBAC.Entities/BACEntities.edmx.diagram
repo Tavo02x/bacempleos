@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="fc7ef12fd6674e88a4c2f838e1850875" Name="Diagram1" ZoomLevel="56">
+        <EntityTypeShape EntityType="BacModel.Acciones" Width="1.5" PointX="0.75" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BacModel.Agenda_Usuario" Width="1.5" PointX="3" PointY="35.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BacModel.AreasLaborales" Width="1.5" PointX="3" PointY="50" IsExpanded="true" />
+        <EntityTypeShape EntityType="BacModel.AreasPostulante" Width="1.5" PointX="12" PointY="62.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BacModel.Bitacora_Log" Width="1.5" PointX="6" PointY="25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BacModel.Comentarios" Width="1.5" PointX="15" PointY="62.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BacModel.Configuraciones" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BacModel.Discapacidad" Width="1.5" PointX="12.75" PointY="70.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BacModel.EmailQueue" Width="1.5" PointX="2.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BacModel.Entrevistas" Width="1.5" PointX="12" PointY="49.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BacModel.Entrevistas_Videos" Width="1.5" PointX="14.25" PointY="50.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BacModel.EstadoCivil" Width="1.5" PointX="7.5" PointY="67.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BacModel.EstadoEntrevista" Width="1.5" PointX="9.75" PointY="47.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BacModel.EstadoPerfil" Width="1.5" PointX="12.75" PointY="43.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BacModel.ExperienciaLaboral" Width="1.5" PointX="12" PointY="66.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BacModel.FeriaEmpleo" Width="1.5" PointX="9.75" PointY="50.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BacModel.FeriaEmpleo_Entrevistadores" Width="1.5" PointX="12" PointY="38.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BacModel.FeriaEmpleo_Puestos" Width="1.5" PointX="7.5" PointY="53.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BacModel.Habilidades" Width="1.5" PointX="9.75" PointY="69.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BacModel.Habilidades_Postulante" Width="1.5" PointX="12" PointY="59.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BacModel.Idioma" Width="1.5" PointX="5.25" PointY="58.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BacModel.Idiomas_Postulante" Width="1.5" PointX="15" PointY="58.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BacModel.MediosInformacion" Width="1.5" PointX="9.75" PointY="44.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BacModel.Monedas" Width="1.5" PointX="5.25" PointY="75.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BacModel.NivelAcademico" Width="1.5" PointX="3" PointY="56.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BacModel.Paises" Width="1.5" PointX="5.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BacModel.Paises_Bac" Width="1.5" PointX="0.75" PointY="36.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BacModel.Paises_Bac_FeriaEmpleo" Width="1.5" PointX="6" PointY="36.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BacModel.Paises_Bac_Usuario" Width="1.5" PointX="6" PointY="33.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BacModel.PaisPostulante" Width="1.5" PointX="6" PointY="39.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BacModel.Postulante_Discapacidad" Width="1.5" PointX="15" PointY="66.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BacModel.Postulante_MediosInformacion" Width="1.5" PointX="12" PointY="56.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BacModel.Preguntas" Width="1.5" PointX="12" PointY="46" IsExpanded="true" />
+        <EntityTypeShape EntityType="BacModel.Preguntas_Entrevistas" Width="1.5" PointX="17.25" PointY="51" IsExpanded="true" />
+        <EntityTypeShape EntityType="BacModel.PretensionSalarial" Width="1.5" PointX="7.5" PointY="75.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BacModel.Puesto_TipoJornada" Width="1.5" PointX="7.5" PointY="50.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BacModel.Puestos" Width="1.5" PointX="5.25" PointY="51.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BacModel.Puestos_Idiomas" Width="1.5" PointX="7.5" PointY="57.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BacModel.Puestos_Paises_BAC" Width="1.5" PointX="3" PointY="31.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BacModel.Puestos_Postulante" Width="1.5" PointX="15" PointY="54.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BacModel.PuestosPublicacionTrack" Width="1.5" PointX="7.5" PointY="61.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BacModel.ReferenciasLaborales" Width="1.5" PointX="12" PointY="85.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BacModel.RequisitosPuesto" Width="1.5" PointX="7.5" PointY="64.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BacModel.Rol_Acciones" Width="1.5" PointX="3" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="BacModel.Roles" Width="1.5" PointX="0.75" PointY="2.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BacModel.Sesiones" Width="1.5" PointX="6" PointY="28.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BacModel.TipoAccion" Width="1.5" PointX="1.5" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BacModel.TipoEntrevista" Width="1.5" PointX="9.75" PointY="54.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BacModel.TipoJornada" Width="1.5" PointX="5.25" PointY="48.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="BacModel.TipoLicencia" Width="1.5" PointX="7.5" PointY="78.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BacModel.TipoLogin" Width="1.5" PointX="1.5" PointY="26.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="BacModel.TipoPublicacion" Width="1.5" PointX="4.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BacModel.Usuario" Width="1.5" PointX="3.75" PointY="25.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BacModel.Usuario_Roles" Width="1.5" PointX="6" PointY="15.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="BacModel.Zona1" Width="1.5" PointX="3" PointY="53.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BacModel.Zona2" Width="1.5" PointX="5.25" PointY="71.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="BacModel.Zona3" Width="1.5" PointX="7.5" PointY="71.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="BacModel.Inscripciones" Width="1.5" PointX="6.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BacModel.vw_acciones" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BacModel.vw_accionSegunAsociacionRol" Width="1.5" PointX="8.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BacModel.vw_areaslaborales" Width="1.5" PointX="8.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BacModel.vw_Comentarios" Width="1.5" PointX="9.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BacModel.vw_discapacidad" Width="1.5" PointX="3.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BacModel.vw_EntrevistaAplicadasPostulante" Width="1.5" PointX="5.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BacModel.vw_EntrevistasAgendadas" Width="1.5" PointX="10.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BacModel.vw_EntrevistasRealizadas" Width="1.5" PointX="10.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BacModel.vw_EntrevistasRechazadas" Width="1.5" PointX="12.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BacModel.vw_EntrevistasSolicitadas" Width="1.5" PointX="12.75" PointY="5.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BacModel.vw_feriaEmpleo" Width="1.5" PointX="12.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BacModel.vw_feriaEmpleoTodas" Width="1.5" PointX="14.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BacModel.vw_habilidades" Width="1.5" PointX="7.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BacModel.vw_idioma" Width="1.5" PointX="3.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BacModel.vw_jornadalaboral" Width="1.5" PointX="0.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BacModel.vw_Postulante" Width="1.5" PointX="8.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BacModel.vw_PostulanteXPuesto" Width="1.5" PointX="14.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BacModel.vw_PostulanteXPuestoFeria" Width="1.5" PointX="2.75" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BacModel.vw_PretensionConMoneda" Width="1.5" PointX="10.75" PointY="15.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BacModel.vw_pretensionsSalarial" Width="1.5" PointX="16.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BacModel.vw_Puestos" Width="1.5" PointX="16.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BacModel.vw_Puestos_FeriaEmpleo" Width="1.5" PointX="16.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BacModel.vw_PuestosAplicados" Width="1.5" PointX="16.75" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BacModel.vw_PuestosAplicadosMiPerfil" Width="1.5" PointX="16.75" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BacModel.vw_PuestosDisponibles" Width="1.5" PointX="18.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BacModel.vw_rol" Width="1.5" PointX="18.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BacModel.vw_usuarios" Width="1.5" PointX="4.75" PointY="18.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BacModel.vw_zona1" Width="1.5" PointX="6.75" PointY="18.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BacModel.vw_zona2" Width="1.5" PointX="18.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="BacModel.vw_zona3" Width="1.5" PointX="8.75" PointY="18.75" IsExpanded="true" />
+        <AssociationConnector Association="BacModel.FK_Acciones_TipoAccion" ManuallyRouted="false" />
+        <AssociationConnector Association="BacModel.FK_Rol_Acciones_Acciones" ManuallyRouted="false" />
+        <AssociationConnector Association="BacModel.FK_Agenda_Usuario_Paises_Bac" ManuallyRouted="false" />
+        <AssociationConnector Association="BacModel.FK_Agenda_Usuario_Usuario" ManuallyRouted="false" />
+        <AssociationConnector Association="BacModel.FK_Entrevistas_Agenda_Usuario" ManuallyRouted="false" />
+        <AssociationConnector Association="BacModel.FK_AreaPostulante_AreasLaborales" ManuallyRouted="false" />
+        <AssociationConnector Association="BacModel.FK_Puestos_AreasLaborales" ManuallyRouted="false" />
+        <AssociationConnector Association="BacModel.FK_Bitacora_Log_Usuario" ManuallyRouted="false" />
+        <AssociationConnector Association="BacModel.FK_Comentarios_Usuario" ManuallyRouted="false" />
+        <AssociationConnector Association="BacModel.FK_Postulante_Discapacidad_Discapacidad" ManuallyRouted="false" />
+        <AssociationConnector Association="BacModel.FK_Entrevistas_EstadoEntrevista" ManuallyRouted="false" />
+        <AssociationConnector Association="BacModel.FK_Entrevistas_FeriaEmpleo" ManuallyRouted="false" />
+        <AssociationConnector Association="BacModel.FK_Entrevistas_Puestos" ManuallyRouted="false" />
+        <AssociationConnector Association="BacModel.FK_Entrevistas_TipoEntrevista" ManuallyRouted="false" />
+        <AssociationConnector Association="BacModel.FK_Entrevistas_Videos_Entrevistas" ManuallyRouted="false" />
+        <AssociationConnector Association="BacModel.FK_Preguntas_Entrevistas_Entrevistas" ManuallyRouted="false" />
+        <AssociationConnector Association="BacModel.FK_Entrevistas_Videos_Preguntas" ManuallyRouted="false" />
+        <AssociationConnector Association="BacModel.FK_Puestos_Postulante_EstadoPerfil" ManuallyRouted="false" />
+        <AssociationConnector Association="BacModel.FK_FeriaEmpleo_Entrevistadores_FeriaEmpleo" ManuallyRouted="false" />
+        <AssociationConnector Association="BacModel.FK_FeriaEmpleo_Puestos_FeriaEmpleo" ManuallyRouted="false" />
+        <AssociationConnector Association="BacModel.FK_Paises_Bac_FeriaEmpleo_FeriaEmpleo" ManuallyRouted="false" />
+        <AssociationConnector Association="BacModel.FK_FeriaEmpleo_Entrevistadores_Usuario" ManuallyRouted="false" />
+        <AssociationConnector Association="BacModel.FK_FeriaEmpleo_Puestos_Puestos" ManuallyRouted="false" />
+        <AssociationConnector Association="BacModel.FK_Habilidades_Postulante_Habilidades" ManuallyRouted="false" />
+        <AssociationConnector Association="BacModel.FK_Idiomas_Postulante_Idioma" ManuallyRouted="false" />
+        <AssociationConnector Association="BacModel.FK_Puestos_Idiomas_Idioma" ManuallyRouted="false" />
+        <AssociationConnector Association="BacModel.FK_Postulante_MediosInformacion_MediosInformacion" ManuallyRouted="false" />
+        <AssociationConnector Association="BacModel.FK_PretensionSalarial_Monedas" ManuallyRouted="false" />
+        <AssociationConnector Association="BacModel.FK_Puestos_NivelAcademico" ManuallyRouted="false" />
+        <AssociationConnector Association="BacModel.FK_Paises_Bac_FeriaEmpleo_Paises_Bac" ManuallyRouted="false" />
+        <AssociationConnector Association="BacModel.FK_Paises_Bac_Usuario_Paises_Bac" ManuallyRouted="false" />
+        <AssociationConnector Association="BacModel.FK_PaisPostulante_Paises_Bac" ManuallyRouted="false" />
+        <AssociationConnector Association="BacModel.FK_Puestos_Paises_BAC_Paises_Bac" ManuallyRouted="false" />
+        <AssociationConnector Association="BacModel.FK_Zona1_Paises_Bac" ManuallyRouted="false" />
+        <AssociationConnector Association="BacModel.FK_Paises_Bac_Usuario_Usuario" ManuallyRouted="false" />
+        <AssociationConnector Association="BacModel.FK_Preguntas_Puestos_Preguntas" ManuallyRouted="false" />
+        <AssociationConnector Association="BacModel.FK_Puesto_TipoJornada_Puestos" ManuallyRouted="false" />
+        <AssociationConnector Association="BacModel.FK_Puesto_TipoJornada_TipoJornada" ManuallyRouted="false" />
+        <AssociationConnector Association="BacModel.FK_Puestos_Idiomas_Puestos" ManuallyRouted="false" />
+        <AssociationConnector Association="BacModel.FK_Puestos_Paises_BAC_Puestos" ManuallyRouted="false" />
+        <AssociationConnector Association="BacModel.FK_Puestos_Postulante_Puestos" ManuallyRouted="false" />
+        <AssociationConnector Association="BacModel.FK_Puestos_Zona1" ManuallyRouted="false" />
+        <AssociationConnector Association="BacModel.FK_PuestosPublicacionTrack_Puestos" ManuallyRouted="false" />
+        <AssociationConnector Association="BacModel.FK_RequisitosPuesto_Puestos" ManuallyRouted="false" />
+        <AssociationConnector Association="BacModel.FK_Rol_Acciones_Roles" ManuallyRouted="false" />
+        <AssociationConnector Association="BacModel.FK_Usuario_Roles_Roles" ManuallyRouted="false" />
+        <AssociationConnector Association="BacModel.FK_Sesiones_Usuario" ManuallyRouted="false" />
+        <AssociationConnector Association="BacModel.FK_Usuario_TipoLogin" ManuallyRouted="false" />
+        <AssociationConnector Association="BacModel.FK_Usuario_Roles_Usuario" ManuallyRouted="false" />
+        <AssociationConnector Association="BacModel.FK_Canton_Provincia" ManuallyRouted="false" />
+        <AssociationConnector Association="BacModel.FK_Distrito_Canton" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="BacModel.vw_ListaPostulanteReporte" Width="1.5" PointX="11.375" PointY="18.75" />
+        <EntityTypeShape EntityType="BacModel.Postulante" Width="1.5" PointX="15.75" PointY="39.625" />
+        <AssociationConnector Association="BacModel.FK_Agenda_Usuario_Postulante" />
+        <AssociationConnector Association="BacModel.FK_AreaPostulante_Postulante" />
+        <AssociationConnector Association="BacModel.FK_Comentarios_Postulante" />
+        <AssociationConnector Association="BacModel.FK_Entrevistas_Postulante" />
+        <AssociationConnector Association="BacModel.FK_Postulante_EstadoCivil" />
+        <AssociationConnector Association="BacModel.FK_ExperienciaLaboral_Postulante" />
+        <AssociationConnector Association="BacModel.FK_Habilidades_Postulante" />
+        <AssociationConnector Association="BacModel.FK_Idiomas_Postulante_Postulante" />
+        <AssociationConnector Association="BacModel.FK_PaisPostulante_Postulante" />
+        <AssociationConnector Association="BacModel.FK_Postulante_Canton" />
+        <AssociationConnector Association="BacModel.FK_Postulante_Discapacidad_Postulante" />
+        <AssociationConnector Association="BacModel.FK_Postulante_Distrito" />
+        <AssociationConnector Association="BacModel.FK_Postulante_MediosInformacion_Postulante" />
+        <AssociationConnector Association="BacModel.FK_Postulante_PretensionSalarial" />
+        <AssociationConnector Association="BacModel.FK_Postulante_Provincia" />
+        <AssociationConnector Association="BacModel.FK_Postulante_TipoLicencia" />
+        <AssociationConnector Association="BacModel.FK_Postulante_Usuario" />
+        <AssociationConnector Association="BacModel.FK_Puestos_Postulante_Postulante" />
+        <AssociationConnector Association="BacModel.FK_ReferenciasLaborales_Postulante1" />
+        <EntityTypeShape EntityType="BacModel.Titulos" Width="1.5" PointX="18" PointY="46.875" />
+        <AssociationConnector Association="BacModel.FK_Titulos_NivelAcademico" />
+        <AssociationConnector Association="BacModel.FK_Titulos_Postulante" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

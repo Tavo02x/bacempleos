@@ -1,0 +1,75 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BAC Empleos</title>
+    <link rel="icon" type="image/png" href="~/Content/Images/favicon.png">
+    @Html.Partial("IncludeCSS")
+    @RenderSection("head", required: false)
+</head>
+<body ng-app="BacApp" ng-controller="mainController" ng-init="VerificarSession();ValidateSession();">
+    <div class="Pagina">
+        <div class="Cabecera">
+            <div class="Fondo"></div>
+
+            <a id="btnInicio" href="#">
+                <div>
+                    <img src="~/Content/Images/IconoBAC.png" class="bitmapcopy2" />
+                </div>
+            </a>
+            <div class="group">
+
+                <div class="salir">
+                    <a id="btnSalir" ng-click="Logout()">Salir <span class="mdi mdi-logout-variant mdi-24px"></span></a>
+                </div>
+                <div id="contenedorMiperfil">
+                    <a id="btnMiPerfil" href="#">
+                        <div class="miperfil">
+                            <a href="{{baseUrl}}postulante/verperfil">Mi Perfil</a>
+                        </div>
+                    </a>
+                    <img src="~/Content/Images/DivisorEncabezadoMiPerfil.png" class="line4" />
+                </div>
+            </div>
+
+
+        </div>
+        <div class="Cuerpo row">
+            <div class="FondoMenuLateral col-md-3 col-xl-2" ng-controller="MenuController" ng-init="VerificarSession();">
+                <div id="menu" class="menuLateralDiv">
+                </div>
+                <div class="piePagina footer-copyright text-center py-3">
+                    <img class="imagen1" src="~/Content/Images/IconoPiePagina1.png">
+                    <img class="imagen2" src="~/Content/Images/IconoPiePagina2.png">
+                </div>
+            </div>
+            <div class="Contenido col-md-9 col-xl-10">
+            <div class="container">
+                @RenderBody()
+            </div>
+                <div class="piePagina2 footer-copyright text-center py-3">
+                    <span class="LetrasContenido textoNegrita ColorLetraGris">Aplica a un puesto en BAC Credomatic y haz carrera con nosotros. Todos tus datos se manejan bajo estricta confidencialidad.</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="contenedorLoader">
+        <div id="popupLoading" class="modal fade show" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="loader" id="loader">Loading...</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var SessionStatus = '@ViewBag.SessionState';
+    </script>
+    @Html.Partial("IncludeJS")
+    @RenderSection("scripts", required: false)
+
+    @Html.Partial("_PreLoader")
+</body>
+</html>

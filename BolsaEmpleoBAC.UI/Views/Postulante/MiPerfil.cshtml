@@ -1,0 +1,494 @@
+﻿
+@{
+    /**/
+
+    ViewBag.Title = "MiPerfil";
+}
+
+<div ng-controller="miPerfilController" ng-init="SeguridadJS();getPaises();getIdiomas();AreaLaboralGet();PretensionSalarialGet();DiscapacidadGet();getHabilidad();GetLicencias();getPerfil();">
+    <h1 class="subtitle-18 mb-5"><span class="mdi mdi-account-box mdi-24px"></span> Mi perfil</h1>
+
+    <div class="Panel">
+        <div class="row">
+            <div class="col-lg-6 mb-3 mb-lg-0 col-xl-8">
+                <div class="d-flex">
+                    <div class="text-center">
+                        <img id="FotoPerfil" src="~/Content/Images/FondoPersona.png" class="FotoCircular mb-3" />
+                        <input id="uploadfile" type="file" value="Adjuntar Foto" class="inputfile" ng-click="uploadFile()" />
+                        <label for="uploadfile" class="d-block">
+                            <img id="btnAdjuntar" class="imgLetraContenido" src="~/Content/Images/clip.png" />
+                            Cambiar Foto
+                        </label>
+                    </div>
+                    <div class="ml-3">
+                        <input id="txtNombreP" type="text" class="LetrasTituloPrincipal" ng-model="model.PostulanteInfo.NombreCompleto" placeholder="Nombre y Apellido" />
+                        <p class="validate" ng-show="show7">Por favor, ingresa tu nombre</p>
+                        <p class="LetrasContenido">{{model.PostulanteInfo.Email}}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-xl-4">
+                <div class="btn-wrap">
+                     @*<button id="btnEditarPerfil" type="button" class="btn">Editar perfil</button>*@
+                    <button id="btnGuardarCambios" type="button" class="btn order-md-1" ng-click="SavePostulante()">Guardar cambios</button>
+                    <button id="btnCancelar" type="button" class="btn btn-gray" ng-click="cancelar()">Cancelar</button>
+                    @*<button id="btnDescargar" type="button" class="btn">Descargar</button>*@
+                </div>
+            </div>
+        </div>
+        <div id="taps" class="row my-5">
+            <div id="StepOne" class="col-4 col-md-3 tapSelect" ng-click="ChangeStep1()">Datos </div>
+            <div id="StepTwo" class="col-4 col-md-3 taps" ng-click="ChangeStep2()">Experiencia </div>
+            <div id="StepThree" class="col-4 col-md-3 taps" ng-click="ChangeStep3()">Intereses</div>
+        </div>
+        <div id="paso1" class="row" ng-show="StepOne">
+            <div class="col-lg-4 mb-5 Division">
+                <h4 class="LetrasContenido textoNegrita mb-4">Información de contacto</h4>
+                <label for="txtCorreo1" class="LetrasContenido textoNegrita">Correo:</label>
+                <input id="txtCorreo1" type="text" ng-model="model.PostulanteInfo.Email" placeholder="Correo electrónico" />
+                <p class="validate" ng-show="show8">Por favor, ingresa tu correo</p>
+
+                <label for="txtTelefono" class="LetrasContenido textoNegrita">Teléfono:</label>
+                <input id="txtTelefono" ng-keypress="OnlyNumbers($event)" type="text" ng-model="model.PostulanteInfo.Telefono" placeholder="Teléfono" />
+                <p class="validate" ng-show="show9">Por favor, ingresa tu teléfono</p>
+
+                <label class="LetrasContenido textoNegrita ">Residencia:</label>
+                <select id="selResidencia" ng-model="model.PostulanteInfo.PaisRecidencia" ng-change="getZona()">
+                    <option selected disabled value="">País</option>
+                    <option ng-repeat="pais in Paises" value="{{pais.IdPais}}" ng-value="{{pais.IdPais}}">{{pais.Descripcion}}</option>
+                </select>
+                <p class="validate" ng-show="show10">Por favor, selecciona tu residencia</p>
+
+                <select id="selProvincia" ng-model="model.PostulanteInfo.IdZona1" ng-change="Zona2Get()">
+                    <option selected disabled value="">Zona 1</option>
+                    <option ng-repeat="zona in Zona1" value="{{zona.IdZona1}}" ng-value="{{zona.IdZona1}}">{{zona.Descripcion}}</option>
+                </select>
+
+                <select id="selCanton" ng-model="model.PostulanteInfo.IdZona2" ng-change="Zona3Get()">
+                    <option selected disabled value="">Zona 2</option>
+                    <option ng-repeat="zona in Zona2" value="{{zona.IdZona2}}" ng-value="{{zona.IdZona2}}">{{zona.Descripcion}}</option>
+                </select>
+
+                <select id="selDistrito" ng-model="model.PostulanteInfo.IdZona3">
+                    <option selected disabled value="">Zona 3</option>
+                    <option ng-repeat="zona in Zona3" value="{{zona.IdZona3}}" ng-value="{{zona.IdZona3}}">{{zona.Descripcion}}</option>
+                </select>
+            </div>
+            <div class="col-lg-4 mb-5 Division">
+                <h4 class="LetrasContenido textoNegrita mb-4">Información personal</h4>
+                <label for="txtIdentificacion" class="LetrasContenido textoNegrita">Identificación:</label>
+                <input id="txtIdentificacion" ng-keypress="OnlyNumbers($event)" type="text" placeholder="Identificación" ng-model="model.PostulanteInfo.Identificacion" />
+                <p class="validate" ng-show="show11">Por favor, ingresa tu identificación</p>
+
+                <label for="selGenero" class="LetrasContenido textoNegrita">Género:</label>
+                <select id="selGenero" ng-model="model.PostulanteInfo.Genero">
+                    <option selected value="">Género</option>
+                    <option selected value="0">Mujer</option>
+                    <option selected value="1">Hombre</option>
+                </select>
+                <p class="validate" ng-show="show12">Por favor, ingresa tu género</p>
+
+                <label for="selEstadoCivil" class="LetrasContenido textoNegrita">Estado Civil:</label>
+                <select id="selEstadoCivil" ng-model="model.PostulanteInfo.IdEstadoCivil">
+                    <option value="1">Soltero</option>
+                    <option value="2">Divorciado</option>
+                    <option value="3">Viudo</option>
+                    <option value="4">Casado</option>
+                    <option value="5">Unión Libre</option>
+                </select>
+                <p class="validate" ng-show="show13">Por favor, ingresa tu estado civil</p>
+
+                <label for="fechaNacimiento" class="LetrasContenido textoNegrita">Fecha de nacimiento:</label>
+
+                <div class="datepicker">
+                    <input id="fechaNacimiento" readonly type="text" uib-datepicker-popup="{{format}}" ng-model="model.PostulanteInfo.FechaNacimiento" is-open="datepicker.opened" datepicker-options="dateOptions" ng-required="true" show-button-bar="false"/>
+                    <button type="button" class="datepicker__btn" ng-click="openDatepicker()"><span class="mdi mdi-calendar"></span></button>
+                </div>
+
+                <p class="validate" ng-show="show14">Por favor, ingresa tu fecha de nacimiento</p>
+
+                @*<label class="LetrasContenido">Edad:</label>
+                    <input id="txtEdad" type="text" />*@
+
+                <label for="selNacionalidad" class="LetrasContenido textoNegrita">Nacionalidad:</label>
+                <select id="selNacionalidad" ng-model="model.PostulanteInfo.Nacionalidad">
+                    <option selected value="">Selecciona tu nacionalidad</option>
+                    <option value="AF">Afghanistan</option>
+                    <option value="AL">Albania</option>
+                    <option value="DZ">Algeria</option>
+                    <option value="AD">Andorra</option>
+                    <option value="AO">Angola</option>
+                    <option value="AI">Anguilla</option>
+                    <option value="AQ">Antarctica</option>
+                    <option value="AG">Antigua and Barbuda</option>
+                    <option value="AR">Argentina</option>
+                    <option value="AM">Armenia</option>
+                    <option value="AW">Aruba</option>
+                    <option value="AU">Australia</option>
+                    <option value="AT">Austria</option>
+                    <option value="AZ">Azerbaijan</option>
+                    <option value="BS">Bahamas</option>
+                    <option value="BH">Bahrain</option>
+                    <option value="BD">Bangladesh</option>
+                    <option value="BB">Barbados</option>
+                    <option value="BY">Belarus</option>
+                    <option value="BE">Belgium</option>
+                    <option value="BZ">Belize</option>
+                    <option value="BJ">Benin</option>
+                    <option value="BM">Bermuda</option>
+                    <option value="BT">Bhutan</option>
+                    <option value="BO">Bolivia</option>
+                    <option value="BA">Bosnia and Herzegovina</option>
+                    <option value="BW">Botswana</option>
+                    <option value="BR">Brazil</option>
+                    <option value="IO">British Indian Ocean</option>
+                    <option value="BN">Brunei</option>
+                    <option value="BG">Bulgaria</option>
+                    <option value="BF">Burkina Faso</option>
+                    <option value="BI">Burundi</option>
+                    <option value="KH">Cambodia</option>
+                    <option value="CM">Cameroon</option>
+                    <option value="CA">Canada</option>
+                    <option value="CV">Cape Verde</option>
+                    <option value="KY">Cayman Islands</option>
+                    <option value="CF">Central African Republic</option>
+                    <option value="TD">Chad</option>
+                    <option value="CL">Chile</option>
+                    <option value="CN">China</option>
+                    <option value="CX">Christmas Island</option>
+                    <option value="CC">Cocos (Keeling) Islands</option>
+                    <option value="CO">Colombia</option>
+                    <option value="KM">Comoros</option>
+                    <option value="CD">Congo, Democratic Republic of the</option>
+                    <option value="CG">Congo, Republic of the</option>
+                    <option value="CK">Cook Islands</option>
+                    <option value="CR">Costa Rica</option>
+                    <option value="HR">Croatia</option>
+                    <option value="CY">Cyprus</option>
+                    <option value="CZ">Czech Republic</option>
+                    <option value="DK">Denmark</option>
+                    <option value="DJ">Djibouti</option>
+                    <option value="DM">Dominica</option>
+                    <option value="DO">Dominican Republic</option>
+                    <option value="TL">East Timor</option>
+                    <option value="EC">Ecuador</option>
+                    <option value="EG">Egypt</option>
+                    <option value="SV">El Salvador</option>
+                    <option value="GQ">Equatorial Guinea</option>
+                    <option value="ER">Eritrea</option>
+                    <option value="EE">Estonia</option>
+                    <option value="ET">Ethiopia</option>
+                    <option value="FK">Falkland Islands (Malvinas)</option>
+                    <option value="FO">Faroe Islands</option>
+                    <option value="FJ">Fiji</option>
+                    <option value="FI">Finland</option>
+                    <option value="FR">France</option>
+                    <option value="GF">French Guiana</option>
+                    <option value="PF">French Polynesia</option>
+                    <option value="GA">Gabon</option>
+                    <option value="GM">Gambia</option>
+                    <option value="GE">Georgia</option>
+                    <option value="DE">Germany</option>
+                    <option value="GH">Ghana</option>
+                    <option value="GI">Gibraltar</option>
+                    <option value="GR">Greece</option>
+                    <option value="GL">Greenland</option>
+                    <option value="GD">Grenada</option>
+                    <option value="GP">Guadeloupe</option>
+                    <option value="GT">Guatemala</option>
+                    <option value="GN">Guinea</option>
+                    <option value="GW">Guinea-Bissau</option>
+                    <option value="GY">Guyana</option>
+                    <option value="HT">Haiti</option>
+                    <option value="HN">Honduras</option>
+                    <option value="HK">Hong Kong</option>
+                    <option value="HU">Hungary</option>
+                    <option value="IS">Iceland</option>
+                    <option value="IN">India</option>
+                    <option value="ID">Indonesia</option>
+                    <option value="IE">Ireland</option>
+                    <option value="IL">Israel</option>
+                    <option value="IT">Italy</option>
+                    <option value="CI">Ivory Coast (Côte d\'Ivoire)</option>
+                    <option value="JM">Jamaica</option>
+                    <option value="JP">Japan</option>
+                    <option value="JO">Jordan</option>
+                    <option value="KZ">Kazakhstan</option>
+                    <option value="KE">Kenya</option>
+                    <option value="KI">Kiribati</option>
+                    <option value="KR">Korea, South</option>
+                    <option value="KW">Kuwait</option>
+                    <option value="KG">Kyrgyzstan</option>
+                    <option value="LA">Laos</option>
+                    <option value="LV">Latvia</option>
+                    <option value="LB">Lebanon</option>
+                    <option value="LS">Lesotho</option>
+                    <option value="LI">Liechtenstein</option>
+                    <option value="LT">Lithuania</option>
+                    <option value="LU">Luxembourg</option>
+                    <option value="MO">Macau</option>
+                    <option value="MK">Macedonia, Republic of</option>
+                    <option value="MG">Madagascar</option>
+                    <option value="MW">Malawi</option>
+                    <option value="MY">Malaysia</option>
+                    <option value="MV">Maldives</option>
+                    <option value="ML">Mali</option>
+                    <option value="MT">Malta</option>
+                    <option value="MH">Marshall Islands</option>
+                    <option value="MQ">Martinique</option>
+                    <option value="MR">Mauritania</option>
+                    <option value="MU">Mauritius</option>
+                    <option value="YT">Mayotte</option>
+                    <option value="MX">Mexico</option>
+                    <option value="FM">Micronesia</option>
+                    <option value="MD">Moldova</option>
+                    <option value="MC">Monaco</option>
+                    <option value="MN">Mongolia</option>
+                    <option value="ME">Montenegro</option>
+                    <option value="MS">Montserrat</option>
+                    <option value="MA">Morocco</option>
+                    <option value="MZ">Mozambique</option>
+                    <option value="NA">Namibia</option>
+                    <option value="NR">Nauru</option>
+                    <option value="NP">Nepal</option>
+                    <option value="NL">Netherlands</option>
+                    <option value="AN">Netherlands Antilles</option>
+                    <option value="NC">New Caledonia</option>
+                    <option value="NZ">New Zealand</option>
+                    <option value="NI">Nicaragua</option>
+                    <option value="NE">Niger</option>
+                    <option value="NG">Nigeria</option>
+                    <option value="NU">Niue</option>
+                    <option value="NF">Norfolk Island</option>
+                    <option value="NO">Norway</option>
+                    <option value="OM">Oman</option>
+                    <option value="PK">Pakistan</option>
+                    <option value="PS">Palestinian Territory</option>
+                    <option value="PA">Panama</option>
+                    <option value="PG">Papua New Guinea</option>
+                    <option value="PY">Paraguay</option>
+                    <option value="PE">Peru</option>
+                    <option value="PH">Philippines</option>
+                    <option value="PN">Pitcairn Island</option>
+                    <option value="PL">Poland</option>
+                    <option value="PT">Portugal</option>
+                    <option value="QA">Qatar</option>
+                    <option value="RE">Réunion</option>
+                    <option value="RO">Romania</option>
+                    <option value="RU">Russia</option>
+                    <option value="RW">Rwanda</option>
+                    <option value="SH">Saint Helena</option>
+                    <option value="KN">Saint Kitts and Nevis</option>
+                    <option value="LC">Saint Lucia</option>
+                    <option value="PM">Saint Pierre and Miquelon</option>
+                    <option value="VC">Saint Vincent and the Grenadines</option>
+                    <option value="WS">Samoa</option>
+                    <option value="SM">San Marino</option>
+                    <option value="ST">São Tome and Principe</option>
+                    <option value="SA">Saudi Arabia</option>
+                    <option value="SN">Senegal</option>
+                    <option value="RS">Serbia</option>
+                    <option value="CS">Serbia and Montenegro</option>
+                    <option value="SC">Seychelles</option>
+                    <option value="SL">Sierra Leon</option>
+                    <option value="SG">Singapore</option>
+                    <option value="SK">Slovakia</option>
+                    <option value="SI">Slovenia</option>
+                    <option value="SB">Solomon Islands</option>
+                    <option value="SO">Somalia</option>
+                    <option value="ZA">South Africa</option>
+                    <option value="GS">South Georgia and the South Sandwich Islands</option>
+                    <option value="ES">Spain</option>
+                    <option value="LK">Sri Lanka</option>
+                    <option value="SR">Suriname</option>
+                    <option value="SJ">Svalbard and Jan Mayen</option>
+                    <option value="SZ">Swaziland</option>
+                    <option value="SE">Sweden</option>
+                    <option value="CH">Switzerland</option>
+                    <option value="TW">Taiwan</option>
+                    <option value="TJ">Tajikistan</option>
+                    <option value="TZ">Tanzania</option>
+                    <option value="TH">Thailand</option>
+                    <option value="TG">Togo</option>
+                    <option value="TK">Tokelau</option>
+                    <option value="TO">Tonga</option>
+                    <option value="TT">Trinidad and Tobago</option>
+                    <option value="TN">Tunisia</option>
+                    <option value="TR">Turkey</option>
+                    <option value="TM">Turkmenistan</option>
+                    <option value="TC">Turks and Caicos Islands</option>
+                    <option value="TV">Tuvalu</option>
+                    <option value="UG">Uganda</option>
+                    <option value="UA">Ukraine</option>
+                    <option value="AE">United Arab Emirates</option>
+                    <option value="GB">United Kingdom</option>
+                    <option value="US">United States</option>
+                    <option value="UM">United States Minor Outlying Islands</option>
+                    <option value="UY">Uruguay</option>
+                    <option value="UZ">Uzbekistan</option>
+                    <option value="VU">Vanuatu</option>
+                    <option value="VA">Vatican City</option>
+                    <option value="VE">Venezuela</option>
+                    <option value="VN">Vietnam</option>
+                    <option value="VG">Virgin Islands, British</option>
+                    <option value="WF">Wallis and Futuna</option>
+                    <option value="EH">Western Sahara</option>
+                    <option value="YE">Yemen</option>
+                    <option value="ZM">Zambia</option>
+                    <option value="ZW">Zimbabwe</option>
+                </select>
+                <p class="validate" ng-show="show15">Por favor, ingresa tu nacionalidad</p>
+            </div>
+            <div class="col-lg-4 mb-5">
+                <h4 class="LetrasContenido textoNegrita mb-4">Información adicional</h4>
+                <label for="isVehiculo" class="LetrasContenido textoNegrita">Vehículo</label>
+                <select id="isVehiculo" ng-model="model.PostulanteInfo.Vehiculo">
+                    <option value="true">Sí</option>
+                    <option selected value="false">No</option>
+                </select>
+                <p class="validate" ng-show="VehiculoInvalido">Por favor, selecciona sí o no</p>
+
+                <label class="LetrasContenido textoNegrita">Licencias</label><br />
+                <div id="rangeLicencias">
+                    <label ng-repeat="pretension in Licencias" class="container">
+                        {{pretension.Descripcion}}
+                        <input type="radio" name="licencia" value="{{pretension.IdTipoLicencia}}" id="{{pretension.IdTipoLicencia}}">
+                        <span class="radio"></span>
+                    </label>
+                </div>
+
+                <label class="LetrasContenido textoNegrita">Discapacidad:</label>
+                <div id="divDiscapacidad">
+
+                </div>
+                <img id="agregarDiscapacidad" class="AddMultiItems punteroSelector" src="~/Content/Images/IconoAgregar.png" ng-click="AgregarDiscapacidad()" />
+                <span ng-click="AgregarDiscapacidad()" class="LetrasContenido punteroSelector">Agregar otra discapacidad</span>
+                <p class="validate" ng-show="show1">Debes ingresar al menos uno</p>
+                <p class="validate" ng-show="RepeticionDiscapacidad">Hay un elemento repetido, favor verifica la información que has ingresado.</p>
+            </div>
+        </div>
+        <div id="paso2" class="row" ng-show="StepTwo">
+            <div class="col-lg-4 mb-5 Division">
+                <h4 class="LetrasContenido textoNegrita mb-4">Educación</h4>
+                <p class="validate" ng-show="show2">Debe ingresar al menos uno</p>
+                <p class="validate" ng-show="RepeticionGradoAcademico">Hay un elemento repetido, favor verifica la información que has ingresado.</p>
+                <div id="GradoAcademico">
+
+                </div>
+                <img id="agregarGradoAcademico" src="~/Content/Images/IconoAgregar.png" class="AddMultiItems punteroSelector" ng-click="AgregarGrado()" />
+                <span ng-click="AgregarGrado()" class="LetrasContenido punteroSelector">Agregar grado académico</span>
+            </div>
+            <div class="col-lg-4 mb-5 Division">
+                <div class="mb-4">
+                    <h4 class="LetrasContenido textoNegrita mb-4">Laboral</h4>
+                    <div id="ExperienciaAcademica">
+
+                    </div>
+                    <img id="agregarExperiencia" src="~/Content/Images/IconoAgregar.png" class="AddMultiItems punteroSelector" ng-click="AgregarExperiencia()" />
+                    <span ng-click="AgregarExperiencia()" class="LetrasContenido punteroSelector">Agregar Experiencia</span>
+                    <p class="validate" ng-show="show3">Debes ingresar al menos uno</p>
+                    <p class="validate" ng-show="RepeticionExperiencia">Hay un elemento repetido, favor verifica la información que has ingresado.</p>
+                </div>
+
+                <div class="row">
+                    <div class="col-sm-12">
+                        <label class="LetrasContenido textoNegrita">He trabajado en el BAC</label>
+                        <select id="isTrabajoBAC" ng-model="model.PostulanteInfo.TrabajoBAC">
+                            <option value="1"> Sí</option>
+                            <option value="0">No</option>
+                        </select>
+                        <p class="validate" ng-show="show16">Por favor, selecciona sí o no</p>
+                    </div>
+                </div>
+                <label class="LetrasContenido textoNegrita">Habilidades Blandas</label>
+                <div id="divHabilidad">
+
+                </div>
+                <img id="agregarHabilidadBlanda" src="~/Content/Images/IconoAgregar.png" class="AddMultiItems punteroSelector" ng-click="AgregarHabilidad()" />
+                <span ng-click="AgregarHabilidad()" class="LetrasContenido punteroSelector">Agregar otra habilidad</span>
+                <p class="validate" ng-show="show4">Debes ingresar al menos uno</p>
+                <p class="validate" ng-show="MaximoHabilidad">No es permitido agregar más de 5 habilidades blandas.</span><p>
+                <p class="validate" ng-show="RepeticionHabilidad">Has seleccionado una habilidad blanda previamente seleccionada, favor selecciona otra.</p>
+            </div>
+            <div class="col-lg-4 mb-5">
+                <h4 class="LetrasContenido textoNegrita mb-4">Referencias</h4>
+                <label class="LetrasContenido textoNegrita">Sitios de referencia</label>
+                <div id="divReferencias">
+
+                </div>
+                <img id="agregarSitiosReferencia" src="~/Content/Images/IconoAgregar.png" class="AddMultiItems punteroSelector" ng-click="AgregarReferencia()" />
+                <span ng-click="AgregarReferencia()" class="LetrasContenido punteroSelector">Agregar otra referencia</span>
+                <p class="validate" ng-show="show5">Debes ingresar al menos uno</p>
+                <p class="validate" ng-show="RepeticionReferencia">Hay un elemento repetido, favor verifica la información que has ingresado.</p>
+            </div>
+        </div>
+        <div id="paso3" class="row" ng-show="StepThree">
+            <div class="col-lg-4 Division">
+                <label class="LetrasContenido textoNegrita">Idiomas:</label>
+                <div id="NivelIdioma">
+
+                </div>
+                <img id="agregarIdioma" src="~/Content/Images/IconoAgregar.png" class="AddMultiItems punteroSelector" ng-click="AgregarIdioma()" />
+                <span ng-click="AgregarIdioma()" class="LetrasContenido punteroSelector">Agregar otro idioma</span>
+                <p class="validate" ng-show="show6">Debes ingresar al menos uno</p>
+                <p class="validate" ng-show="RepeticionIdioma">Hay un elemento repetido, favor verifica la información que has ingresado.</p>
+            </div>
+            <div class="col-lg-4 Division">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <label class="LetrasContenido textoNegrita">Quisiera trabajar en:</label>
+                        <div id="chkAreas" ng-repeat="area in Areas">
+                            <label class="container">
+                                {{area.Area}}
+                                <input type="radio" name="areas" ng-model="area.IdArea" value="{{area.IdArea}}" id="{{area.IdArea}}">
+                                <span class="checkmark "></span>
+                            </label>
+                        </div>
+                        <p class="validate" ng-show="show17">Debes seleccionar al menos uno</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <label class="LetrasContenido textoNegrita">¿En qué país te gustaría trabajar?:</label>
+                        <div id="chkPais" ng-repeat="pais in Paises">
+                            <label class="container">
+                                {{pais.Descripcion}}
+                                <input type="checkbox" name="pais" value="{{pais.IdPais}}" id="{{pais.IdPais}}">
+                                <span class="checkmark"></span>
+                            </label>
+                        </div>
+                        <p class="validate" ng-show="show18">Debes seleccionar al menos uno</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <label class="LetrasContenido textoNegrita">Pretensión Salarial</label>
+                        <div id="rangePretensión">
+                            <label ng-repeat="pretension in Pretensiones" class="container">
+                                {{pretension.Descripcion}}
+                                <input type="radio" name="pretension" value="{{pretension.IdPretension}}" id="{{pretension.IdPretension}}">
+                                <span class="checkmark"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="form-group form-group-medium">
+                    <label class="LetrasContenido textoNegrita">Adjunta tu curriculum vitae</label><br />
+                    <input id="uploadCV" type="file" ng-click="uploadFileCV()" value="Adjuntar Foto" class="inputfile" />
+                    <label for="uploadCV" class="LetrasContenido textoNegrita">
+                        <img id="btnAdjuntarCV" class="imgLetraContenido" src="~/Content/Images/clip.png" />
+                        Cambiar Curriculum
+                    </label><br />
+                    <p class="validate" ng-show="CurriculoInvalido">Por favor, sube un curriculum</p>
+                    <a id="DownloadCurriculo" class="LetrasContenido ColorLetraAzul" target="_blank" href="{{model.PostulanteInfo.CurriculumURL}}">Ver curriculum</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+
+}

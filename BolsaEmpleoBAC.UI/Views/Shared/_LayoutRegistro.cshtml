@@ -1,0 +1,27 @@
+﻿@using System.Web.Optimization
+<!DOCTYPE html>
+<html id="ContenedorGeneral">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BAC Empleos</title>
+    <link rel="icon" type="image/png" href="~/Content/Images/favicon.png">
+
+    @Styles.Render("~/Content/css/material")
+    @Styles.Render("~/Content/css/fontawesome")
+    @Styles.Render("~/Content/css/registro")
+</head>
+<body>
+    <nav class="navbar bg-red">
+        <img src="/Content/Images/IconoBAC.png" class="nav-logo">
+    </nav>
+    @RenderBody()
+
+
+    <script type="text/javascript" src="~/config/index"></script>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/scripts/registro")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

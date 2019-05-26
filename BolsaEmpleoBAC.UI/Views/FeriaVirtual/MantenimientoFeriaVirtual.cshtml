@@ -1,0 +1,206 @@
+﻿
+@{
+}
+
+<div ng-controller="FeriaVirtualController" ng-init="SeguridadJS();getPaisesBAC();GenerarArrayHoras();">
+    <a id="VolverPuesto" ng-click="ReturnLobby()" class="btn-back mb-3"><span class="mdi mdi-chevron-left mdi-24px"></span>Volver</a>
+    <h1 class="subtitle-18 mb-5"><span class="mdi mdi-cellphone mdi-24px"></span> Crear nueva feria virtual</h1>
+
+    <div class="ProgressBar">
+        <div id="PasosPostulante" class="row">
+            <div id="divStepOne" class="col-3 linea Primaria">
+                <div id="circuloStepOne" class="circulo CirculoPrimario">
+                    <div id="textStepOne" class="texto textoPrimario">1</div>
+                </div>
+            </div>
+            <div id="divStepTwo" class="col-3 linea Secundario">
+                <div id="circuloStepTwo" class="circulo CirculoSecundario">
+                    <div id="textStepTwo" class="texto textoSecundario">2</div>
+                </div>
+            </div>
+            <div id="divStepThree" class="col-3 linea Secundario">
+                <div id="circuloStepThree" class="circulo CirculoSecundario">
+                    <div id="textStepThree" class="texto textoSecundario">3</div>
+                </div>
+            </div>
+            <div id="divStepFour" class="col-3 linea Secundario">
+                <div id="circuloStepFour" class="circulo CirculoSecundario">
+                    <div id="textStepFour" class="texto textoSecundario">4</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="Panel">
+        <div id="paso1" ng-show="StepOne">
+            <div class="row">
+                <div class="col-lg-4 Division">
+                    <h2 class="LetrasSubTitulo">Información general</h2>
+                    <input id="txtNombre" type="text" ng-model="model.nombre" placeholder="Titulo de la feria" />
+                    <span class="validate" ng-show="FeriaInvalido">Por favor, ingresa el título de la feria</span>
+                    <h2 class="LetrasSubTitulo">Frecuencia de cada hora</h2>
+                    @*<input id="txtFrecuencia" type="text" ng-model="model.frecuencia" placeholder="Frecuencia de cada hora" />*@
+                    <select id="txtFrecuencia" ng-model="model.frecuencia">
+                        <option selected disabled value="">Frecuencia</option>
+                        <option value="15">15</option>
+                        <option value="30">30</option>
+                        <option value="45">45</option>
+                        <option value="60">60</option>
+                    </select>
+                    <span class="validate" ng-show="FrecuenciaInvalido">Por favor, selecciona una frecuencia</span>
+                </div>
+                <div class="col-lg-4 Division">
+                    <h2 class="LetrasSubTitulo">Fecha de inicio</h2>
+                    
+                    <div class="datepicker">
+                        <input id="dtInicio" readonly type="text" uib-datepicker-popup="{{format}}" ng-model="model.fechainicio" is-open="dateStart.opened" datepicker-options="dateOptions" ng-required="true"  show-button-bar="false" placeholder="Elegir fecha"/>
+                        <button type="button" class="datepicker__btn" ng-click="openDateStart()"><span class="mdi mdi-calendar"></span></button>
+                    </div>
+                    <span class="validate" ng-show="FechaInicioInvalido">Por favor, selecciona la fecha de inicio</span>
+
+                    <h2 class="LetrasSubTitulo">Fecha de cierre</h2>
+
+                    <div class="datepicker">
+                        <input id="dtFinal" readonly type="text" uib-datepicker-popup="{{format}}" ng-model="model.fechacierre" is-open="dateEnd.opened" datepicker-options="dateOptions" ng-required="true"  show-button-bar="false" placeholder="Elegir fecha"/>
+                        <button type="button" class="datepicker__btn" ng-click="openDateEnd()"><span class="mdi mdi-calendar"></span></button>
+                    </div>
+
+                    <span class="validate" ng-show="FechaCierreInvalido">Por favor, selecciona la fecha de cierre</span>
+                    <span class="validate" ng-show="FechaValidacionInvalido">La fecha de inicio no puede ser mayor a la fecha de cierre.</span>
+                </div>
+                <div class="col-lg-4">
+                    <h2 class="LetrasSubTitulo">Hora Inicial</h2>
+                    <select id="selHoraInicial" ng-model="model.horainicio">
+                        <option selected disabled value="">Hora inicial</option>
+                        <option selected value="01:00">00:00</option>
+                        <option selected value="01:00">01:00</option>
+                        <option selected value="02:00">02:00</option>
+                        <option selected value="03:00">03:00</option>
+                        <option selected value="04:00">04:00</option>
+                        <option selected value="05:00">05:00</option>
+                        <option selected value="06:00">06:00</option>
+                        <option selected value="07:00">07:00</option>
+                        <option selected value="08:00">08:00</option>
+                        <option selected value="09:00">09:00</option>
+                        <option selected value="10:00">10:00</option>
+                        <option selected value="11:00">11:00</option>
+                        <option selected value="12:00">12:00</option>
+                        <option selected value="13:00">13:00</option>
+                        <option selected value="14:00">14:00</option>
+                        <option selected value="15:00">15:00</option>
+                        <option selected value="16:00">16:00</option>
+                        <option selected value="17:00">17:00</option>
+                        <option selected value="18:00">18:00</option>
+                        <option selected value="19:00">19:00</option>
+                        <option selected value="20:00">20:00</option>
+                        <option selected value="21:00">21:00</option>
+                        <option selected value="22:00">22:00</option>
+                        <option selected value="23:00">23:00</option>
+                    </select>
+                    <span class="validate" ng-show="HoraInicioInvalido">Por favor, selecciona una hora de inicio</span>
+                    <h2 class="LetrasSubTitulo">Hora Final</h2>
+                    <select id="selHoraFinal" ng-model="model.horafinal">
+                        <option selected disabled value="">Hora final</option>
+                        <option selected value="01:00">00:00</option>
+                        <option selected value="01:00">01:00</option>
+                        <option selected value="02:00">02:00</option>
+                        <option selected value="03:00">03:00</option>
+                        <option selected value="04:00">04:00</option>
+                        <option selected value="05:00">05:00</option>
+                        <option selected value="06:00">06:00</option>
+                        <option selected value="07:00">07:00</option>
+                        <option selected value="08:00">08:00</option>
+                        <option selected value="09:00">09:00</option>
+                        <option selected value="10:00">10:00</option>
+                        <option selected value="11:00">11:00</option>
+                        <option selected value="12:00">12:00</option>
+                        <option selected value="13:00">13:00</option>
+                        <option selected value="14:00">14:00</option>
+                        <option selected value="15:00">15:00</option>
+                        <option selected value="16:00">16:00</option>
+                        <option selected value="17:00">17:00</option>
+                        <option selected value="18:00">18:00</option>
+                        <option selected value="19:00">19:00</option>
+                        <option selected value="20:00">20:00</option>
+                        <option selected value="21:00">21:00</option>
+                        <option selected value="22:00">22:00</option>
+                        <option selected value="23:00">23:00</option>
+                    </select>
+                    <span class="validate" ng-show="HoraFinalInvalido">Por favor, selecciona una hora final</span>
+                    <span class="validate" ng-show="HoraValidacionInvalido">La hora de inicio no puede ser mayor a la hora final.</span>
+                </div>
+            </div>
+        </div>
+        <div id="paso2" ng-show="StepTwo">
+            <h2 class="LetrasSubTitulo mb-3">Elegir países que participarán en la feria</h2>
+            <div class="grid-md-2">
+                <div id="chkPais" ng-repeat="pais in Paises">
+                    <label class="container">
+                        {{pais.Descripcion}}
+                        <input type="checkbox" name="pais" value="{{pais.IdPais}}" id="{{pais.IdPais}}">
+                        <span class="checkmark"></span>
+                    </label>
+                </div>
+            </div>
+            <span class="validate" ng-show="PaisInvalido">Por favor, selecciona una país</span>
+        </div>
+        <div id="paso3" ng-show="StepThree">
+            <h2 class="LetrasSubTitulo">
+                Elegir a los reclutadores de {{paisName}} que participarán en la feria
+            </h2>
+            <div class="col-lg-4 panel2">
+                <div class="control">
+                    <input id="textNombre" type="text" placeholder="Ingrese su búsqueda" ng-model="Entrevistador">
+                </div>
+                <div class="imagen">
+                    <a ng-click="getEntrevistadoresbyNombre()"><img id="btnBuscar" src="~/Content/Images/Lupa.png" /></a>
+                </div>
+            </div>
+            <div class="grid-md-2">
+                <div id="chkReclutador" ng-repeat="reclutador in Reclutadores">
+                    <label class="container">
+                        {{reclutador.Descripcion}}
+                        <input type="checkbox" name="reclutadores" value="{{reclutador.IdPostulante}}" id="{{reclutador.IdPostulante}}">
+                        <span class="checkmark"></span>
+                    </label>
+                </div>
+            </div>
+            <span class="validate" ng-show="EntrevistadorInvalido">Por favor, selecciona un entrevistador</span>
+        </div>
+        <div id="paso4" ng-show="StepFour">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2 class="LetrasSubTitulo">
+                        Elegir los puestos de {{paisName}} que estarán disponibles en la feria
+                    </h2>
+                    <div class="col-lg-4 panel2">
+                        <div class="control">
+                            <input id="textNombre" type="text" placeholder="Ingrese su búsqueda" ng-model="Puesto">
+                        </div>
+                        <div class="imagen">
+                            <a ng-click="getPuestosbyNombre()"><img id="btnBuscar" src="~/Content/Images/Lupa.png" /></a>
+                        </div>
+                    </div>
+                    <div class="grid-md-2">
+                        <div id="chkPuestos" ng-repeat="puesto in Puestos">
+                            <label class="container">
+                                {{puesto.Descripcion}}
+                                <input type="checkbox" name="puestos" value="{{puesto.IdPuesto}}" id="{{puesto.IdPuesto}}">
+                                <span class="checkmark"></span>
+                            </label>
+                        </div>
+                    </div>
+                    <span class="validate" ng-show="PuestoInvalido">Por favor, selecciona un puesto</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="btn-wrap">
+        <button id="btnRegresar" type="button" ng-click="ReturnStep()" class="btn btn-gray">Cancelar</button>
+        <button id="btnContinuar" type="button" ng-click="ChangeStep()" ng-show="IsNext" class="btn">Continuar</button>
+        <button id="btnAgregar" type="button" ng-click="Agregar()" ng-show="IsAdd" class="btn">Agregar</button>
+    </div>
+</div>
+
+@section scripts{
+
+}

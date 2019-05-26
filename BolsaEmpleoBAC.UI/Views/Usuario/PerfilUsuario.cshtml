@@ -1,0 +1,42 @@
+﻿@{
+    ViewBag.Title = "Usuarios";
+}
+
+<div ng-controller="UsuariosController" ng-init="">
+    <div class="row Panel">
+        <div class="col-lg-4">
+            Mantenimiento de Usuarios
+        </div>
+        <div class="col-lg-4">
+            <input id="txtNombre" type="text" ng-model="model.Nombre" placeholder="Nombre" />
+            <span class="validate" ng-show="show1">Por favor, introduzca su nombre completo</span>
+            <select id="selPais" ng-model="model.pais" ng-change="reload()">
+                <option selected disabled value="">País</option>
+                <option ng-repeat="pais in Paises" value="{{pais.IdPais}}" ng-value="{{pais.IdPais}}">{{pais.Descripcion}}</option>
+            </select>
+            <span class="validate" ng-show="show2">Por favor, seleccione su residencia</span>
+            <input id="txtCorreo" type="email" ng-model="model.Email" placeholder="Correo electrónico" ng-change="validateEmail()" />
+            <span class="validate" ng-show="EmailInvalido">Por favor, introduzca un correo</span>
+            <span class="validate" ng-show="EmailExiste">Este correo ya se encuentra registrado</span>
+        </div>
+        <div class="col-lg-4">
+            <label class="container">
+                Desactivar
+                <input id="txtBorrado" type="checkbox" ng-value="model.Borrado" ng-model="model.Borrado">
+                <span class="checkmark"></span>
+            </label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="botonera mt-3 mt-lg-0">
+                <input id="btnCancelar" type="button" value="Cancelar" class="btnSecundario" ng-click="Cancelar()" />
+                <input id="btnGuardar" type="button" value="guardar" class="btnPrincipal" ng-click="Guardar()" />
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+
+}

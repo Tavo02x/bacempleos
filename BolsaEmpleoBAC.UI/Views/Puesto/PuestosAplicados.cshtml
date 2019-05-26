@@ -1,0 +1,55 @@
+﻿
+@{
+    ViewBag.Title = "PuestosAplicados";
+}
+
+<div ng-controller="VerPuestosAplicadosController" ng-init="SeguridadJS();LoadGrid();getPaises();" class="saltoSeccionBajo-10">
+    <h1 class="subtitle-18 mb-5"><span class="mdi mdi-briefcase mdi-24px"></span> Puestos aplicados <span id="totalGrid"></span></h1>
+
+    <div class="row">
+        <div id="busqueda" class="col-md-7 col-xl-5">
+            <div class="d-flex">
+                <div class="bg-white px-3 d-flex mr-3 w-100">
+                    <input class="border-0 my-2" id="textNombre" type="text" placeholder="Búsqueda por palabra clave" ng-model="model.nombre">
+                    <button type="button" ng-click="Filter()"><span class="mdi mdi-magnify mdi-24px"></span></button>
+                </div>
+                <button class="btn-filters collapsed" type="button" data-toggle="collapse" data-target="#filtroAvanzado" aria-expanded="false" aria-controls="filtroAvanzado">
+                    <span class="mdi mdi-tune mdi-24px"></span>
+                </button>
+            </div>
+        </div>
+        <div class="col-12 col-lg-7">
+            @*<div class="botonera mt-3 mt-lg-0">
+                    <input id="btnPublicar" type="button" class="btnPrincipal" value="Publicar" ng-click="redirect1()" />
+                </div>*@
+        </div>
+    </div>
+    <div class="Panel collapse" id="filtroAvanzado">
+        <p class="subtitle-16">Filtrar por:</p>
+        <div>
+            <a data-toggle="collapse" data-target="#filtroAvanzado1" aria-expanded="false" aria-controls="filtroAvanzado1"> <div class="SubrayadoFiltroAvanzado LetrasContenido textoNegrita">País </div></a>
+            <div class="collapse" id="filtroAvanzado1">
+                <div id="chkPais" ng-repeat="pais in Paises">
+                    <label class="container">
+                        {{pais.Descripcion}}
+                        <input type="checkbox" name="pais" value="{{pais.IdPais}}" id="{{pais.IdPais}}">
+                        <span class="checkmark"></span>
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="mt-4 d-md-flex justify-content-center">
+            <button id="btnFiltroAvanzado" data-toggle="collapse" data-target="#filtroAvanzado" aria-expanded="false" aria-controls="filtroAvanzado" class="btn mb-3 m-md-3" ng-click="Filter()" type="button">Aplicar Filtros</button>
+            <button id="btnFiltroAvanzadoCancelar" data-toggle="collapse" data-target="#filtroAvanzado" aria-expanded="false" aria-controls="filtroAvanzado" class="btn btn-gray m-md-3" ng-click="CleanFilter()" type="button">Deshacer filtros</button>
+        </div>
+    </div>
+    <div class="row Panel">
+        <div id="tablaPostulantes" class="col-lg-12">
+
+        </div>
+    </div>
+</div>
+
+@section scripts{
+
+}

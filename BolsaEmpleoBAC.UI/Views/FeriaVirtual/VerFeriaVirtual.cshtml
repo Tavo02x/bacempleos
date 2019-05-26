@@ -1,0 +1,86 @@
+﻿@{}
+
+<div ng-controller="VerFeriaVirtualController" ng-init="VerificarSession();SeguridadJS();AreaLaboralGet();getPaises();">
+    <h1 class="subtitle-18 mb-5"><span class="mdi mdi-cellphone mdi-24px"></span> Ferias Virtuales <span id="totalGrid"></span></h1>
+    <div class="row">
+        <div class="col-md-6 col-xl-4">
+            <div class="bg-white px-3 mb-3 d-flex">
+                <input class="border-0 my-2" id="textNombre" type="text" placeholder="Búsqueda por palabra clave" ng-model="model.nombre">
+                <button type="button" ng-click="FilterGrid()"><span class="mdi mdi-magnify mdi-24px"></span></button>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6 col-xl-4">
+            <div class="row m-0 align-items-center">
+                <div class="col-3">
+                    <p class="text-12 m-0">País:</p>
+                </div>
+                <div class="col-9 bg-white">
+                    <select id="selPais" ng-model="model.pais" class="border-0 my-2">
+                        <option selected disabled value="">País</option>
+                        <option ng-repeat="pais in Paises" value="{{pais.IdPais}}" ng-value="{{pais.IdPais}}">{{pais.Descripcion}}</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-xl-8">
+            <div class="botonera mt-3 mt-md-0">
+                <button id="btnCrearFeria" type="button" class="btn" ng-click="Create()">Crear feria virtual</button>
+            </div>
+        </div>
+    </div>
+
+    @*<div class="Panel collapse" id="filtroAvanzado">
+            <div class="row">
+                <div class="col-lg-12">
+                    <p class="subtitle-16">Filtrar por:</p>
+                </div>
+            </div>
+            <div class="row  saltoSeccionBajo-6">
+                <div class="col-lg-12">
+                    <a data-toggle="collapse" data-target="#filtroAvanzado1" aria-expanded="false" aria-controls="filtroAvanzado1"> <div class="SubrayadoFiltroAvanzado LetrasContenido textoNegrita">País </div></a>
+                    <div class="collapse" id="filtroAvanzado1">
+                        <div id="chkPais" ng-repeat="pais in Paises">
+                            <label>
+                                {{pais.Descripcion}}
+                                <input type="checkbox" name="pais" value="{{pais.IdPais}}" id="{{pais.IdPais}}">
+                                <span class="checkmark"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row saltoSeccionBajo-6">
+                <div class="col-lg-12">
+                    <a data-toggle="collapse" data-target="#filtroAvanzado2" aria-expanded="false" aria-controls="filtroAvanzado2"> <div class="SubrayadoFiltroAvanzado LetrasContenido textoNegrita">Areas Laborales </div></a>
+                    <div class="collapse" id="filtroAvanzado2">
+                        <div id="chkAreas" ng-repeat="area in Areas" class="container">
+                            <label>
+                                {{area.Area}}
+                                <input type="radio" name="areas" value="{{area.IdArea}}" id="{{area.IdArea}}">
+                                <span class="checkmark"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="botonera">
+                        <input id="btnFiltroAvanzadoCancelar" class="btnSecundario mb-3" type="button" value="Deshacer Filtros" />
+                        <input id="btnFiltroAvanzado" class="btnPrincipal mb-3" type="button" value="Aplicar Filtros" />
+                    </div>
+                </div>
+            </div>
+        </div>*@
+    <div class="Panel">
+        <div id="divFeriaVirtual">
+
+        </div>
+    </div>
+</div>
+
+@section scripts{
+
+}

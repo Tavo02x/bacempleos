@@ -1,0 +1,418 @@
+[
+  {
+    "outputFileName": "Scripts/app/controllers/AccionController.min.js",
+    "inputFiles": [
+      "Scripts/app/controllers/AccionController.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/app/controllers/AreasLaboralesController.min.js",
+    "inputFiles": [
+      "Scripts/app/controllers/AreasLaboralesController.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/app/controllers/CambiarClaveController.min.js",
+    "inputFiles": [
+      "Scripts/app/controllers/CambiarClaveController.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/app/controllers/CompartirPerfilController.min.js",
+    "inputFiles": [
+      "Scripts/app/controllers/CompartirPerfilController.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/app/controllers/DetalleFeriaVirtualController.min.js",
+    "inputFiles": [
+      "Scripts/app/controllers/DetalleFeriaVirtualController.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/app/controllers/DiscapacidadController.min.js",
+    "inputFiles": [
+      "Scripts/app/controllers/DiscapacidadController.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/app/controllers/EntrevistaEnVivoController.min.js",
+    "inputFiles": [
+      "Scripts/app/controllers/EntrevistaEnVivoController.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/app/controllers/EntrevistaEnVivoFeriaController.min.js",
+    "inputFiles": [
+      "Scripts/app/controllers/EntrevistaEnVivoFeriaController.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/app/controllers/EntrevistaPregrabadaController.min.js",
+    "inputFiles": [
+      "Scripts/app/controllers/EntrevistaPregrabadaController.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/app/controllers/FeriaVirtualController.min.js",
+    "inputFiles": [
+      "Scripts/app/controllers/FeriaVirtualController.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/app/controllers/FiltrarRolController.min.js",
+    "inputFiles": [
+      "Scripts/app/controllers/FiltrarRolController.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/app/controllers/HabilidadController.min.js",
+    "inputFiles": [
+      "Scripts/app/controllers/HabilidadController.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/app/controllers/IdiomasController.min.js",
+    "inputFiles": [
+      "Scripts/app/controllers/IdiomasController.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/app/controllers/JornadaLaboralController.min.js",
+    "inputFiles": [
+      "Scripts/app/controllers/JornadaLaboralController.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/app/controllers/LobbyController.min.js",
+    "inputFiles": [
+      "Scripts/app/controllers/LobbyController.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/app/controllers/LoginController.min.js",
+    "inputFiles": [
+      "Scripts/app/controllers/LoginController.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/app/controllers/mainController.min.js",
+    "inputFiles": [
+      "Scripts/app/controllers/mainController.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/app/controllers/MenuController.min.js",
+    "inputFiles": [
+      "Scripts/app/controllers/MenuController.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/app/controllers/miPerfilController.min.js",
+    "inputFiles": [
+      "Scripts/app/controllers/miPerfilController.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/app/controllers/PretensionSalarialController.min.js",
+    "inputFiles": [
+      "Scripts/app/controllers/PretensionSalarialController.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/app/controllers/principalController.min.js",
+    "inputFiles": [
+      "Scripts/app/controllers/principalController.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/app/controllers/puestosController.min.js",
+    "inputFiles": [
+      "Scripts/app/controllers/puestosController.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/app/controllers/puestosEditController.min.js",
+    "inputFiles": [
+      "Scripts/app/controllers/puestosEditController.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/app/controllers/RealizarPregrabadaController.min.js",
+    "inputFiles": [
+      "Scripts/app/controllers/RealizarPregrabadaController.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/app/controllers/registroPostulanteController.min.js",
+    "inputFiles": [
+      "Scripts/app/controllers/registroPostulanteController.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/app/controllers/registroController.min.js",
+    "inputFiles": [
+      "Scripts/app/controllers/registroController.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/app/controllers/ReportesController.min.js",
+    "inputFiles": [
+      "Scripts/app/controllers/ReportesController.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/app/controllers/ZonaController.min.js",
+    "inputFiles": [
+      "Scripts/app/controllers/ZonaController.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/app/controllers/Zona3Controller.min.js",
+    "inputFiles": [
+      "Scripts/app/controllers/Zona3Controller.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/app/controllers/Zona2Controller.min.js",
+    "inputFiles": [
+      "Scripts/app/controllers/Zona2Controller.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/app/controllers/VerUsuariosController.min.js",
+    "inputFiles": [
+      "Scripts/app/controllers/VerUsuariosController.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/app/controllers/VerPuestosDisponiblesController.min.js",
+    "inputFiles": [
+      "Scripts/app/controllers/VerPuestosDisponiblesController.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/app/controllers/VerPuestosController.min.js",
+    "inputFiles": [
+      "Scripts/app/controllers/VerPuestosController.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/app/controllers/VerPuestosAplicadosController.min.js",
+    "inputFiles": [
+      "Scripts/app/controllers/VerPuestosAplicadosController.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/app/controllers/VerPostulantesPuestoController.min.js",
+    "inputFiles": [
+      "Scripts/app/controllers/VerPostulantesPuestoController.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/app/controllers/VerPostulantesController.min.js",
+    "inputFiles": [
+      "Scripts/app/controllers/VerPostulantesController.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/app/controllers/VerPerfilController.min.js",
+    "inputFiles": [
+      "Scripts/app/controllers/VerPerfilController.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/app/controllers/VerPerfilAnonimoController.min.js",
+    "inputFiles": [
+      "Scripts/app/controllers/VerPerfilAnonimoController.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/app/controllers/VerFeriaVirtualController.min.js",
+    "inputFiles": [
+      "Scripts/app/controllers/VerFeriaVirtualController.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/app/controllers/VerEntrevistaPregrabadaController.min.js",
+    "inputFiles": [
+      "Scripts/app/controllers/VerEntrevistaPregrabadaController.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/app/controllers/verAplicarPuestosController.min.js",
+    "inputFiles": [
+      "Scripts/app/controllers/verAplicarPuestosController.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/app/controllers/UsuariosController.min.js",
+    "inputFiles": [
+      "Scripts/app/controllers/UsuariosController.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/app/controllers/RolController.min.js",
+    "inputFiles": [
+      "Scripts/app/controllers/RolController.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/app/app.min.js",
+    "inputFiles": [
+      "Scripts/app/app.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/app/RESTService/RESTService.min.js",
+    "inputFiles": [
+      "Scripts/app/RESTService/RESTService.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/Logic/ApiService.min.js",
+    "inputFiles": [
+      "Scripts/Logic/ApiService.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/Logic/ConfigOdata.min.js",
+    "inputFiles": [
+      "Scripts/Logic/ConfigOdata.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/Logic/DescargarPerfil.min.js",
+    "inputFiles": [
+      "Scripts/Logic/DescargarPerfil.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/Logic/SessionManager.min.js",
+    "inputFiles": [
+      "Scripts/Logic/SessionManager.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/Utils/Ajax.min.js",
+    "inputFiles": [
+      "Scripts/Utils/Ajax.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/Utils/Utils.min.js",
+    "inputFiles": [
+      "Scripts/Utils/Utils.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/o.min.js",
+    "inputFiles": [
+      "Scripts/o.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/ApiExternas/ZiggeoApi.min.js",
+    "inputFiles": [
+      "Scripts/ApiExternas/ZiggeoApi.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/ApiExternas/Ziggeo/playerjs-adapter.min.js",
+    "inputFiles": [
+      "Scripts/ApiExternas/Ziggeo/playerjs-adapter.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/ApiExternas/Ziggeo/ziggeo.min.css",
+    "inputFiles": [
+      "Scripts/ApiExternas/Ziggeo/ziggeo.css"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/ApiExternas/Ziggeo/ziggeo.min.js",
+    "inputFiles": [
+      "Scripts/ApiExternas/Ziggeo/ziggeo.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/linq.min.js",
+    "inputFiles": [
+      "Scripts/linq.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/Charts.min.js",
+    "inputFiles": [
+      "Scripts/Charts.js"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/DateFormat.min.js",
+    "inputFiles": [
+      "Scripts/DateFormat.js"
+    ]
+  },
+  {
+    "outputFileName": "Content/validaciones.min.css",
+    "inputFiles": [
+      "Content/validaciones.css"
+    ]
+  },
+  {
+    "outputFileName": "scripts/app/controllers/bundleControllers.js",
+    "inputFiles": [
+      "Scripts/app/app.js",
+      "Scripts/app/RESTService/RESTService.js",
+      "Scripts/app/controllers/AccionController.js",
+      "Scripts/app/controllers/AreasLaboralesController.js",
+      "Scripts/app/controllers/CambiarClaveController.js",
+      "Scripts/app/controllers/CompartirPerfilController.js",
+      "Scripts/app/controllers/DetalleFeriaVirtualController.js",
+      "Scripts/app/controllers/DiscapacidadController.js",
+      "Scripts/app/controllers/EntrevistaEnVivoController.js",
+      "Scripts/app/controllers/EntrevistaEnVivoFeriaController.js",
+      "Scripts/app/controllers/EntrevistaPregrabadaController.js",
+      "Scripts/app/controllers/FeriaVirtualController.js",
+      "Scripts/app/controllers/FiltrarRolController.js",
+      "Scripts/app/controllers/HabilidadController.js",
+      "Scripts/app/controllers/IdiomasController.js",
+      "Scripts/app/controllers/JornadaLaboralController.js",
+      "Scripts/app/controllers/LobbyController.js",
+      "Scripts/app/controllers/LoginController.js",
+      "Scripts/app/controllers/mainController.js",
+      "Scripts/app/controllers/MenuController.js",
+      "Scripts/app/controllers/miPerfilController.js",
+      "Scripts/app/controllers/PretensionSalarialController.js",
+      "Scripts/app/controllers/principalController.js",
+      "Scripts/app/controllers/puestosController.js",
+      "Scripts/app/controllers/puestosEditController.js",
+      "Scripts/app/controllers/RealizarPregrabadaController.js",
+      "Scripts/app/controllers/registroPostulanteController.js",
+      "Scripts/app/controllers/registroController.js",
+      "Scripts/app/controllers/ReportesController.js",
+      "Scripts/app/controllers/RolController.js",
+      "Scripts/app/controllers/UsuariosController.js",
+      "Scripts/app/controllers/verAplicarPuestosController.js",
+      "Scripts/app/controllers/VerEntrevistaPregrabadaController.js",
+      "Scripts/app/controllers/VerFeriaVirtualController.js",
+      "Scripts/app/controllers/VerPerfilAnonimoController.js",
+      "Scripts/app/controllers/VerPerfilController.js",
+      "Scripts/app/controllers/VerPostulantesController.js",
+      "Scripts/app/controllers/VerPostulantesPuestoController.js",
+      "Scripts/app/controllers/VerPuestosAplicadosController.js",
+      "Scripts/app/controllers/VerPuestosController.js",
+      "Scripts/app/controllers/VerPuestosDisponiblesController.js",
+      "Scripts/app/controllers/VerUsuariosController.js",
+      "Scripts/app/controllers/Zona2Controller.js",
+      "Scripts/app/controllers/Zona3Controller.js",
+      "Scripts/app/controllers/ZonaController.js",
+      "Scripts/app/controllers/modalContentCtrl.js",
+      "Scripts/app/directives/Modal.js",
+      "Scripts/app/services/ModalServices.js"
+    ],
+    "minify": {
+      "enabled": false
+    }
+  }
+]

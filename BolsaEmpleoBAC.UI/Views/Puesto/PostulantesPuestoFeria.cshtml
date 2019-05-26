@@ -1,0 +1,32 @@
+﻿
+@{
+    ViewBag.Title = "PostulantePuesto";
+}
+
+<div ng-controller="VerPostulantesPuestoController" ng-init="SeguridadJS();LoadGridFeria();">
+    <a id="VolverPuesto" ng-click="Volver()" class="btn-back mb-3"><span class="mdi mdi-chevron-left mdi-24px"></span>Volver</a>
+    <h1 class="subtitle-18 mb-3"><span class="mdi mdi-cellphone mdi-24px"></span> Postulantes <span id="totalGrid"></span></h1>
+    <h2 class="text-20 mb-5">{{model.Titulo}}</h2>
+
+    <div class="row">
+        <div id="busqueda" class="col-md-7 col-xl-5">
+            <div class="d-flex">
+                <div class="bg-white px-3 d-flex mr-3 w-100">
+                    <input class="border-0 my-2" id="textNombre" type="text" placeholder="Búsqueda por palabra clave" ng-model="model.nombre">
+                    <button type="button" ng-click="FilterFeria()"><span class="mdi mdi-magnify mdi-24px"></span></button>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="Panel">
+        <div id="tablaPostulantes">
+
+        </div>
+    </div>
+</div>
+
+@section scripts{
+
+}

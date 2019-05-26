@@ -1,0 +1,1418 @@
+﻿
+@using System.Web.Optimization
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutRegistro.cshtml";
+}
+
+@*  ****************************************************************************
+    *                _                                                         *
+    *               (_)                                            _           *
+    *    ____   ____ _ ____   ____  ____ ____    ____   ____  ____| |_  ____   *
+    *   |  _ \ / ___) |    \ / _  )/ ___) _  |  |  _ \ / _  |/ ___)  _)/ _  )  *
+    *   | | | | |   | | | | ( (/ /| |  ( ( | |  | | | ( ( | | |   | |_( (/ /   *
+    *   | ||_/|_|   |_|_|_|_|\____)_|   \_||_|  | ||_/ \_||_|_|    \___)____)  *
+    *   |_|                                     |_|                            *
+    ****************************************************************************@
+
+@*Paso #0*@
+<table class="card-registro" id="paso0" cellpadding="0">
+    <tr>
+        <td class="td-progreso">
+            <a class="mdl-button mdl-js-button" id="btn-back" href="~/">
+                <span class="fa fa-angle-left"></span> Volver
+            </a>
+        </td>
+    </tr>
+    <tr>
+        <td class="td-contenido">
+            <div class="mdl-cell mdl-cell--6-col">
+                <h4>
+                    BAC Credomatic, el lugar
+                    ideal para trabajar
+                </h4>
+                <p>
+                    En BAC Credomatic creemos en el desarrollo
+                    personal y profesional de nuestros colaboradores
+                </p>
+                <p>
+                    <img src="~/Content/Images/registro/registro-1.png" id="img-paso0" />
+                </p>
+                <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" id="btn-continuar" onclick="fnPasoSiguiente(1)">
+                    Continuar
+                </button>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td class="td-footer">
+            <p class="p-nota">
+                Todos tus datos se manejan bajo estricta confidencialidad.
+            </p>
+        </td>
+    </tr>
+</table>
+
+@*Paso #1 - Información de contacto - correo electrónico*@
+<table class="card-registro" id="paso1">
+    <tr>
+        <td class="td-progreso">
+            @Html.Partial("_RegistroProgreso", 1)
+        </td>
+    </tr>
+    <tr>
+        <td class="td-contenido">
+            <div class="mdl-cell mdl-cell--6-col">
+                <p class="p-img-paso">
+                    <img src="~/Content/Images/registro/registro-7.png" />
+                </p>
+                <h5>
+                    Información de contacto
+                </h5>
+                <p>
+                    Indica un correo electrónico donde podamos contactarte
+                </p>
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="email" id="txt-correo-electronico">
+                    <label class="mdl-textfield__label" for="txt-correo-electronico">Correo electrónico</label>
+                </div>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td class="td-footer">
+            @Html.Partial("_RegistroBotonesFooter", 1)
+        </td>
+    </tr>
+</table>
+
+@*Paso #2 - Contraseña*@
+<table class="card-registro" id="paso2">
+    <tr>
+        <td class="td-progreso">
+            @Html.Partial("_RegistroProgreso", 1)
+        </td>
+    </tr>
+    <tr>
+        <td class="td-contenido">
+            <div class="mdl-cell mdl-cell--6-col">
+                <p class="p-img-paso">
+                    <img src="~/Content/Images/registro/registro-2.png" />
+                </p>
+                <h5>
+                    Contraseña
+                </h5>
+                @*<p>
+                        Por favor escríbela respetando los espacios
+                        debidos, utilizando el “0” cuando sea necesario.
+                    </p>*@
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="password" id="txt-contrasena">
+                    <label class="mdl-textfield__label" for="txt-contrasena">Contraseña</label>
+                </div>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td class="td-footer">
+            @Html.Partial("_RegistroBotonesFooter", 2)
+        </td>
+    </tr>
+</table>
+
+@*Paso #3 - ¿Cuál es tu número de identificación?*@
+<table class="card-registro" id="paso3">
+    <tr>
+        <td class="td-progreso">
+            @Html.Partial("_RegistroProgreso", 1)
+        </td>
+    </tr>
+    <tr>
+        <td class="td-contenido">
+            <div class="mdl-cell mdl-cell--6-col">
+                <p class="p-img-paso">
+                    <img src="~/Content/Images/registro/registro-2.png" />
+                </p>
+                <h5>
+                    ¿Cuál es tu número de identificación?
+                </h5>
+                <p>
+                    Por favor escríbela respetando los espacios
+                    debidos, utilizando el “0” cuando sea necesario.
+                </p>
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="text" id="txt-identificacion">
+                    <label class="mdl-textfield__label" for="txt-identificacion">Identificacion</label>
+                </div>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td class="td-footer">
+            @Html.Partial("_RegistroBotonesFooter", 3)
+        </td>
+    </tr>
+</table>
+
+@*Paso #4 - Ingresa tu nombre completo*@
+<table class="card-registro" id="paso4">
+    <tr>
+        <td class="td-progreso">
+            @Html.Partial("_RegistroProgreso", 1)
+        </td>
+    </tr>
+    <tr>
+        <td class="td-contenido">
+            <div class="mdl-cell mdl-cell--6-col">
+                <p class="p-img-paso">
+                    <img src="~/Content/Images/registro/registro-2.png" />
+                </p>
+                <h5>
+                    Ingresa tu nombre completo:
+                </h5>
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="text" id="txt-nombre">
+                    <label class="mdl-textfield__label" for="txt-identificacion">Nombre y apellidos</label>
+                </div>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td class="td-footer">
+            @Html.Partial("_RegistroBotonesFooter", 4)
+        </td>
+    </tr>
+</table>
+
+@*Paso #5 - Tu género*@
+<table class="card-registro" id="paso5">
+    <tr>
+        <td class="td-progreso">
+            @Html.Partial("_RegistroProgreso", 1)
+        </td>
+    </tr>
+    <tr>
+        <td class="td-contenido">
+            <div class="mdl-cell mdl-cell--6-col">
+                <p class="p-img-paso">
+                    <img src="~/Content/Images/registro/registro-3.png" />
+                </p>
+                <h5>
+                    Tu género es:
+                </h5>
+                <p>
+                    <button class="mdl-button mdl-js-button mdl-js-ripple-effect btn-seleccionar-uno btn-genero" data-value="false" onclick="fnSeleccionarGenero(this)">
+                        Femenino
+                    </button>
+                </p>
+                <p>
+                    <button class="mdl-button mdl-js-button mdl-js-ripple-effect btn-seleccionar-uno btn-genero" data-value="true" onclick="fnSeleccionarGenero(this)">
+                        Masculino
+                    </button>
+                </p>
+                <p>
+                    <button class="mdl-button mdl-js-button mdl-js-ripple-effect btn-seleccionar-uno btn-genero" data-value="null" onclick="fnSeleccionarGenero(this)">
+                        No Indica
+                    </button>
+                </p>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td class="td-footer">
+            @Html.Partial("_RegistroBotonesFooter", 5)
+        </td>
+    </tr>
+</table>
+
+@*Paso #6 - Tu estado civil*@
+<table class="card-registro" id="paso6">
+    <tr>
+        <td class="td-progreso">
+            @Html.Partial("_RegistroProgreso", 1)
+        </td>
+    </tr>
+    <tr>
+        <td class="td-contenido">
+            <div class="mdl-cell mdl-cell--6-col">
+                <p class="p-img-paso">
+                    <img src="~/Content/Images/registro/registro-4.png" />
+                </p>
+                <h5>
+                    Tu estado civil es:
+                </h5>
+                <div class="mdl-grid">
+                    <div class="mdl-cell mdl-cell--6-col">
+                        <button class="mdl-button mdl-js-button mdl-js-ripple-effect btn-seleccionar-uno btn-estado-civil" id-estado-civil="1" onclick="fnSeleccionarEstadoCivil(this)">
+                            Soltero
+                        </button>
+                    </div>
+                    <div class="mdl-cell mdl-cell--6-col">
+                        <button class="mdl-button mdl-js-button mdl-js-ripple-effect btn-seleccionar-uno btn-estado-civil" id-estado-civil="4" onclick="fnSeleccionarEstadoCivil(this)">
+                            Casado
+                        </button>
+                    </div>
+                    <div class="mdl-cell mdl-cell--6-col">
+                        <button class="mdl-button mdl-js-button mdl-js-ripple-effect btn-seleccionar-uno btn-estado-civil" id-estado-civil="2" onclick="fnSeleccionarEstadoCivil(this)">
+                            Divorciado
+                        </button>
+                    </div>
+                    <div class="mdl-cell mdl-cell--6-col">
+                        <button class="mdl-button mdl-js-button mdl-js-ripple-effect btn-seleccionar-uno btn-estado-civil" id-estado-civil="5" onclick="fnSeleccionarEstadoCivil(this)">
+                            Únion libre
+                        </button>
+                    </div>
+                    <div class="mdl-cell mdl-cell--6-col">
+                        <button class="mdl-button mdl-js-button mdl-js-ripple-effect btn-seleccionar-uno btn-estado-civil" id-estado-civil="3" onclick="fnSeleccionarEstadoCivil(this)">
+                            Viudo
+                        </button>
+                    </div>
+                    <div class="mdl-cell mdl-cell--6-col">
+                    </div>
+                </div>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td class="td-footer">
+            @Html.Partial("_RegistroBotonesFooter", 6)
+        </td>
+    </tr>
+</table>
+
+@*Paso #7 - Fecha de nacimiento*@
+<table class="card-registro" id="paso7">
+    <tr>
+        <td class="td-progreso">
+            @Html.Partial("_RegistroProgreso", 1)
+        </td>
+    </tr>
+    <tr>
+        <td class="td-contenido">
+            <div class="mdl-cell mdl-cell--6-col">
+                <p class="p-img-paso">
+                    <img src="~/Content/Images/registro/registro-5.png" />
+                </p>
+                <h5>
+                    Fecha de nacimiento:
+                </h5>
+            </div>
+            <div class="mdl-cell mdl-cell--8-col">
+                <div class="mdl-grid">
+                    <div class="mdl-cell mdl-cell--2-col mdl-cell--3-col-phone">
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <input class="mdl-textfield__input" type="number" id="txt-fecha-nacimiento-dia">
+                            <label class="mdl-textfield__label" for="txt-fecha-nacimiento-dia">Día</label>
+                        </div>
+                    </div>
+                    <div class="mdl-cell mdl-cell--4-col mdl-cell--3-col-phone">
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <select class="mdl-textfield__input" id="slt-fecha-nacimiento-mes">
+                                <option></option>
+                                <option value="01">Enero</option>
+                                <option value="02">Febrero</option>
+                                <option value="03">Marzo</option>
+                                <option value="04">Abril</option>
+                                <option value="05">Mayo</option>
+                                <option value="06">Junio</option>
+                                <option value="07">Julio</option>
+                                <option value="08">Agosto</option>
+                                <option value="09">Setiembre</option>
+                                <option value="10">Octubre</option>
+                                <option value="11">Noviembre</option>
+                                <option value="12">Diciembre</option>
+                            </select>
+                            <label class="mdl-textfield__label" for="slt-fecha-nacimiento-mes">Mes</label>
+                        </div>
+                    </div>
+                    <div class="mdl-cell mdl-cell--2-col mdl-cell--3-col-phone">
+                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                            <input class="mdl-textfield__input" type="number" id="txt-fecha-nacimiento-anno">
+                            <label class="mdl-textfield__label" for="txt-fecha-nacimiento-anno">Año</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td class="td-footer">
+            @Html.Partial("_RegistroBotonesFooter", 7)
+        </td>
+    </tr>
+</table>
+
+@*Paso #8 - País de nacimiento*@
+<table class="card-registro" id="paso8">
+    <tr>
+        <td class="td-progreso">
+            @Html.Partial("_RegistroProgreso", 1)
+        </td>
+    </tr>
+    <tr>
+        <td class="td-contenido">
+            <div class="mdl-cell mdl-cell--6-col">
+                <p class="p-img-paso">
+                    <img src="~/Content/Images/registro/registro-6.png" />
+                </p>
+                <h5>
+                    País de nacimiento:
+                </h5>
+                <div class="mdl-selectfield mdl-js-selectfield mdl-selectfield--floating-label">
+                    <select class="mdl-selectfield__select" id="slt-pais-nacimiento">
+                        <option></option>
+                        <option value="AD">Andorra</option>
+                        <option value="AE">Emiratos Árabes Unidos</option>
+                        <option value="AF">Afganistán</option>
+                        <option value="AG">Antigua y Barbuda</option>
+                        <option value="AI">Anguila</option>
+                        <option value="AL">Albania</option>
+                        <option value="AM">Armenia</option>
+                        <option value="AN">Antillas Neerlandesas</option>
+                        <option value="AO">Angola</option>
+                        <option value="AQ">Antártida</option>
+                        <option value="AR">Argentina</option>
+                        <option value="AS">Samoa Americana</option>
+                        <option value="AT">Austria</option>
+                        <option value="AU">Australia</option>
+                        <option value="AW">Aruba</option>
+                        <option value="AX">Islas Áland</option>
+                        <option value="AZ">Azerbaiyán</option>
+                        <option value="BA">Bosnia y Herzegovina</option>
+                        <option value="BB">Barbados</option>
+                        <option value="BD">Bangladesh</option>
+                        <option value="BE">Bélgica</option>
+                        <option value="BF">Burkina Faso</option>
+                        <option value="BG">Bulgaria</option>
+                        <option value="BH">Bahréin</option>
+                        <option value="BI">Burundi</option>
+                        <option value="BJ">Benin</option>
+                        <option value="BL">San Bartolomé</option>
+                        <option value="BM">Bermudas</option>
+                        <option value="BN">Brunéi</option>
+                        <option value="BO">Bolivia</option>
+                        <option value="BR">Brasil</option>
+                        <option value="BS">Bahamas</option>
+                        <option value="BT">Bhután</option>
+                        <option value="BV">Isla Bouvet</option>
+                        <option value="BW">Botsuana</option>
+                        <option value="BY">Belarús</option>
+                        <option value="BZ">Belice</option>
+                        <option value="CA">Canadá</option>
+                        <option value="CC">Islas Cocos</option>
+                        <option value="CF">República Centro-Africana</option>
+                        <option value="CG">Congo</option>
+                        <option value="CH">Suiza</option>
+                        <option value="CI">Costa de Marfil</option>
+                        <option value="CK">Islas Cook</option>
+                        <option value="CL">Chile</option>
+                        <option value="CM">Camerún</option>
+                        <option value="CN">China</option>
+                        <option value="CO">Colombia</option>
+                        <option value="CR">Costa Rica</option>
+                        <option value="CU">Cuba</option>
+                        <option value="CV">Cabo Verde</option>
+                        <option value="CX">Islas Christmas</option>
+                        <option value="CY">Chipre</option>
+                        <option value="CZ">República Checa</option>
+                        <option value="DE">Alemania</option>
+                        <option value="DJ">Yibuti</option>
+                        <option value="DK">Dinamarca</option>
+                        <option value="DM">Domínica</option>
+                        <option value="DO">República Dominicana</option>
+                        <option value="DZ">Argel</option>
+                        <option value="EC">Ecuador</option>
+                        <option value="EE">Estonia</option>
+                        <option value="EG">Egipto</option>
+                        <option value="EH">Sahara Occidental</option>
+                        <option value="ER">Eritrea</option>
+                        <option value="ES">España</option>
+                        <option value="ET">Etiopía</option>
+                        <option value="FI">Finlandia</option>
+                        <option value="FJ">Fiji</option>
+                        <option value="FK">Islas Malvinas</option>
+                        <option value="FM">Micronesia</option>
+                        <option value="FO">Islas Faroe</option>
+                        <option value="FR">Francia</option>
+                        <option value="GA">Gabón</option>
+                        <option value="GB">Reino Unido</option>
+                        <option value="GD">Granada</option>
+                        <option value="GE">Georgia</option>
+                        <option value="GF">Guayana Francesa</option>
+                        <option value="GG">Guernsey</option>
+                        <option value="GH">Ghana</option>
+                        <option value="GI">Gibraltar</option>
+                        <option value="GL">Groenlandia</option>
+                        <option value="GM">Gambia</option>
+                        <option value="GN">Guinea</option>
+                        <option value="GP">Guadalupe</option>
+                        <option value="GQ">Guinea Ecuatorial</option>
+                        <option value="GR">Grecia</option>
+                        <option value="GS">Georgia del Sur e Islas Sandwich del Sur</option>
+                        <option value="GT">Guatemala</option>
+                        <option value="GU">Guam</option>
+                        <option value="GW">Guinea-Bissau</option>
+                        <option value="GY">Guayana</option>
+                        <option value="HK">Hong Kong</option>
+                        <option value="HM">Islas Heard y McDonald</option>
+                        <option value="HN">Honduras</option>
+                        <option value="HR">Croacia</option>
+                        <option value="HT">Haití</option>
+                        <option value="HU">Hungría</option>
+                        <option value="ID">Indonesia</option>
+                        <option value="IE">Irlanda</option>
+                        <option value="IL">Israel</option>
+                        <option value="IM">Isla de Man</option>
+                        <option value="IN">India</option>
+                        <option value="IO">Territorio Británico del Océano Índico</option>
+                        <option value="IQ">Irak">368</option>
+                        <option value="IR">Irán">364</option>
+                        <option value="IS">Islandia</option>
+                        <option value="IT">Italia</option>
+                        <option value="JE">Jersey</option>
+                        <option value="JM">Jamaica</option>
+                        <option value="JO">Jordania</option>
+                        <option value="JP">Japón</option>
+                        <option value="KE">Kenia</option>
+                        <option value="KG">Kirguistán</option>
+                        <option value="KH">Camboya</option>
+                        <option value="KI">Kiribati</option>
+                        <option value="KM">Comoros</option>
+                        <option value="KN">San Cristóbal y Nieves</option>
+                        <option value="KP">Corea del Norte</option>
+                        <option value="KR">Corea del Sur</option>
+                        <option value="KW">Kuwait</option>
+                        <option value="KY">Islas Caimán</option>
+                        <option value="KZ">Kazajstán</option>
+                        <option value="LA">Laos</option>
+                        <option value="LB">Líbano</option>
+                        <option value="LC">Santa Lucía</option>
+                        <option value="LI">Liechtenstein</option>
+                        <option value="LK">Sri Lanka</option>
+                        <option value="LR">Liberia</option>
+                        <option value="LS">Lesotho</option>
+                        <option value="LT">Lituania</option>
+                        <option value="LU">Luxemburgo</option>
+                        <option value="LV">Letonia</option>
+                        <option value="LY">Libia</option>
+                        <option value="MA">Marruecos</option>
+                        <option value="MC">Mónaco</option>
+                        <option value="MD">Moldova</option>
+                        <option value="ME">Montenegro</option>
+                        <option value="MG">Madagascar</option>
+                        <option value="MH">Islas Marshall</option>
+                        <option value="MK">Macedonia</option>
+                        <option value="ML">Mali</option>
+                        <option value="MM">Myanmar</option>
+                        <option value="MN">Mongolia</option>
+                        <option value="MO">Macao</option>
+                        <option value="MQ">Martinica</option>
+                        <option value="MR">Mauritania</option>
+                        <option value="MS">Montserrat</option>
+                        <option value="MT">Malta</option>
+                        <option value="MU">Mauricio</option>
+                        <option value="MV">Maldivas</option>
+                        <option value="MW">Malawi</option>
+                        <option value="MX">México</option>
+                        <option value="MY">Malasia</option>
+                        <option value="MZ">Mozambique</option>
+                        <option value="NA">Namibia</option>
+                        <option value="NC">Nueva Caledonia</option>
+                        <option value="NE">Níger</option>
+                        <option value="NF">Islas Norkfolk</option>
+                        <option value="NG">Nigeria</option>
+                        <option value="NI">Nicaragua</option>
+                        <option value="NL">Países Bajos</option>
+                        <option value="NO">Noruega</option>
+                        <option value="NP">Nepal</option>
+                        <option value="NR">Nauru</option>
+                        <option value="NU">Niue</option>
+                        <option value="NZ">Nueva Zelanda</option>
+                        <option value="OM">Omán</option>
+                        <option value="PA">Panamá</option>
+                        <option value="PE">Perú</option>
+                        <option value="PF">Polinesia Francesa</option>
+                        <option value="PG">Papúa Nueva Guinea</option>
+                        <option value="PH">Filipinas</option>
+                        <option value="PK">Pakistán</option>
+                        <option value="PL">Polonia</option>
+                        <option value="PM">San Pedro y Miquelón</option>
+                        <option value="PN">Islas Pitcairn</option>
+                        <option value="PR">Puerto Rico</option>
+                        <option value="PS">Palestina</option>
+                        <option value="PT">Portugal</option>
+                        <option value="PW">Islas Palaos</option>
+                        <option value="PY">Paraguay</option>
+                        <option value="QA">Qatar</option>
+                        <option value="RE">Reunión</option>
+                        <option value="RO">Rumanía</option>
+                        <option value="RS">Serbia y Montenegro</option>
+                        <option value="RU">Rusia</option>
+                        <option value="RW">Ruanda</option>
+                        <option value="SA">Arabia Saudita</option>
+                        <option value="SB">Islas Solomón</option>
+                        <option value="SC">Seychelles</option>
+                        <option value="SD">Sudán</option>
+                        <option value="SE">Suecia</option>
+                        <option value="SG">Singapur</option>
+                        <option value="SH">Santa Elena</option>
+                        <option value="SI">Eslovenia</option>
+                        <option value="SJ">Islas Svalbard y Jan Mayen</option>
+                        <option value="SK">Eslovaquia</option>
+                        <option value="SL">Sierra Leona</option>
+                        <option value="SM">San Marino</option>
+                        <option value="SN">Senegal</option>
+                        <option value="SO">Somalia</option>
+                        <option value="SR">Surinam</option>
+                        <option value="ST">Santo Tomé y Príncipe</option>
+                        <option value="SV">El Salvador</option>
+                        <option value="SY">Siria</option>
+                        <option value="SZ">Suazilandia</option>
+                        <option value="TC">Islas Turcas y Caicos</option>
+                        <option value="TD">Chad</option>
+                        <option value="TF">Territorios Australes Franceses</option>
+                        <option value="TG">Togo</option>
+                        <option value="TH">Tailandia</option>
+                        <option value="TH">Tanzania</option>
+                        <option value="TJ">Tayikistán</option>
+                        <option value="TK">Tokelau</option>
+                        <option value="TL">Timor-Leste</option>
+                        <option value="TM">Turkmenistán</option>
+                        <option value="TN">Túnez</option>
+                        <option value="TO">Tonga</option>
+                        <option value="TR">Turquía</option>
+                        <option value="TT">Trinidad y Tobago</option>
+                        <option value="TV">Tuvalu</option>
+                        <option value="TW">Taiwán</option>
+                        <option value="UA">Ucrania</option>
+                        <option value="UG">Uganda</option>
+                        <option value="US">Estados Unidos de América</option>
+                        <option value="UY">Uruguay</option>
+                        <option value="UZ">Uzbekistán</option>
+                        <option value="VA">Ciudad del Vaticano</option>
+                        <option value="VC">San Vicente y las Granadinas</option>
+                        <option value="VE">Venezuela</option>
+                        <option value="VG">Islas Vírgenes Británicas</option>
+                        <option value="VI">Islas Vírgenes de los Estados Unidos de América</option>
+                        <option value="VN">Vietnam</option>
+                        <option value="VU">Vanuatu</option>
+                        <option value="WF">Wallis y Futuna</option>
+                        <option value="WS">Samoa</option>
+                        <option value="YE">Yemen</option>
+                        <option value="YT">Mayotte</option>
+                        <option value="ZA">Sudáfrica</option>
+
+                    </select>
+                    <label class="mdl-selectfield__label" for="slt-pais-nacimiento"><i class="fa fa-search"></i> Buscar país</label>
+                </div>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td class="td-footer">
+            @Html.Partial("_RegistroBotonesFooter", 8)
+        </td>
+    </tr>
+</table>
+
+@*Paso #9 - Información de contacto*@
+<table class="card-registro" id="paso9">
+    <tr>
+        <td class="td-progreso">
+            @Html.Partial("_RegistroProgreso", 1)
+        </td>
+    </tr>
+    <tr>
+        <td class="td-contenido">
+            <div class="mdl-cell mdl-cell--6-col">
+                <p class="p-img-paso">
+                    <img src="~/Content/Images/registro/registro-7.png" />
+                </p>
+                <h5>
+                    Información de contacto
+                </h5>
+
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="email" id="txt-telefono">
+                    <label class="mdl-textfield__label" for="txt-telefono">Teléfono</label>
+                </div>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td class="td-footer">
+            @Html.Partial("_RegistroBotonesFooter", 9)
+        </td>
+    </tr>
+</table>
+
+@*Paso #10 - País donde vives actualmente*@
+<table class="card-registro" id="paso10">
+    <tr>
+        <td class="td-progreso">
+            @Html.Partial("_RegistroProgreso", 1)
+        </td>
+    </tr>
+    <tr>
+        <td class="td-contenido">
+            <div class="mdl-cell mdl-cell--6-col">
+                <p class="p-img-paso">
+                    <img src="~/Content/Images/registro/registro-6.png" />
+                </p>
+                <h5>
+                    País donde vives actualmente
+                </h5>
+                <div class="mdl-grid" id="div-pais-residencia">
+                </div>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td class="td-footer">
+            @Html.Partial("_RegistroBotonesFooter", 10)
+        </td>
+    </tr>
+</table>
+
+@*Paso #11 - zona 1*@
+<table class="card-registro" id="paso11">
+    <tr>
+        <td class="td-progreso">
+            @Html.Partial("_RegistroProgreso", 1)
+        </td>
+    </tr>
+    <tr>
+        <td class="td-contenido">
+            <div class="mdl-cell mdl-cell--6-col">
+                <p class="p-img-paso">
+                    <img src="~/Content/Images/registro/registro-6.png" />
+                </p>
+                <h5 id="zona1-title"></h5>
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <select class="mdl-textfield__input" id="slt-zona1"></select>
+                    <label class="mdl-textfield__label" id="lbl-zona1" for="slt-zona1">Zona 1</label>
+                </div>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td class="td-footer">
+            @Html.Partial("_RegistroBotonesFooter", 11)
+        </td>
+    </tr>
+</table>
+
+@*Paso #12 - zona 2*@
+<table class="card-registro" id="paso12">
+    <tr>
+        <td class="td-progreso">
+            @Html.Partial("_RegistroProgreso", 1)
+        </td>
+    </tr>
+    <tr>
+        <td class="td-contenido">
+            <div class="mdl-cell mdl-cell--6-col">
+                <p class="p-img-paso">
+                    <img src="~/Content/Images/registro/registro-6.png" />
+                </p>
+                <h5 id="zona2-title"></h5>
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <select class="mdl-textfield__input" id="slt-zona2"></select>
+                    <label class="mdl-textfield__label" id="lbl-zona2" for="slt-zona2">Zona 2</label>
+                </div>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td class="td-footer">
+            @Html.Partial("_RegistroBotonesFooter", 12)
+        </td>
+    </tr>
+</table>
+
+@*Paso #13 - zona 3*@
+<table class="card-registro" id="paso13">
+    <tr>
+        <td class="td-progreso">
+            @Html.Partial("_RegistroProgreso", 1)
+        </td>
+    </tr>
+    <tr>
+        <td class="td-contenido">
+            <div class="mdl-cell mdl-cell--6-col">
+                <p class="p-img-paso">
+                    <img src="~/Content/Images/registro/registro-6.png" />
+                </p>
+                <h5 id="zona3-title"></h5>
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label" id="div-zona3">
+                    <select class="mdl-textfield__input" id="slt-zona3"></select>
+                    <label class="mdl-textfield__label" id="lbl-zona3" for="slt-zona3">Zona 3</label>
+                </div>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td class="td-footer">
+            @Html.Partial("_RegistroBotonesFooter", 13)
+        </td>
+    </tr>
+</table>
+
+@*Paso #14 - Subir tu fotografía*@
+<table class="card-registro" id="paso14">
+    <tr>
+        <td class="td-progreso">
+            @Html.Partial("_RegistroProgreso", 1)
+        </td>
+    </tr>
+    <tr>
+        <td class="td-contenido">
+            <div class="mdl-cell mdl-cell--6-col">
+                <h5>Subir tu fotografía</h5>
+                <p>
+                    El tamaño máximo de la imagen es de <b>2MB</b> y los
+                    formatos permitidos para la imagen son: png, jpg
+                </p>
+                <div class="div-carga-archivo" id="div-foto">
+                    <i class="fa fa-user fa-10x"></i>
+                </div>
+                <p class="mensaje-error" id=mensaje-error-foto></p>
+                <label class="mdl-button mdl-js-button mdl-js-ripple-effect btn-seleccionar-uno">
+                    <i class="fa fa-paperclip" aria-hidden="true"></i> Adjuntar Archivo
+                    <input type="file" style="display: none;" id="file-foto">
+                </label>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td class="td-footer">
+            @Html.Partial("_RegistroBotonesFooter", 14)
+        </td>
+    </tr>
+</table>
+
+@*  ********************************************************************************
+    *                                    _                                         *
+    *                                   | |                           _            *
+    *     ___  ____ ____ _   _ ____   _ | | ____    ____   ____  ____| |_  ____    *
+    *    /___)/ _  ) _  | | | |  _ \ / || |/ _  |  |  _ \ / _  |/ ___)  _)/ _  )   *
+    *   |___ ( (/ ( ( | | |_| | | | ( (_| ( ( | |  | | | ( ( | | |   | |_( (/ /    *
+    *   (___/ \____)_|| |\____|_| |_|\____|\_||_|  | ||_/ \_||_|_|    \___)____)   *
+    *             (_____|                          |_|                             *
+    ********************************************************************************@
+
+@*Paso #15 - Aun se encuentra estudiando*@
+<table class="card-registro" id="paso15">
+    <tr>
+        <td class="td-progreso">
+            @Html.Partial("_RegistroProgreso", 2)
+        </td>
+    </tr>
+    <tr>
+        <td class="td-contenido">
+            <div class="mdl-cell mdl-cell--6-col">
+                <p class="p-img-paso">
+                    <img src="~/Content/Images/registro/registro-8.png" />
+                </p>
+                <h5>
+                    ¿Aún se encuentra estudiando?
+                </h5>
+                <p>
+                    <button class="mdl-button mdl-js-button mdl-js-ripple-effect btn-seleccionar-uno btn-estudia" data-value="true" onclick="fnSeleccionarEstudia(this)">
+                        Sí
+                    </button>
+                </p>
+                <p>
+                    <button class="mdl-button mdl-js-button mdl-js-ripple-effect btn-seleccionar-uno btn-estudia" data-value="false" onclick="fnSeleccionarEstudia(this)">
+                        No
+                    </button>
+                </p>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td class="td-footer">
+            @Html.Partial("_RegistroBotonesFooter", 15)
+        </td>
+    </tr>
+</table>
+
+@*Paso #16 - Información académica*@
+<table class="card-registro" id="paso16">
+    <tr>
+        <td class="td-progreso">
+            @Html.Partial("_RegistroProgreso", 2)
+        </td>
+    </tr>
+    <tr>
+        <td class="td-contenido">
+            <div class="mdl-cell mdl-cell--6-col">
+                <p class="p-img-paso">
+                    <img src="~/Content/Images/registro/registro-8.png" />
+                </p>
+                <h5>Información académica</h5>
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="text" id="txt-titulo">
+                    <label class="mdl-textfield__label" for="txt-titulo">Título o certificación</label>
+                </div>
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <select class="mdl-textfield__input" id="slt-grado-academico"></select>
+                    <label class="mdl-textfield__label" id="lbl-grado-academico" for="slt-grado-academico"></label>
+                </div>
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="text" id="txt-institucion">
+                    <label class="mdl-textfield__label" for="txt-institucion">Nombre de la institución</label>
+                </div>
+                <button class="mdl-button mdl-js-button btn-agregar" id="btn-agregar-titulo" onclick="fnAgregarTitulo()">
+                    <img src="~/Content/Images/IconoAgregar.png" />
+                    Agregar
+                </button>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div class="mdl-cell mdl-cell--6-col">
+                <header id="header-info-agregada-academica" class="header-info-agregada">
+                    <div class="div-simbolo-progreso check info"><i class="fa fa-check"></i></div>
+                    <b>INFORMACIÓN ACADÉMICA AGREGADA:</b>
+                </header>
+                <div id="div-informacion-academica" class="div-informacion-agregada">
+                </div>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td class="td-footer">
+            @Html.Partial("_RegistroBotonesFooter", 16)
+        </td>
+    </tr>
+</table>
+
+@*Paso #17 - Información laboral - ¿es exempleado?*@
+<table class="card-registro" id="paso17">
+    <tr>
+        <td class="td-progreso">
+            @Html.Partial("_RegistroProgreso", 2)
+        </td>
+    </tr>
+    <tr>
+        <td class="td-contenido">
+            <div class="mdl-cell mdl-cell--6-col">
+                <p class="p-img-paso">
+                    <img src="~/Content/Images/registro/registro-9.png" />
+                </p>
+                <h5>
+                    Información laboral
+                </h5>
+                <p>¿Has trabajado con el <b>BAC</b>?</p>
+                <p>
+                    <button class="mdl-button mdl-js-button mdl-js-ripple-effect btn-seleccionar-uno btn-exempleado" data-value="true" onclick="fnSeleccionarExempleado(this)">
+                        Sí
+                    </button>
+                </p>
+                <p>
+                    <button class="mdl-button mdl-js-button mdl-js-ripple-effect btn-seleccionar-uno btn-exempleado" data-value="false" onclick="fnSeleccionarExempleado(this)">
+                        No
+                    </button>
+                </p>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td class="td-footer">
+            @Html.Partial("_RegistroBotonesFooter", 17)
+        </td>
+    </tr>
+</table>
+
+@*Paso #18 - Experiencia previa*@
+<table class="card-registro" id="paso18">
+    <tr>
+        <td class="td-progreso">
+            @Html.Partial("_RegistroProgreso", 2)
+        </td>
+    </tr>
+    <tr>
+        <td class="td-contenido">
+            <div class="mdl-cell mdl-cell--6-col">
+                <p class="p-img-paso">
+                    <img src="~/Content/Images/registro/registro-9.png" />
+                </p>
+                <h5>Experiencia previa</h5>
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="text" id="txt-puesto">
+                    <label class="mdl-textfield__label" for="txt-puesto">Puesto</label>
+                </div>
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="text" id="txt-puesto-empresa">
+                    <label class="mdl-textfield__label" for="txt-puesto-empresa">Empresa</label>
+                </div>
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="text" id="txt-puesto-descripcion">
+                    <label class="mdl-textfield__label" for="txt-puesto-descripcion">Descripción</label>
+                </div>
+                <button class="mdl-button mdl-js-button btn-agregar" id="btn-agregar-experiencia" onclick="fnAgregarExperiencia()">
+                    <img src="~/Content/Images/IconoAgregar.png" />
+                    Agregar experiencia
+                </button>
+            </div>
+        </td>
+    </tr>
+
+    <tr>
+        <td>
+            <div class="mdl-cell mdl-cell--6-col">
+                <header id="header-info-agregada-experiencia" class="header-info-agregada">
+                    <div class="div-simbolo-progreso check info"><i class="fa fa-check"></i></div>
+                    <b>EXPERIENCIA PREVIA AGREGADA:</b>
+                </header>
+                <div id="div-informacion-experiencia" class="div-informacion-agregada">
+                </div>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td class="td-footer">
+            @Html.Partial("_RegistroBotonesFooter", 18)
+        </td>
+    </tr>
+</table>
+
+@*Paso #19 - Idiomas*@
+<table class="card-registro" id="paso19">
+    <tr>
+        <td class="td-progreso">
+            @Html.Partial("_RegistroProgreso", 2)
+        </td>
+    </tr>
+    <tr>
+        <td class="td-contenido">
+            <div class="mdl-cell mdl-cell--6-col">
+                <p class="p-img-paso">
+                    <img src="~/Content/Images/registro/registro-10.png" />
+                </p>
+                <h5>Detalles adicionales</h5>
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <select class="mdl-textfield__input" id="slt-idioma"></select>
+                    <label class="mdl-textfield__label" id="lbl-idioma" for="slt-idioma"></label>
+                </div>
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <select class="mdl-textfield__input" id="slt-idioma-nivel">
+                        <option></option>
+                        <option value="0">Principiante</option>
+                        <option value="50">Intermedio</option>
+                        <option value="90">Avanzado</option>
+                        <option value="100">Nativo</option>
+                    </select>
+                    <label class="mdl-textfield__label" id="lbl-idioma-nivel" for="slt-idioma-nivel">Nivel</label>
+                </div>
+                <button class="mdl-button mdl-js-button btn-agregar" id="btn-agregar-idioma" onclick="fnAgregarIdioma()">
+                    <img src="~/Content/Images/IconoAgregar.png" />
+                    Agregar
+                </button>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div class="mdl-cell mdl-cell--6-col">
+                <header id="header-info-agregada-idioma" class="header-info-agregada">
+                    <div class="div-simbolo-progreso check info"><i class="fa fa-check"></i></div>
+                    <b>INFORMACIÓN DE IDIOMA AGREGADA:</b>
+                </header>
+                <div id="div-informacion-idioma" class="div-informacion-agregada">
+                </div>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td class="td-footer">
+            @Html.Partial("_RegistroBotonesFooter", 19)
+        </td>
+    </tr>
+</table>
+
+@*Paso #20 - Detalles adicionales - habilidades*@
+<table class="card-registro" id="paso20">
+    <tr>
+        <td class="td-progreso">
+            @Html.Partial("_RegistroProgreso", 2)
+        </td>
+    </tr>
+    <tr>
+        <td class="td-contenido">
+            <div class="mdl-cell mdl-cell--6-col">
+                <p class="p-img-paso">
+                    <img src="~/Content/Images/registro/registro-10.png" />
+                </p>
+                <h5>Detalles adicionales</h5>
+            </div>
+            <div class="mdl-cell mdl-cell--10-col">
+                <div class="mdl-grid" id="div-habilidad">
+                </div>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td class="td-footer">
+            @Html.Partial("_RegistroBotonesFooter", 20)
+        </td>
+    </tr>
+</table>
+
+@*Paso #21 - Detalles adicionales - referencias*@
+<table class="card-registro" id="paso21">
+    <tr>
+        <td class="td-progreso">
+            @Html.Partial("_RegistroProgreso", 2)
+        </td>
+    </tr>
+    <tr>
+        <td class="td-contenido">
+            <div class="mdl-cell mdl-cell--6-col">
+                <p class="p-img-paso">
+                    <img src="~/Content/Images/registro/registro-10.png" />
+                </p>
+                <h5>Detalles adicionales</h5>
+                <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                    <input class="mdl-textfield__input" type="text" id="txt-referencia">
+                    <label class="mdl-textfield__label" for="txt-referencia">Sitios de referencia</label>
+                </div>
+                <button class="mdl-button mdl-js-button btn-agregar" id="btn-agregar-referencia" onclick="fnAgregarReferencia()">
+                    <img src="~/Content/Images/IconoAgregar.png" />
+                    Agregar
+                </button>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <div class="mdl-cell mdl-cell--6-col">
+                <header id="header-info-agregada-referencia" class="header-info-agregada">
+                    <div class="div-simbolo-progreso check info"><i class="fa fa-check"></i></div>
+                    <b>INFORMACIÓN DE REFERENCIA AGREGADA:</b>
+                </header>
+                <div id="div-informacion-referencia" class="div-informacion-agregada">
+                </div>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td class="td-footer">
+            @Html.Partial("_RegistroBotonesFooter", 21)
+        </td>
+    </tr>
+</table>
+
+@*  ******************************************************************************
+    *     _                                                         _            *
+    *    | |_  ____  ____ ____ ____  ____ ____    ____   ____  ____| |_  ____    *
+    *    |  _)/ _  )/ ___) ___) _  )/ ___) _  |  |  _ \ / _  |/ ___)  _)/ _  )   *
+    *    | |_( (/ /| |  ( (__( (/ /| |  ( ( | |  | | | ( ( | | |   | |_( (/ /    *
+    *     \___)____)_|   \____)____)_|   \_||_|  | ||_/ \_||_|_|    \___)____)   *
+    *                                            |_|                             *
+    ******************************************************************************@
+
+@*Paso #22 - ¿En que área te gustaría trabajar?*@
+<table class="card-registro" id="paso22">
+    <tr>
+        <td class="td-progreso">
+            @Html.Partial("_RegistroProgreso", 3)
+        </td>
+    </tr>
+    <tr>
+        <td class="td-contenido">
+            <div class="mdl-cell mdl-cell--6-col">
+                <p class="p-img-paso">
+                    <img src="~/Content/Images/registro/registro-12.png" />
+                </p>
+                <h5>¿En que área te gustaría trabajar?</h5>
+            </div>
+            <div class="mdl-cell mdl-cell--10-col" id="div-area">
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td class="td-footer">
+            @Html.Partial("_RegistroBotonesFooter", 22)
+        </td>
+    </tr>
+</table>
+
+@*Paso #23 - ¿En que país te gustaría trabajar?*@
+<table class="card-registro" id="paso23">
+    <tr>
+        <td class="td-progreso">
+            @Html.Partial("_RegistroProgreso", 3)
+        </td>
+    </tr>
+    <tr>
+        <td class="td-contenido">
+            <div class="mdl-cell mdl-cell--6-col">
+                <p class="p-img-paso">
+                    <img src="~/Content/Images/registro/registro-6.png" />
+                </p>
+                <h5>
+                    ¿En que país te gustaría trabajar?
+                </h5>
+
+                <div class="mdl-grid" id="div-pais-a-trabajar"></div>
+        </td>
+    </tr>
+    <tr>
+        <td class="td-footer">
+            @Html.Partial("_RegistroBotonesFooter", 23)
+        </td>
+    </tr>
+</table>
+
+@*Paso #24 - ¿Cuál es tu pretensión salarial?*@
+<table class="card-registro" id="paso24">
+    <tr>
+        <td class="td-progreso">
+            @Html.Partial("_RegistroProgreso", 3)
+        </td>
+    </tr>
+    <tr>
+        <td class="td-contenido">
+            <div class="mdl-cell mdl-cell--6-col">
+                <p class="p-img-paso">
+                    <img src="~/Content/Images/registro/registro-13.png" />
+                </p>
+                <h5>
+                    ¿Cuál es tu pretensión salarial?
+                </h5>
+                <p>
+                    La pretensión salarial es el equivalente de dólares a la
+                    moneda local del país de contratación.
+                </p>
+                <b><label id="lbl-pretension-salarial" salario-id="0">$0</label></b>
+                <input type="range" id="range-pretension-salarial" class="mdl-slider mdl-js-slider" min="1" max="10" value="0" tabindex="0">
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td class="td-footer">
+            @Html.Partial("_RegistroBotonesFooter", 24)
+        </td>
+    </tr>
+</table>
+
+@*Paso #25 - ¿Tienes algún tipo de discapacidad?*@
+<table class="card-registro" id="paso25">
+    <tr>
+        <td class="td-progreso">
+            @Html.Partial("_RegistroProgreso", 3)
+        </td>
+    </tr>
+    <tr>
+        <td class="td-contenido">
+            <div class="mdl-cell mdl-cell--6-col">
+                <p class="p-img-paso">
+                    <img src="~/Content/Images/registro/registro-15.png" />
+                </p>
+                <h5>¿Tienes algún tipo de discapacidad?</h5>
+                <div class="mdl-grid" id="div-discapacidad"></div>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td class="td-footer">
+            @Html.Partial("_RegistroBotonesFooter", 25)
+        </td>
+    </tr>
+</table>
+
+@*Paso #26 - ¿Tienes algún vehículo?*@
+<table class="card-registro" id="paso26">
+    <tr>
+        <td class="td-progreso">
+            @Html.Partial("_RegistroProgreso", 3)
+        </td>
+    </tr>
+    <tr>
+        <td class="td-contenido">
+            <div class="mdl-cell mdl-cell--6-col">
+                <p class="p-img-paso">
+                    <img src="~/Content/Images/registro/registro-16.png" />
+                </p>
+                <h5>
+                    ¿Tienes algún vehículo?
+                </h5>
+                <p>
+                    <button class="mdl-button mdl-js-button mdl-js-ripple-effect btn-seleccionar-uno btn-vehiculo" data-value="true" onclick="fnSeleccionarVehiculo(this)">
+                        Sí
+                    </button>
+                </p>
+                <p>
+                    <button class="mdl-button mdl-js-button mdl-js-ripple-effect btn-seleccionar-uno btn-vehiculo" data-value="false" onclick="fnSeleccionarVehiculo(this)">
+                        No
+                    </button>
+                </p>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td class="td-footer">
+            @Html.Partial("_RegistroBotonesFooter", 26)
+        </td>
+    </tr>
+</table>
+
+@*Paso #27 - ¿Con cuál tipo de licencia cuentas?*@
+<table class="card-registro" id="paso27">
+    <tr>
+        <td class="td-progreso">
+            @Html.Partial("_RegistroProgreso", 3)
+        </td>
+    </tr>
+    <tr>
+        <td class="td-contenido">
+            <div class="mdl-cell mdl-cell--6-col">
+                <p class="p-img-paso">
+                    <img src="~/Content/Images/registro/registro-2.png" />
+                </p>
+                <h5>¿Con cuál tipo de licencia cuentas?</h5>
+                <div class="mdl-grid" id="div-licencia"></div>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td class="td-footer">
+            @Html.Partial("_RegistroBotonesFooter", 27)
+        </td>
+    </tr>
+</table>
+
+@*  ***************************************************************************
+    *                             _                              _            *
+    *      ____ _   _  ____  ____| |_  ____    ____   ____  ____| |_  ____    *
+    *     / ___) | | |/ _  |/ ___)  _)/ _  |  |  _ \ / _  |/ ___)  _)/ _  )   *
+    *    ( (___| |_| ( ( | | |   | |_( ( | |  | | | ( ( | | |   | |_( (/ /    *
+    *     \____)\____|\_||_|_|    \___)_||_|  | ||_/ \_||_|_|    \___)____)   *
+    *                                         |_|                             *
+    ***************************************************************************@
+
+@*Paso #28 - Adjuntar tu CV*@
+<table class="card-registro" id="paso28">
+    <tr>
+        <td class="td-progreso">
+            @Html.Partial("_RegistroProgreso", 4)
+        </td>
+    </tr>
+    <tr>
+        <td class="td-contenido">
+            <div class="mdl-cell mdl-cell--6-col">
+                <h5>Adjuntar tu CV</h5>
+                <div class="div-carga-archivo" id="div-cv">
+                    <i class="fa fa-file fa-10x"></i>
+                </div>
+                <p class="mensaje-error" id=mensaje-error-cv></p>
+                <label class="mdl-button mdl-js-button mdl-js-ripple-effect btn-seleccionar-uno">
+                    <i class="fa fa-paperclip" aria-hidden="true"></i> Adjuntar Archivo
+                    <input type="file" style="display: none;" id="file-cv">
+                </label>
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <td class="td-footer">
+            @Html.Partial("_RegistroBotonesFooter", 28)
+        </td>
+    </tr>
+</table>
+
+@*  ***************************************
+    *                   _       _         *
+    *                  | |     | |        *
+    *   ____   ___   _ | | ____| | ___    *
+    *  |    \ / _ \ / || |/ _  | |/___)   *
+    *  | | | | |_| ( (_| ( ( | | |___ |   *
+    *  |_|_|_|\___/ \____|\_||_|_(___/    *
+    ***************************************@
+
+<div id="modal-comprobar-email" class="modal">
+    <div class="mdl-cell mdl-cell--10-col">
+        <p>
+            <h4>Validando correo electrónico</h4>
+        </p>
+        <p>
+            <div id="div-modal-comprobar">
+                <div class="loader" id="loader">Loading...</div>
+            </div>
+        </p>
+        <a href="#" rel="modal:close"></a>
+    </div>
+</div>
+
+<div id="modal-bac-contamos" class="modal">
+    <div class="mdl-cell mdl-cell--10-col">
+        <p>
+            <img src="~/Content/Images/registro/registro-11.png" />
+            <h4>En BAC contamos</h4>
+            <h4>con 12 carreras profesionales</h4>
+        </p>
+        <p>
+            Carreras en todas las áreas del conocimiento, que
+            ofrecen diferentes oportunidades laborales para las
+            más distintas profesiones.
+        </p>
+
+        <a href="#" rel="modal:close" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent btn-bg">
+            Continuar
+        </a>
+    </div>
+</div>
+
+<div id="modal-bac-reforzamos" class="modal">
+    <div class="mdl-cell mdl-cell--10-col">
+        <p>
+            <img src="~/Content/Images/registro/registro-14.png" />
+            <h4>En BAC reforzamos</h4>
+            <h4>la inclusión laboral</h4>
+        </p>
+        <p>
+            Con ayuda de expertos, consultores
+            externos y actividades, nuestros
+            colaboradores sensibilizan a sus
+            compañeros.
+        </p>
+
+        <a href="#" rel="modal:close" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent btn-bg">
+            Continuar
+        </a>
+    </div>
+</div>
+
+<div id="modal-finalizar" class="modal">
+    <div class="mdl-cell mdl-cell--10-col">
+        <p>
+            <img src="~/Content/Images/registro/registro-17.png" />
+            <h4>¡Cuenta creada exitosamente!</h4>
+        </p>
+        <p>
+            Ya estás registrado en la plataforma.
+        </p>
+        @*Debe ingresar directo a la plataforma*@
+        <a href="/principal/login" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent btn-bg">
+            Ver puestos
+        </a>
+    </div>
+</div>
+
+<div id="modal-error" class="modal">
+    <div class="mdl-cell mdl-cell--10-col">
+        <p>
+            <img src="~/Content/Images/registro/registro-17.png" />
+            <h4>¡Error en creación de cuenta!</h4>
+        </p>
+        <p>
+            Existe un error al ingresar su cuenta.
+        </p>
+        @*Debe ingresar directo a la plataforma*@
+        <a href="/principal/login" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent btn-bg">
+            Pantalla principal
+        </a>
+    </div>
+</div>

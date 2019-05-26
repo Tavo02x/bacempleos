@@ -1,0 +1,33 @@
+﻿
+@{
+}
+<div ng-controller="RealizarPregrabadaController" ng-init="SeguridadJS();GetPreguntas();">
+    <h1 class="subtitle-18 mb-3"><span class="mdi mdi-monitor-dashboard mdi-24px mr-2"></span> Realizar entrevista pre-grabada</h1>
+    <h2 class="subtitle-14 mb-4"> Hola, {{Nombre}}, bienvenido/a a tu entrevista para el puesto de {{Puesto}}</h2>
+    <div class="Panel">
+        <h3 class="subtitle-20 text-red text-center">Tu entrevista consistirá en:</h3>
+        <div class="row">
+            <div class="col-lg-6 my-3">
+                <div class="shadow-sm p-4 h-100 text-center">
+                    <img id="GrabacionVideo" class="img-100 mb-3" src="~/Content/Images/Grabacion-grande.png" />
+                    <h3 class="subtitle-18">Grabación de video</h3>
+                    <p>Te haremos una serie de preguntas que tendrás que responder grabando un video.</p>
+                </div>
+            </div>
+            <div class="col-lg-6 my-3">
+                <div class="shadow-sm p-4 h-100 text-center">
+                    <img id="TiempoRespuesta" class="img-100 mb-3" src="~/Content/Images/Reloj-Grande.png" />
+                    <h3 class="subtitle-18">Tiempo de respuesta</h3>
+                    <p>Cada pregunta consta de un tiempo límite que podrás ver mientras grabas tu respuesta.</p>
+                </div>
+            </div>
+        </div>
+        <div ng-show="MostrarEntrevista" class="mt-3">
+            <button id="ComenzarEntrevista" type="button" ng-click="IniciarEntrevista()" class="btn mx-auto">Comenzar entrevista</button>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+
+}

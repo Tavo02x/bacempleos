@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+<html id="ContenedorGeneral">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BAC Empleos</title>
+    <link rel="icon" type="image/png" href="~/Content/Images/favicon.png">
+
+    @Html.Partial("IncludeCSS")
+</head>
+<body ng-app="BacApp" ng-controller="mainController">
+    <div class="Pagina fixCuerpo2">
+        <div class="Cabecera">
+            <div class="Fondo"></div>
+
+            <a id="btnInicio" href="#">
+                <div>
+                    <img src="~/Content/Images/IconoBAC.png" class="bitmapcopy2" src="data:image/gif;base64,R0lGODlhAQABAIAAAP///wAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" />
+                </div>
+            </a>
+            <div class="group">
+
+                <a id="btnSalir" href="#">
+                    <div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="Cuerpo2">
+            <div class="Contenido2">
+                @RenderBody()
+            </div>
+        </div>
+    </div>
+    <div class="contenedorLoader">
+        <div id="popupLoading" class="modal fade" role="dialog">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="loader" id="loader">Loading...</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @Html.Partial("IncludeJS")
+    @RenderSection("scripts", required: false)
+
+    @Html.Partial("_PreLoader")
+</body>
+</html>

@@ -1,0 +1,28 @@
+﻿
+@{
+}
+<div ng-controller="RealizarPregrabadaController" ng-init="SeguridadJS();CargarPregunta();">
+    <h1 class="subtitle-18 mb-3"><span class="mdi mdi-monitor-dashboard mdi-24px mr-2"></span> Pregunta {{secuencia}} de {{TotalPreguntas}}</h1>
+    <h2 class="subtitle-20 text-center mb-4">{{Pregunta}}</h2>
+    <div class="Panel">
+        <div id="formGrabado"></div>
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2">
+                <div id="divRecord">
+                    <ziggeorecorder id="recorder" ziggeo-theme="modern" ziggeo-timelimit="{{segundos}}" ziggeo-countdown="30" ziggeo-autorecord="true" ziggeo-rerecordable="false" ziggeo-allowrecord="false" ziggeo-enforce-duration>
+                    </ziggeorecorder>
+                </div>
+                <div ng-show="ShowReview">
+                    <p class="text-center">Esta pregunta ya fue grabada, por favor continúa con la siguiente pregunta.</p>
+                </div>
+                <div class="botoneraCentrada">
+                    <input id="btnSiguientePregunta" type="button" ng-click="SiguientePregunta()" class="btnPrincipal hidden" value="Siguiente Pregunta" />
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+
+}

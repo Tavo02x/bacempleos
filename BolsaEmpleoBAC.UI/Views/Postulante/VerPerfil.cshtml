@@ -1,0 +1,249 @@
+﻿
+@{
+    /**/
+
+    /**/
+
+    ViewBag.Title = "MiPerfil";
+}
+
+<div ng-controller="VerPerfilController" ng-init="SeguridadJS();getInfo();AplicarSeguridadHTML();">
+    <a id="VolverPuesto" ng-click="ReturnLobby()" class="btn-back mb-3"><span class="mdi mdi-chevron-left mdi-24px"></span>Volver</a>
+    <div class="float-md-right">
+        <button id="btnDescargarPerfil" type="button" class="btn" ng-click="DescargarPerfil()">Descargar perfil</button>
+    </div>
+    <div class="Panel">
+        <div class="row">
+            <div class="col-lg-6 mb-3 mb-lg-0 col-xl-8">
+                <div class="d-flex">
+                    <img id="FotoPerfil" src="~/Content/Images/FondoPersona.png" class="FotoCircular" />
+                    <div class="ml-3">
+                        <p class="subtitle-18 mb-2">{{obj.NombreCompleto}}</p>
+                        <p class="text-14 text-grauy">{{obj.Email}}</p>
+                        <p id="txtEstadoPerfil" class="text-14">{{obj.EstadoPerfil}}</p>
+                        <a id="btnFavorito" ng-click="MarcarFavorito()"><img id="imgFavorito" src="~/Content/Images/IconoNoFavorito.png" class="icono-3" /></a>
+                        <span id="txtMarcarFavorito"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-xl-4">
+                <p id="tituloEntrevista" class="subtitle-16 text-center">Solicitar Entrevista:</p>
+                <div class="d-flex justify-content-end">
+                    <button id="EntrevistaPregrabada" type="button" class="btn btn-border-blue mx-1"  ng-click="Pregrabada()" >Pre grabada</button>
+                    <button id="btnEntrevista" type="button" class="btn btn-blue mx-1" ng-click="EnVivo()" >En vivo</button>
+                    <button id="btnEditarPerfil" type="button" class="btn" ng-click="EditarPerfil()" >Editar mi perfil</button>
+                </div>
+            </div>
+        </div>
+        <div id="taps" class="row my-5">
+            <div id="StepOne" class="col-4 col-md-3 tapSelect" ng-click="ChangeStepOne()">Datos </div>
+            <div id="StepTwo" class="col-4 col-md-3 taps" ng-click="ChangeStepTwo()">Experiencia </div>
+            <div id="StepThree" class="col-4 col-md-3 taps" ng-click="ChangeStepThree()">Intereses</div>
+        </div>
+        <div id="paso1" class="row" ng-show="StepOne">
+            <div class="col-lg-4 mb-5 mb-lg-0 Division text-12">
+                <h4 class="subtitle-14 mb-4">Información de contacto</h4>
+                <p class="subtitle-12 mb-1">Correo:</p>
+                <p>{{obj.Email}}</p>
+                <p class="subtitle-12 mb-1">Teléfono:</p>
+                <p>{{obj.Telefono}}</p>
+                <p class="subtitle-12 mb-1">Residencia:</p>
+                <p>{{obj.PaisRecidencia}}<span ng-if="obj.Zona1">, {{obj.Zona1}}</span><span ng-if="obj.Zona2">, {{obj.Zona2}}</span><span ng-if="obj.Zona3">, {{obj.Zona3}}</span></p>
+            </div>
+            <div class="col-lg-4 mb-5 mb-lg-0 Division text-12">
+                <h4 class="subtitle-14 mb-4">Información personal</h4>
+                <p class="subtitle-12 mb-1">Identificación:</p>
+                <p>{{obj.Identificacion}}</p>
+                <p class="subtitle-12 mb-1">Género:</p>
+                <p>{{obj.Genero}}</p>
+                <p class="subtitle-12 mb-1">Estado Civil:</p>
+                <p>{{obj.EstadoCivil}}</p>
+                <p class="subtitle-12 mb-1">Fecha nacimiento:</p>
+                <p>{{obj.FechaNacimiento}}</p>
+                <p class="subtitle-12 mb-1">Edad:</p>
+                <p>{{obj.Edad}}</p>
+                <p class="subtitle-12 mb-1">Nacionalidad:</p>
+                <p>{{obj.Nacionalidad}}</p>
+            </div>
+            <div class="col-lg-4 text-12">
+                <h4 class="subtitle-14 mb-4">Información adicional</h4>
+                <p class="subtitle-12 mb-1">Vehículo:</p>
+                <p>{{obj.Vehiculo}}</p>
+                <p class="subtitle-12 mb-1">Licencia:</p>
+                <p>{{obj.IdTipoLicencia}}</p>
+                <p class="subtitle-12 mb-1">Discapacidad:</p>
+                <ul class="list-unstyled">
+                    <li ng-repeat="discapacidad in obj.Discapacidades" class="text-12 mb-2">{{discapacidad.Descripcion}}</li>
+                </ul>
+            </div>
+        </div>
+        <div id="paso2" class="row" ng-show="StepTwo">
+            <div class="col-lg-4 mb-5 mb-lg-0 Division text-12">
+                <h4 class="subtitle-14 mb-4">Educación</h4>
+                <p class="subtitle-12 mb-1">Máximo grado académico</p>
+                <p>{{obj.GradoAcademico}}</p>
+                <p class="subtitle-12 mb-1">Títulos y certificaciones</p>
+                <ul class="pl-3">
+                    <li class="text-12 mb-1" ng-repeat="grado in obj.TitulosCertificaciones">{{grado.GradoAcademico}}</li>
+                </ul>
+            </div>
+            <div class="col-lg-4 mb-5 mb-lg-0 Division text-12">
+                <p class="subtitle-14">Experiencia Laboral</p>
+                <ul class="pl-3">
+                    <li ng-repeat="exp in obj.ExperienciaLaboral">
+                        <p class="subtitle-12 mb-1">Puesto: {{exp.Puesto}}</p>
+                        <p class="mb-1">Empresa: {{exp.Empresa}}</p>
+                        <p class="mb-1">Descripción del puesto: {{exp.DescripcionPuesto}}</p>
+                    </li>
+                </ul>
+                <p class="subtitle-12 mb-1">He trabajado en el BAC</p>
+                <p>{{obj.TrabajoBAC}}</p>
+                <p class="subtitle-12 mb-1">Habilidades Blandas</p>
+                <ul class="list-unstyled">
+                    <li ng-repeat="hab in obj.Habilidades" class="text-12 mb-2">{{hab.Descripcion}}</li>
+                </ul>
+            </div>
+            <div class="col-lg-4 text-12">
+                <h4 class="subtitle-14">Sitios de referencia</h4>
+                <ul class="list-unstyled">
+                    <li ng-repeat="url in obj.Referencias" class="text-12 mb-2 text-long">{{url.UrlReferencia}}</li>
+                </ul>
+            </div>
+        </div>
+        <div id="paso3" class="row" ng-show="StepThree">
+            <div class="col-lg-4 mb-5 mb-lg-0 Division text-12">
+                <p class="subtitle-12">Idiomas:</p>
+                <ul class="list-unstyled">
+                    <li class="mb-2" ng-repeat="idioma in obj.Idiomas">
+                        <img src="~/Content/Images/IconoIdiomaRojo.png" class="icono-2 mr-2" />{{idioma.Descripcion}}: {{idioma.Nivel}}
+                    </li>
+                </ul>
+            </div>
+            <div class="col-lg-4 mb-5 mb-lg-0 Division text-12">
+                <p class="subtitle-12 mb-1">Quisiera trabajar en:</p>
+                <ul class="list-unstyled">
+                    <li ng-repeat="area in obj.Areas" class="text-12 mb-2">{{area.Area}}</li>
+                </ul>
+                <p class="subtitle-12 mb-1">Países de interés:</p>
+                <ul class="list-unstyled">
+                    <li ng-repeat="pais in obj.Paises" class="text-12">{{pais.Descripcion}}</li>
+                </ul>
+                <p class="subtitle-12 mb-1">Pretensión Salarial:</p>
+                <p>${{obj.PretensionSalarial}}</p>
+            </div>
+            <div class="col-lg-4">
+                <p class="subtitle-12 mb-1">Curriculum:</p>
+                <a class="link" id="bttCurriculo" href="{{obj.CurriculumURL}}" target="_blank">Ver curriculum</a>
+            </div>
+        </div>
+
+    </div>
+    <div id="contenedorAplicaciones" class="Panel">
+        <h2 class="subtitle-20 mb-3"><span class="mdi mdi-clipboard-check mdi-24px text-red"></span> Aplicaciones ({{obj.AplicacionesPuesto.length}})</h2>
+        <div ng-if="obj.AplicacionesPuesto.length === 0">
+            <p>No hay aplicaciones registradas</p>
+        </div>
+        <div id="Aplicaciones" class="row">
+        </div>
+    </div>
+    <div id="ContenedorEntrevistas" class="Panel">
+        <h2 class="subtitle-20 mb-3"> <span class="mdi mdi-laptop mdi-24px" ng-class="{'text-red': Entrevistas.length === 0, 'text-green': Entrevistas.length > 0}"></span> Entrevistas ({{Entrevistas.length}})</h2>
+        <div ng-if="Entrevistas.length === 0">
+            <p>No hay entrevistas registradas</p>
+        </div>
+        <div class="row">
+            <div id="rel1" class="cuadroRelacionado col-12 col-lg-4 Division" ng-repeat="entrevista in Entrevistas">
+                <div class="row">
+                    <div class="col-10 col-sm-10 saltoSeccion saltoSeccionBajo-4">
+                        <span class="LetrasSubTitulo textoNegrita">{{entrevista.TipoEntrevista}}</span><br />
+                        <span class="text-12"> {{entrevista.FechaEntrevista}}</span><br />
+                        <span class="text-12">Estado:{{entrevista.Estado}}</span><br />
+                        <span ng-if="IsAdmin == true" class="text-12">Creada por: {{entrevista.Creada}}</span><br />
+                        <span ng-if="entrevista.IdTipoEntrevista == 2 && IsAdmin == true" class="text-12 textoNegrita">Calificación general:</span>
+                        <jk-rating-stars class="my-custom-stars" ng-if="entrevista.IdTipoEntrevista == 2 && IsAdmin == true" rating="entrevista.CalificacionGeneral" read-only="true"></jk-rating-stars>
+                    </div>
+                    <div ng-if="entrevista.IdTipoEntrevista == 1" class="col-1 col-sm-1 ultimaColumna saltoSeccion saltoSeccionBajo-4">
+                        <a id="img" ng-if="entrevista.IdEstado == 1 && entrevista.IsFeria == true && IsAdmin == false" href="#"><span class="mdi mdi-chevron-right-circle-outline mdi-24px text-red"></span></a>
+                        <a id="img" ng-if="entrevista.IdEstado == 1 && entrevista.IsFeria == true && IsAdmin == true" href="#" ng-click="AceptarEntrevista(entrevista.IdEntrevista)"><span class="mdi mdi-chevron-right-circle-outline mdi-24px text-red"></span></a>
+                        <a id="img" ng-if="entrevista.IdEstado == 1 && entrevista.IsFeria == false && IsAdmin == true" href="#"><span class="mdi mdi-chevron-right-circle-outline mdi-24px text-red"></span></a>
+                        <a id="img" ng-if="entrevista.IdEstado == 1 && entrevista.IsFeria == false && IsAdmin == false" href="#" ng-click="AceptarEntrevista(entrevista.IdEntrevista)"><span class="mdi mdi-chevron-right-circle-outline mdi-24px text-red"></span></a>
+                        <a id="img" ng-if="entrevista.IdEstado == 2 && IsAdmin == true" target="_blank" href="{{entrevista.Url}}"><span class="mdi mdi-chevron-right-circle-outline mdi-24px text-red"></span></a>
+                        <a id="img" ng-if="entrevista.IdEstado == 3" target="_blank" href="{{entrevista.Url}}"><span class="mdi mdi-chevron-right-circle-outline mdi-24px text-red"></span></a>
+                        <a id="img" ng-if="entrevista.IdEstado == 4 || entrevista.IdEstado == 5" href="#"></a>
+                        <a id="compartir" data-toggle="modal" data-target="#popupArea" ng-if="IsAdmin"><span class="mdi mdi-share-variant mdi-24px text-green"></span></a>
+                    </div>
+                    <div ng-if="entrevista.IdTipoEntrevista == 2" class="col-1 col-sm-1 ultimaColumna saltoSeccion saltoSeccionBajo-4">
+                        <a id="img" ng-if="entrevista.IdEstado == 1 && entrevista.IsFeria == false && IsAdmin == true" href="#"><span class="mdi mdi-chevron-right-circle-outline mdi-24px text-red"></span></a>
+                        <a id="img" ng-if="entrevista.IdEstado == 1 && entrevista.IsFeria == false && IsAdmin == false" href="#" ng-click="AceptarEntrevista(entrevista.IdEntrevista)"><span class="mdi mdi-chevron-right-circle-outline mdi-24px text-red"></span></a>
+                        <a id="img" ng-if="entrevista.IdEstado == 2 && IsAdmin == true" href="{{baseUrl}}/Entrevistas/VideosEntrevista?IdEntrevista={{entrevista.IdEntrevista}}&User={{obj.Email}}"><span class="mdi mdi-chevron-right-circle-outline mdi-24px text-red"></span></a>
+                        <a id="img" ng-if="entrevista.IdEstado == 3 && IsAdmin == false" href="{{entrevista.Url}}"><span class="mdi mdi-chevron-right-circle-outline mdi-24px text-red"></span></a>
+                        <a id="img" ng-if="entrevista.IdEstado == 4 || entrevista.IdEstado == 5" href="#"></a>
+                        <a id="compartir" data-toggle="modal" data-target="#popupArea" ng-if="IsAdmin"><span class="mdi mdi-share-variant mdi-24px text-green"></span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="ContenedorComentarios" class="Panel">
+        <h2 class="subtitle-20 mb-3"><span class="mdi mdi-comment-processing mdi-24px text-red"></span> Comentarios</h2>
+        <div ng-if="Comentarios.length === 0">
+            <p>No hay comentarios</p>
+        </div>
+        <div ng-repeat="c in Comentarios" class="py-3 border-bottom">
+            <span class="LetrasSubTitulo textoNegrita">{{c.NombreUsurio}}</span><br />
+            <span class="text-12 ColorLetraGris">{{c.Fecha}}</span><br />
+            <span class="text-12">{{c.Mensaje}}</span>
+        </div>
+    </div>
+    <div id="ContenedorAgregarComentarios" class="Panel">
+     <h2 class="subtitle-16 mb-3"> Agregar comentarios</h2>
+        <div class="row">
+            <div class="col-lg-9">
+                <input id="comentario" placeholder="Deja un comentario sobre el aplicante" type="text" ng-model="Comentario.Descripcion" />
+                <span class="validate" ng-show="show500">Por favor, escribe el comentario.</span>
+            </div>
+            <div class="col-lg-3 col-12">
+                <div class="botonera">
+                    <button id="btnAgregarComentario" class="btn" type="button" ng-click="Guardar()" >Agregar comentario</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="popupArea" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="col-lg-1">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <label class="text-12 textoNegrita">Escribe el correo y el nombre con quien deseaa compartir la entrevista</label>
+                            <input id="txtNombre" type="text" placeholder="Nombre" class="text-12" ng-model="NombreCompartir" />
+                            <span class="validate" ng-show="NombreInvalido">Por favor, indica el nombre.</span>
+                            <input id="txtEmail" type="text" placeholder="Email" class="text-12" ng-model="EmailCompartir" />
+                            <span class="validate" ng-show="EmailInvalido">Por favor, indica el email.</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="botonera">
+                                <input id="btnCancelar" type="button" value="Cancelar" class="btnSecundario" data-dismiss="modal" />
+                                <input id="btnGuardar" type="button" value="Enviar" class="btnPrincipal" data-dismiss="modal" ng-click="CompartirPerfil()" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+
+}

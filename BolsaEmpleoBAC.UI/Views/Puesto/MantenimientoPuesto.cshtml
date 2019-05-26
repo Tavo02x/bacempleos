@@ -1,0 +1,157 @@
+﻿
+@{
+    ViewBag.Title = "MantenimientoPuesto";
+}
+<div ng-controller="puestosController" ng-init="SeguridadJS();getIdiomas();getPaises();getJornadaLaboral();AreaLaboralGet();getGradoAcademico();LimpiarShowStep1();">
+    <a id="VolverPuesto" ng-click="Volver()" class="btn-back mb-3"><span class="mdi mdi-chevron-left mdi-24px"></span>Volver</a>
+    <h1 class="subtitle-18 mb-5"><span class="mdi mdi-briefcase mdi-24px"></span> Crear Puesto</h1>
+
+    <div class="ProgressBar">
+        <div id="PasosPostulante" class="row">
+            <div id="divStepOne" class="col-3 linea Primaria">
+                <div id="circuloStepOne" class="circulo CirculoPrimario">
+                    <div id="textStepOne" class="texto textoPrimario">1</div>
+                </div>
+            </div>
+            <div id="divStepTwo" class="col-3 linea Secundario">
+                <div id="circuloStepTwo" class="circulo CirculoSecundario">
+                    <div id="textStepTwo" class="texto textoSecundario">2</div>
+                </div>
+            </div>
+            <div id="divStepThree" class="col-3 linea Secundario">
+                <div id="circuloStepThree" class="circulo CirculoSecundario">
+                    <div id="textStepThree" class="texto textoSecundario">3</div>
+                </div>
+            </div>
+            <div id="divStepFour" class="col-3 linea Secundario">
+                <div id="circuloStepFour" class="circulo CirculoSecundario">
+                    <div id="textStepFour" class="texto textoSecundario">4</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div id="paso1" class="row Panel" ng-show="StepOne">
+            <div class="col-lg-4 Division">
+                <h3 class="subtitle-16">Información General</h3>
+                <input id="txtId" type="hidden" ng-model="model.IdPuesto" />
+                <input id="txtnombre" placeholder="Nombre del puesto" ng-model="model.Titulo" ng-value="model.Titulo" type="text" />
+                <span class="validate" ng-show="show1">Por favor, introduce el nombre del puesto</span>
+                <textarea id="txtDescripcion" placeholder="Descripción" ng-model="model.Descripcion" type="text" rows="3"></textarea>
+                <span class="validate" ng-show="show2">Por favor, introduce la descripción</span>
+                <select id="selGradoAcademico" ng-model="model.IdNivelAcademico">
+                    <option selected disabled value="">Grado Académico</option>
+                    <option ng-repeat="grado in GradoAcademico" value="{{grado.IdNivelAcademico}}" ng-value="{{grado.IdNivelAcademico}}">{{grado.Descripcion}}</option>
+                </select>
+                <span class="validate" ng-show="show3">Por favor, selecciona un nivel académico</span>
+                <select id="selJornadaLaboral" ng-model="model.IdJornada">
+                    <option selected disabled value="">Jornada Laboral</option>
+                    <option ng-repeat="jornada in JornadaLaboral" value="{{jornada.IdJornada}}" ng-value="{{jornada.IdJornada}}">{{jornada.Descripcion}}</option>
+                </select>
+                <span class="validate" ng-show="show4">Por favor, selecciona una jornada laboral</span>
+            </div>
+            <div class="col-lg-4 Division">
+                <h3 class="subtitle-16">Fecha de cierre</h3>
+
+                <div class="datepicker">
+                    <input id="txtFechaCierre" readonly type="text" uib-datepicker-popup="{{format}}" ng-model="model.FechaCierreOferta" is-open="datepicker.opened" datepicker-options="dateOptions" ng-required="true"  show-button-bar="false"/>
+                    <button type="button" class="datepicker__btn" ng-click="openDatepicker()"><span class="mdi mdi-calendar"></span></button>
+                </div>
+
+                <span class="validate" ng-show="show5">Por favor, introduce la fecha de cierre</span>
+                <h3 class="subtitle-16">Requisitos</h3>
+                <div id="Puestorequisito">
+                    <div id="pnlRepeatRequisitos">
+                        <input id="txtRequisito" type="text" placeholder="Requisito" class="LetrasContenido" />
+                    </div>
+                    <img id="agregarRequisito" src="~/Content/Images/IconoAgregar.png" class="AddMultiItems punteroSelector" ng-click="AgregarRequisito()" />
+                    <span ng-click="AgregarRequisito()" class="LetrasContenido punteroSelector">Agregar otro requisito</span>
+                    
+                    <button type="button" ng-click="RemoveElement(5)" class="LetrasContenido punteroSelector"><img src="~/Content/Images/Basurero.png" class="imgLetraContenido punteroSelector" /> Eliminar último</button>
+                </div>
+                <span class="validate" ng-show="show61">Por favor, ingresa al menos un requisito</span>
+                <span class="validate" ng-show="RepeticionRequisitos">Hay un elemento repetido, favor verifica la información que has ingresado.</span>
+            </div>
+            <div class="col-lg-4">
+                <h3 class="subtitle-16">Idiomas</h3>
+                <div id="NivelIdioma">
+                    <div id="pnlRepeatNivelIdioma">
+                        <select id="txtIdioma">
+                            <option disabled selected value="">Idioma</option>
+                            <option ng-repeat="idioma in Idiomas" value="{{idioma.IdIdioma}}" ng-value="{{idioma.IdIdioma}}">{{idioma.Descripcion}}</option>
+                        </select>
+                        <select id="selNivel">
+                            <option disabled selected value="">Nivel</option>
+                            <option value="0">Bajo</option>
+                            <option value="50">Intermedio</option>
+                            <option value="100">Alto</option>
+                        </select>
+                    </div>
+                    <img id="agregarIdioma" src="~/Content/Images/IconoAgregar.png" class="AddMultiItems punteroSelector" ng-click="AgregarIdioma()" />
+                    <span ng-click="AgregarIdioma()" class="LetrasContenido punteroSelector">Agregar otro idioma</span>
+                    <button type="button" ng-click="RemoveElement(4)" class="LetrasContenido punteroSelector"><img src="~/Content/Images/Basurero.png" class="imgLetraContenido punteroSelector" /> Eliminar último</button>
+                </div>
+                <span class="validate" ng-show="show6">Por favor, ingresa al menos un idioma</span>
+                <span class="validate" ng-show="RepeticionIdioma">Hay un elemento repetido, favor verifica la información que has ingresado.</span>
+            </div>
+        </div>
+        <div id="paso2" class="Panel" ng-show="StepTwo">
+            <h3 class="subtitle-16 mb-3">Áreas relacionadas</h3>
+            <div id="chkAreas" ng-repeat="area in Areas" class="container">
+                <label class="container">
+                    {{area.Area}}
+                    <input type="radio" name="areas" value="{{area.IdArea}}" id="{{area.IdArea}}">
+                    <span class="radio"></span>
+                </label>
+            </div>
+            <span class="validate" ng-show="show7">Por favor, selecciona un área laboral</span>
+        </div>
+        <div id="paso3" class="Panel" ng-show="StepThree">
+            <h3 class="subtitle-16">País donde ofertar</h3>
+            <div class="row">
+                <div class="col-md-4">
+                    <select id="selResidencia" ng-model="model.IdPais" ng-change="getZona()">
+                        <option disabled selected value="">Residencia</option>
+                        <option ng-repeat="pais in Paises" value="{{pais.IdPais}}" ng-value="{{pais.IdPais}}">{{pais.Descripcion}}</option>
+                    </select>
+                    <span class="validate" ng-show="show8">Por favor, selecciona un país</span>
+                    <select id="selProvincia" ng-model="model.IdZona1">
+                        <option disabled selected value="">Zona</option>
+                        <option ng-repeat="zona in Zona1" value="{{zona.IdZona1}}" ng-value="{{zona.IdZona1}}">{{zona.Descripcion}}</option>
+                    </select>
+                    <span class="validate" ng-show="Zona1Invalido">Por favor, selecciona su zona</span>
+                </div>
+            </div>
+        </div>
+        <div id="paso4" class="Panel" ng-show="StepFour">
+            <h3 class="subtitle-16 mb-3">Verifica los detalles del puesto que estás creando</h3>
+            <h3 class="subtitle-16 mb-3">{{model.Titulo}}</h3>
+            <div class="text-12">
+                <p>Descripción del puesto: {{model.Descripcion}}</p>
+                <p>Grado académico: {{GetLabelFromGrado(model.IdNivelAcademico,GradoAcademico)}}</p>
+                <p>Jornada laboral: {{GetLabelFromJornada(model.IdJornada,JornadaLaboral)}}</p>
+                <p>Fecha de cierre: {{GetDate(model.FechaCierreOferta)}}</p>
+                <p>Idiomas: {{idiomaLabel}}</p>
+                <p>Area: {{areaLabel}}</p>
+                <p>País donde ofertar: {{GetLabelFromPais(model.IdPais,Paises)}} </p>
+            </div>
+        </div>
+    </div>
+    <div class="my-3">
+        <p ng-if="StepFour" class="subtitle-14 text-right">¿Estás seguro de querer crear este puesto? </p>
+        <div class="btn-wrap">
+            <button id="btnContinuar" type="button" ng-click="ChangeStep()" class="btn order-lg-1">
+                <span ng-if="!StepFour">Continuar</span>
+                <span ng-if="StepFour">Sí, crear puesto</span>
+            </button>
+            <button id="btnCancelar" type="button" ng-click="ReturnStep()" class="btn btn-gray order-lg-0">
+                <span ng-if="!StepFour">Regresar</span>
+                <span ng-if="StepFour">No, editar puesto</span>
+            </button>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+
+}

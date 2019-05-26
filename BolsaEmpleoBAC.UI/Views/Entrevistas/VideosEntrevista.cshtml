@@ -1,0 +1,86 @@
+﻿
+@{
+}
+
+<div ng-controller="VerEntrevistaPregrabadaController" ng-init="SeguridadJS();GetVideos();">
+    <div class="row">
+        <div class="col-lg-12">
+            <a ng-click="Return()">
+                <img src="~/Content/Images/flechaVolver.png" class="SubComponenteImagen" />
+                <label class="SubComponente punteroSelector">Volver</label>
+            </a>
+        </div>
+    </div>
+    <div class="row saltoSeccionBajo-6">
+        <div class="col-lg-12">
+            <img src="~/Content/Images/IconoEntrevistaPregrabada.png" alt="Puesto" class="icono-2 SitioIcono" />
+            <span class="LetrasTitulo textoNegrita">Entrevista a {{Nombre}}</span><br />
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="saltoSeccionBajo-1">
+                <img src="~/Content/Images/IconoCalendario.png" class="icono-1" /><span class="LetrasContenido DetalleLabel">  Fecha:</span> <span class="LetrasContenido DetalleValue">{{Fecha}}</span>
+            </div>
+            <div class="saltoSeccionBajo-1">
+                <img src="~/Content/Images/IconoTiempo.png" class="icono-1" /><span class="LetrasContenido DetalleLabel">  Creada por:</span> <span class="LetrasContenido DetalleValue">{{Creador}}</span>
+            </div>
+            <div class="saltoSeccionBajo-6">
+                <img src="~/Content/Images/IconoTiempo.png" class="icono-1" /><span class="LetrasContenido DetalleLabel">  Puesto:</span> <span class="LetrasContenido DetalleValue">{{Puesto}}</span>
+            </div>
+        </div>
+    </div>
+    <div ng-repeat="pregunta in Preguntas">
+        <div class="row">
+            <div class="col-lg-2"></div>
+            <div class="col-lg-8">
+                <h2 class="LetrasTituloPrincipal">{{pregunta.Pregunta}}</h2>
+            </div>
+            <div class="col-lg-2"></div>
+        </div>
+        <div class="Panel">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div id="formGrabado"></div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-2"></div>
+                <div class="col-lg-8">
+                    <div id="divRecord">
+                        <ziggeoplayer ziggeo-video="{{pregunta.Video}}"
+                                      ziggeo-theme="modern">
+                        </ziggeoplayer>
+                    </div>
+                </div>
+                <div class="col-lg-2"></div>
+            </div>
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="row">
+                        <div class="col-sm-6"></div>
+                        <div class="col-sm-2">
+                            <span class="LetrasContenido textoNegrita">Calificación general:</span>
+                        </div>
+                        <div class="col-sm-2">
+                            <jk-rating-stars class="my-custom-stars" rating="pregunta.Calificacion" read-only="false" on-rating="onItemRating(pregunta.IdEntrevista_Video,rating)"></jk-rating-stars>
+                        </div>
+                        <div class="col-sm-2"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="botonera">
+                <input id="btnCancelar" ng-click="Return()" class="btnSecundario" type="button" value="Cancelar" />
+                <input id="btnContinuar" ng-click="Return()" class="btnPrincipal" type="button" value="Finalizar Calificación" />
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+
+}
